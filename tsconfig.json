@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es2019",
+		"target": "es2023",
 		"strict": true,
 		"noEmit": true,
 		"noUnusedParameters": true,
