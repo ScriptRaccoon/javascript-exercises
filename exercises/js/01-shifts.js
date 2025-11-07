@@ -48,6 +48,6 @@ function shifts_lowlevel(arr) {
 	return result
 }
 
-// Tests
+/* ------ TESTS ------ */
 console.info(shifts([2, 3, 5]))
 console.info(shifts([]))

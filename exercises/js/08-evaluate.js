@@ -25,7 +25,7 @@
  *
  * evaluate(["*", ["+", 1, 2], ["-", 4, 2]]) == 6
  *
- * Themen: Rekursion, Fallunterscheidung.
+ * Themen: Rekursion, Fallunterscheidung
  */
 
 function evaluate(tree) {
@@ -50,7 +50,7 @@ function evaluate(tree) {
 	}
 }
 
-// TESTS
+/* ------ TESTS ------ */
 console.info(evaluate(["-", 3, 3]))
 console.info(evaluate(["/", 1, 2]))
 console.info(evaluate(["*", ["+", 1, 2], ["-", 4, 2]]))

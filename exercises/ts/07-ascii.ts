@@ -19,7 +19,7 @@ Wie die Buchstaben im Einzelnen aussehen, ist dir überlassen. Wichtig ist nur,
 dass sie gleich hoch (nicht unbedingt gleich breit) sind und stets nebeneinander
 geschrieben werden.
 
-Themen: Strings, String-Methoden, Schleifen
+Themen: Strings, String-Methoden, Schleifen, Creative Coding
 */
 
 /**
@@ -127,5 +127,5 @@ function sum(arr: number[]): number {
 	return arr.reduce((prev, acc) => prev + acc, 0)
 }
 
-// TESTS
+/* ------ TESTS ------ */
 write_texts(["javascript", "ist nice.", "checkst du?"])

@@ -33,7 +33,7 @@ function paths(obj: unknown): string[] {
 	return result
 }
 
-// TESTING
+/* ------ TESTS ------ */
 const obj1 = { a: 1, b: { c: [0, 1], d: 2 } }
 console.info(paths(obj1))
 

@@ -24,7 +24,7 @@ function compose(f, g) {
 	return (s) => f(g(s))
 }
 
-// TESTS
+/* ------ TESTS ------ */
 const add_one = (n) => n + 1
 const double = (n) => 2 * n
 const double_then_add_one = compose(add_one, double)

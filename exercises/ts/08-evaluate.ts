@@ -25,7 +25,7 @@
  *
  * evaluate(["*", ["+", 1, 2], ["-", 4, 2]]) == 6
  *
- * Themen: Rekursion, Fallunterscheidung.
+ * Themen: Rekursion, Fallunterscheidung
  */
 
 type BinaryOperator = "+" | "-" | "*" | "/"
@@ -53,7 +53,7 @@ function evaluate(tree: BinaryTree): number {
 	}
 }
 
-// TESTS
+/* ------ TESTS ------ */
 console.info(evaluate(["-", 3, 3]))
 console.info(evaluate(["/", 1, 2]))
 console.info(evaluate(["*", ["+", 1, 2], ["-", 4, 2]]))

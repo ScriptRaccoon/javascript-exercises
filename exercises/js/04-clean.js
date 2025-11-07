@@ -5,6 +5,8 @@
  * Beispiel:
  *
  * clean({x : 0, y : null, z : undefined}) = {x : 0}
+ *
+ * Themen: Objekte, Einstieg, Objekt-Methoden
  */
 
 /**
@@ -29,6 +31,6 @@ function clean_alternative(obj) {
 	return res
 }
 
-// TESTS
+/* ------ TESTS ------ */
 console.info(clean({ x: 0, y: null, z: undefined }))
 console.info(clean({}))

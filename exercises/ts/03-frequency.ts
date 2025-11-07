@@ -42,7 +42,7 @@ function most_frequent_letter(
 	return best
 }
 
-// TESTS
+/* ------ TESTS ------ */
 console.info(most_frequent_letter("abba: dancing queen (1976)"))
 console.info(most_frequent_letter("0000xyxyxy0000"))
 console.info(most_frequent_letter("110"))

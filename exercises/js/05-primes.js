@@ -55,7 +55,7 @@ function is_prime(n) {
 	return true
 }
 
-// TESTS
+/* ------ TESTS ------ */
 console.info(primes.next())
 console.info(primes.next())
 console.info(primes.next())
@@ -96,7 +96,7 @@ function create_prime_generator() {
 
 const primes_improved = create_prime_generator()
 
-// TESTS
+/* ------ TESTS ------ */
 console.info("---")
 console.info(primes_improved.next())
 console.info(primes_improved.next())

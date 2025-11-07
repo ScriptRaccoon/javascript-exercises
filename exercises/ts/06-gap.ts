@@ -39,7 +39,7 @@ function largest_gap_alternative(arr: number[]): number {
 	return largest
 }
 
-// TESTS
+/* ------ TESTS ------ */
 console.info(largest_gap([2, 10, 3, 9]))
 console.info(largest_gap([2]))
 console.info(largest_gap([]))

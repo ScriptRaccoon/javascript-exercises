@@ -20,7 +20,7 @@
  *
  * Dann soll das Datum vier mal im Abstand von einer Sekunde geloggt werden.
  *
- * Themen: Closure, Dekorator-Funktion, Scheduling
+ * Themen: Closure (Abschluss), Funktionen höherer Ordnung, Dekorator-Funktion, Scheduling
  */
 
 /**
@@ -53,7 +53,7 @@ export function limit<T extends (...args: any[]) => void>(fn: T, interval: numbe
 	}
 }
 
-// TESTING
+/* ------ TESTS ------ */
 const log_date = (msg: string) => console.info(new Date().toLocaleString("DE-de"), msg)
 const log_date_limited = limit(log_date, 1000)
 
