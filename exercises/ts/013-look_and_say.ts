@@ -25,6 +25,8 @@ soll Folgendes ausgeben:
 1113213211
 31131211131221
 13211311123113112211
+
+Themen: Mathematik, Strings, Schleifen 
 */
 
 /**
