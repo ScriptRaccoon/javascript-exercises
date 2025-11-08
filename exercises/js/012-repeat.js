@@ -18,6 +18,9 @@ Dann wird die Uhrzeit 5 mal in die Konsole geschrieben, mit einer Verzögerung v
 Themen: Funktion höherer Ordnung, Timeout
 */
 
+/**
+ * Repeats a function a number of times with a given delay
+ */
 function repeat_with_delay(fn, delay, repetitions) {
 	let counter = 0
 
