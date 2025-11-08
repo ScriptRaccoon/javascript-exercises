@@ -1,13 +1,13 @@
-/**
- * Implementiere eine allgemeine Hilfsfunktion, die aus einem Objekt die Werte
- * 'undefined' und 'null' entfernt.
- *
- * Beispiel:
- *
- * clean({x : 0, y : null, z : undefined}) = {x : 0}
- *
- * Themen: Objekte, Einstieg, Objekt-Methoden
- */
+/*
+Implementiere eine allgemeine Hilfsfunktion, die aus einem Objekt die Werte
+'undefined' und 'null' entfernt.
+ 
+Beispiel:
+ 
+clean({x : 0, y : null, z : undefined})   ==    {x : 0}
+ 
+Themen: Objekte, Einstieg, Objekt-Methoden
+*/
 
 /**
  * Entfernt aus einem Objekt die Werte 'undefined' und 'null'.
