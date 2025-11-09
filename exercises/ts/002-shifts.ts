@@ -5,7 +5,6 @@ Aufgabe: Implementiere eine Funktion, die ein Array entgegennimmt und alle Versc
 Beispiel:
  
 shifts([2,3,5]) == [[2,3,5], [3,5,2], [5,2,3]]
-shifts([]) == [[]]
  
 Themen: Schleifen, Arrays, Einstieg, Modulo-Rechnen, Randfälle
 */
@@ -15,7 +14,6 @@ Themen: Schleifen, Arrays, Einstieg, Modulo-Rechnen, Randfälle
  */
 function shifts<T>(arr: T[]): T[][] {
 	const n = arr.length
-	if (n === 0) return [[]]
 
 	const result: T[][] = []
 
@@ -33,7 +31,6 @@ function shifts<T>(arr: T[]): T[][] {
  */
 function shifts_lowlevel<T>(arr: T[]): T[][] {
 	const n = arr.length
-	if (n === 0) return [[]]
 
 	const result = new Array<T[]>(n)
 
@@ -50,4 +47,3 @@ function shifts_lowlevel<T>(arr: T[]): T[][] {
 
 /* ------ TESTS ------ */
 console.info(shifts([2, 3, 5]))
-console.info(shifts([]))
