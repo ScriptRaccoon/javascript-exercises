@@ -4,5 +4,13 @@
 	"printWidth": 90,
 	"trailingComma": "all",
 	"singleQuote": false,
-	"semi": false
+	"semi": false,
+	"overrides": [
+		{
+			"files": "**/*.md",
+			"options": {
+				"semi": true
+			}
+		}
+	]
 }
