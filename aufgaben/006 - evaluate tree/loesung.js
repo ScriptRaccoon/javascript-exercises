@@ -1,3 +1,6 @@
+/**
+ * Wertet einen beschrifteten Binärbaum aus.
+ */
 function evaluate(tree) {
 	if (typeof tree === "number") {
 		return tree

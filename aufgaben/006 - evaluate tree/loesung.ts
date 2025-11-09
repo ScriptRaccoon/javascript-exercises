@@ -1,6 +1,9 @@
 type BinaryOperator = "+" | "-" | "*" | "/"
 type BinaryTree = number | [BinaryOperator, BinaryTree, BinaryTree]
 
+/**
+ * Wertet einen beschrifteten Binärbaum aus.
+ */
 function evaluate(tree: BinaryTree): number {
 	if (typeof tree === "number") {
 		return tree

@@ -1,5 +1,6 @@
 /**
- * Repeats a function a number of times with a given delay
+ * Wiederholt eine Funktion mit Verzögerungen und einer
+ * maximalen Anzahl von Wiederholungen
  */
 function repeat_with_delay(fn, delay, repetitions) {
 	let counter = 0

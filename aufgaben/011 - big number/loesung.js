@@ -1,5 +1,5 @@
 /**
- * Class that handles big natural numbers.
+ * Klasse für große natürliche Zahlen
  */
 class BigNumber {
 	constructor(input) {
