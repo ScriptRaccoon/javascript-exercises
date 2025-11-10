@@ -1,0 +1,21 @@
+{
+	"name": "javascript-exercises",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"build:ts": "node build-files.js",
+		"format:js": "prettier --write 'aufgaben/**/*.js'",
+		"build": "pnpm build:ts && pnpm format:js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.20.0",
+	"devDependencies": {
+		"glob": "^11.0.3",
+		"prettier": "^3.6.2",
+		"remove-types": "^1.0.0"
+	}
+}
