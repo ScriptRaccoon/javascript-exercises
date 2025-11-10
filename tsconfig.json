@@ -7,5 +7,6 @@
 		"noUnusedLocals": true
 	},
 
-	"include": ["aufgaben/**/*.ts"]
+	"include": ["aufgaben/**/*.ts"],
+	"exclude": ["aufgaben/**/*.js"]
 }
