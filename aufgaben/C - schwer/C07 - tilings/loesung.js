@@ -48,6 +48,7 @@ function get_irreducible_tilings(n) {
 					[0, 0],
 					[0, 1],
 				],
+
 				[
 					[1, 0],
 					[1, 1],

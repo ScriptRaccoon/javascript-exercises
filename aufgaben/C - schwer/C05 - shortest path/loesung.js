@@ -76,8 +76,8 @@ function print_shortest_path(maze, start, end) {
 			maze[i][j]
 				? "1"
 				: path.some((coord) => coord[0] === i && coord[1] === j)
-				? "*"
-				: "0",
+					? "*"
+					: "0",
 		),
 	)
 
