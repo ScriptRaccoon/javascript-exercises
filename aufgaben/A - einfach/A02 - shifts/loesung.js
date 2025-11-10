@@ -24,7 +24,7 @@ function shifts_lowlevel(arr) {
 	const result = new Array(n)
 
 	for (let i = 0; i < n; i++) {
-		const shifted = new Array() < T > n
+		const shifted = new Array(n)
 		for (let j = 0; j < n; j++) {
 			shifted[j] = arr[(i + j) % n]
 		}
