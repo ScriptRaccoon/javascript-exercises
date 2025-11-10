@@ -15,4 +15,4 @@ fill_template(txt, data) == "Hallo Gregor Samsa, willkommen im Jahr 1912.";
 
 # Themen
 
-Strings, Einstieg
+Strings

@@ -16,4 +16,4 @@ shifts([2, 3, 5]) ==
 
 # Themen
 
-Schleifen, Arrays, Einstieg, Modulo-Rechnen, Randfälle
+Schleifen, Arrays, Modulo-Rechnen, Randfälle

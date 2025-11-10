@@ -31,4 +31,4 @@ get_conflicting_events(events) ==
 
 # Themen
 
-Schleifen, Einstieg
+Schleifen

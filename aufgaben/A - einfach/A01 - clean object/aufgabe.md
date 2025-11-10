@@ -11,4 +11,4 @@ clean({ x: 0, y: null, z: undefined }) == { x: 0 };
 
 # Themen
 
-Objekte, Einstieg, Objekt-Methoden
+Objekte, Objekt-Methoden
