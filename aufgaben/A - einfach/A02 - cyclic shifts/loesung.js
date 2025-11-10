@@ -1,7 +1,7 @@
 /**
- * Berechnet das Array aller Verschiebungen.
+ * Berechnet das Array aller zyklischen Verschiebungen.
  */
-function shifts(arr) {
+function cyclic_shifts(arr) {
 	const n = arr.length
 
 	const result = []
@@ -15,10 +15,10 @@ function shifts(arr) {
 }
 
 /**
- * Berechnet das Array aller Verschiebungen.
+ * Berechnet das Array aller zyklischen Verschiebungen.
  * Alternative Implementierung.
  */
-function shifts_lowlevel(arr) {
+function cyclic_shifts_alternativel(arr) {
 	const n = arr.length
 
 	const result = new Array(n)
@@ -35,4 +35,4 @@ function shifts_lowlevel(arr) {
 }
 
 /* ------ TESTS ------ */
-console.info(shifts([2, 3, 5]))
+console.info(cyclic_shifts([2, 3, 5]))
