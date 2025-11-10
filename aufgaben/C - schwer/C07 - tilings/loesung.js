@@ -160,3 +160,5 @@ function print_all_tilings(n) {
 /* ------ TESTS ------ */
 
 print_all_tilings(5) // 24 Pflasterungen
+
+console.info(get_all_tilings(5)[23])

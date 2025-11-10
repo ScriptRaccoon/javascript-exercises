@@ -90,7 +90,7 @@ const COMMON_WORDS_DE = [
  * Optional werden allgemein übliche Wörter oder im Text zu selten vorkommende
  * Wörter herausgefiltert.
  */
-function word_stats(txt, options) {
+function word_stats(txt, options = {}) {
 	const word_list = txt.match(/[A-Za-zÀ-ÖØ-öø-ÿß]+/g)
 	if (!word_list)
 		return {

@@ -1,7 +1,7 @@
 /**
  * Berechnet die größte Lücke eines Arrays von Zahlen.
  */
-function largest_gap() {
+function largest_gap(arr) {
 	if (arr.length <= 1) return 0
 	const sorted = arr.toSorted((a, b) => a - b)
 	const gaps = sorted.map((_, i) => sorted[i] - sorted[i - 1]).slice(1)

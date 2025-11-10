@@ -163,6 +163,6 @@ function print_all_tilings(n: number) {
 
 /* ------ TESTS ------ */
 
-// print_all_tilings(5) // 24 Pflasterungen
+print_all_tilings(5) // 24 Pflasterungen
 
 console.info(get_all_tilings(5)[23])
