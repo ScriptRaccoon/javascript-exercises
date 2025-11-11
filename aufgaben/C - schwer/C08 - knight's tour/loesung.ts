@@ -5,12 +5,12 @@ type Coord = [number, number]
 
 /**
  * Findet eine Lösung für das Springerproblem: einen Weg des Springes über ein
- * nxn-Schachbrett, bei dem jedes Feld genau einmal betreten wird.
+ * nxm-Schachbrett, bei dem jedes Feld genau einmal betreten wird.
  * Das Ergebnis wird kodiert durch eine Matrix, bei der die Koordinate
  * des i-ten Schritts mit i befüllt wird (i = 1,2,...,n*n).
  */
-function find_knight_tour(n: number, start: Coord): null | number[][] {
-	const result = Array.from({ length: n }, () => Array(n).fill(0))
+function find_knight_tour(n: number, m: number, start: Coord): null | number[][] {
+	const result = Array.from({ length: n }, () => Array(m).fill(0))
 
 	const mark_step = ([y, x]: Coord, step: number) => {
 		result[y][x] = step
@@ -18,7 +18,7 @@ function find_knight_tour(n: number, start: Coord): null | number[][] {
 
 	const is_visited = ([y, x]: Coord) => result[y][x] >= 1
 
-	const is_valid = ([y, x]: Coord) => y >= 0 && y < n && x >= 0 && x < n
+	const is_valid = ([y, x]: Coord) => y >= 0 && y < n && x >= 0 && x < m
 
 	const get_next_coords = ([y, x]: Coord) => {
 		const coords: Coord[] = []
@@ -42,7 +42,7 @@ function find_knight_tour(n: number, start: Coord): null | number[][] {
 	function solve(current: Coord, step: number): null | number[][] {
 		mark_step(current, step)
 
-		if (step === n * n) return result
+		if (step === n * m) return result
 
 		const next_coords = get_next_coords(current)
 
@@ -70,13 +70,13 @@ function find_knight_tour(n: number, start: Coord): null | number[][] {
  * Druckt eine Lösung für das Springerproblem in die Konsole
  * inkl. die dafür benötigte Berechnungszeit.
  */
-function print_knight_tour(n: number, start: Coord) {
+function print_knight_tour(n: number, m: number, start: Coord) {
 	console.time("computation")
-	const result = find_knight_tour(n, start)
+	const result = find_knight_tour(n, m, start)
 	console.timeEnd("computation")
 	console.table(result)
 }
 
 /* ------ TESTS ------ */
 
-print_knight_tour(20, [0, 0])
+print_knight_tour(8, 10, [1, 1])

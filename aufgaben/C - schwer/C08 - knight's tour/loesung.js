@@ -1,11 +1,11 @@
 /**
  * Findet eine Lösung für das Springerproblem: einen Weg des Springes über ein
- * nxn-Schachbrett, bei dem jedes Feld genau einmal betreten wird.
+ * nxm-Schachbrett, bei dem jedes Feld genau einmal betreten wird.
  * Das Ergebnis wird kodiert durch eine Matrix, bei der die Koordinate
  * des i-ten Schritts mit i befüllt wird (i = 1,2,...,n*n).
  */
-function find_knight_tour(n, start) {
-	const result = Array.from({ length: n }, () => Array(n).fill(0))
+function find_knight_tour(n, m, start) {
+	const result = Array.from({ length: n }, () => Array(m).fill(0))
 
 	const mark_step = ([y, x], step) => {
 		result[y][x] = step
@@ -13,7 +13,7 @@ function find_knight_tour(n, start) {
 
 	const is_visited = ([y, x]) => result[y][x] >= 1
 
-	const is_valid = ([y, x]) => y >= 0 && y < n && x >= 0 && x < n
+	const is_valid = ([y, x]) => y >= 0 && y < n && x >= 0 && x < m
 
 	const get_next_coords = ([y, x]) => {
 		const coords = []
@@ -37,7 +37,7 @@ function find_knight_tour(n, start) {
 	function solve(current, step) {
 		mark_step(current, step)
 
-		if (step === n * n) return result
+		if (step === n * m) return result
 
 		const next_coords = get_next_coords(current)
 
@@ -66,13 +66,13 @@ function find_knight_tour(n, start) {
  * Druckt eine Lösung für das Springerproblem in die Konsole
  * inkl. die dafür benötigte Berechnungszeit.
  */
-function print_knight_tour(n, start) {
+function print_knight_tour(n, m, start) {
 	console.time("computation")
-	const result = find_knight_tour(n, start)
+	const result = find_knight_tour(n, m, start)
 	console.timeEnd("computation")
 	console.table(result)
 }
 
 /* ------ TESTS ------ */
 
-print_knight_tour(20, [0, 0])
+print_knight_tour(8, 10, [1, 1])

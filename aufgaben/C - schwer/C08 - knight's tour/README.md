@@ -1,22 +1,22 @@
 # Aufgabe
 
-Finde eine effiziente Lösung für das Springerproblem: Ein Weg des Springers über ein nxn-Schachbrett, bei dem jedes Feld genau einmal besucht wird. Das Startfeld kann beliebig vorgegeben werden.
+Finde eine effiziente Lösung für das Springerproblem: Ein Weg des Springers über ein nxm-Schachbrett, bei dem jedes Feld genau einmal besucht wird. Das Startfeld kann beliebig vorgegeben werden.
 
-Genauer gesagt, implementiere eine Funktion `find_knight_tour(n, start)`, welche eine nxn-Matrix von Zahlen ausgibt, sodass die i-te Koordinate des Springerweges mit i beschriftet wird. Wenn also zum Beispiel der Springerweg mit den Koordinaten (0,0) -> (2,1) -> (1,3) startet, bedeutet das für die Matrix, dass sie bei diesen Koordinaten die Werte 1,2,3 besitzt.
+Genauer gesagt, implementiere eine Funktion `find_knight_tour(n, m, start)`, welche eine nxm-Matrix von Zahlen ausgibt, sodass die i-te Koordinate des Springerweges mit i beschriftet wird. Wenn also zum Beispiel der Springerweg mit den Koordinaten (0,0) -> (2,1) -> (1,3) startet, hat die Matrix an diesen Koordinaten die Werte 1,2,3.
 
 Wenn es keine Lösung gibt, soll `null` zurückgegeben werden.
 
-Implementiere außerdem eine Funktion `print_knight_tour(n, start)`, welche die Matrix übersichtlich in die Konsole schreibt.
+Implementiere außerdem eine Funktion `print_knight_tour(n, m, start)`, welche die Matrix übersichtlich in die Konsole schreibt.
 
-Hinweis: Die Funktion soll auch mit größeren Werten wie etwa `n = 10` oder gar `n = 20` schnell ein Ergebnis liefern. Daher gibt es hier Optimierungsbedarf.
+Hinweis: Die Funktion soll auch mit größeren Werten wie etwa `n = m = 10` oder gar `n = m = 20` schnell ein Ergebnis liefern. Der Algorithmus muss entsprechend optimiert werden.
 
 # Beispiel
 
 ```js
-print_knight_tour(5, [0, 0]);
+print_knight_tour(5, 5, [0, 0]);
 ```
 
-gibt Folgendes aus (oder eine vergleichbare Lösung):
+gibt Folgendes aus (oder eine andere Lösung):
 
 ```text
 ┌─────────┬────┬────┬────┬────┬────┐
@@ -30,37 +30,33 @@ gibt Folgendes aus (oder eine vergleichbare Lösung):
 └─────────┴────┴────┴────┴────┴────┘
 ```
 
-Auch große Felder funktionieren:
+Auch große Bretter und andere Startfelder funktionieren:
 
 ```js
-print_knight_tour(12, [0, 0]);
+print_knight_tour(8, 10, [1, 1]);
 ```
 
-soll Folgendes ausgeben (oder eine vergleichbare Lösung):
+soll Folgendes ausgeben (oder eine andere Lösung):
 
 ```text
-┌─────────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬────┬────┬────┬────┬────┐
-│ (index) │ 0   │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7  │ 8  │ 9  │ 10 │ 11 │
-├─────────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼────┼────┼────┼────┼────┤
-│ 0       │ 1   │ 98  │ 3   │ 144 │ 95  │ 100 │ 21  │ 24 │ 89 │ 50 │ 19 │ 26 │
-│ 1       │ 4   │ 137 │ 96  │ 99  │ 22  │ 143 │ 94  │ 51 │ 20 │ 25 │ 72 │ 49 │
-│ 2       │ 97  │ 2   │ 141 │ 138 │ 101 │ 92  │ 23  │ 90 │ 71 │ 88 │ 27 │ 18 │
-│ 3       │ 140 │ 5   │ 136 │ 103 │ 142 │ 129 │ 132 │ 93 │ 52 │ 73 │ 48 │ 61 │
-│ 4       │ 117 │ 104 │ 139 │ 130 │ 133 │ 102 │ 91  │ 70 │ 87 │ 62 │ 17 │ 28 │
-│ 5       │ 6   │ 135 │ 116 │ 123 │ 128 │ 131 │ 112 │ 53 │ 74 │ 45 │ 60 │ 47 │
-│ 6       │ 105 │ 118 │ 127 │ 134 │ 111 │ 84  │ 69  │ 86 │ 63 │ 54 │ 29 │ 16 │
-│ 7       │ 126 │ 7   │ 122 │ 115 │ 124 │ 113 │ 64  │ 75 │ 44 │ 59 │ 46 │ 39 │
-│ 8       │ 119 │ 106 │ 125 │ 110 │ 83  │ 76  │ 85  │ 68 │ 55 │ 40 │ 15 │ 30 │
-│ 9       │ 8   │ 109 │ 80  │ 121 │ 114 │ 65  │ 56  │ 43 │ 58 │ 33 │ 38 │ 35 │
-│ 10      │ 79  │ 120 │ 107 │ 10  │ 77  │ 82  │ 67  │ 12 │ 41 │ 36 │ 31 │ 14 │
-│ 11      │ 108 │ 9   │ 78  │ 81  │ 66  │ 11  │ 42  │ 57 │ 32 │ 13 │ 34 │ 37 │
-└─────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴────┴────┴────┴────┴────┘
+┌─────────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
+│ (index) │ 0  │ 1  │ 2  │ 3  │ 4  │ 5  │ 6  │ 7  │ 8  │ 9  │
+├─────────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+│ 0       │ 31 │ 72 │ 17 │ 64 │ 29 │ 80 │ 15 │ 48 │ 53 │ 50 │
+│ 1       │ 18 │ 1  │ 30 │ 73 │ 16 │ 65 │ 54 │ 51 │ 14 │ 47 │
+│ 2       │ 71 │ 32 │ 63 │ 28 │ 77 │ 68 │ 79 │ 58 │ 49 │ 52 │
+│ 3       │ 2  │ 19 │ 76 │ 69 │ 74 │ 59 │ 66 │ 55 │ 46 │ 13 │
+│ 4       │ 33 │ 70 │ 27 │ 62 │ 67 │ 78 │ 45 │ 60 │ 57 │ 40 │
+│ 5       │ 20 │ 3  │ 34 │ 75 │ 24 │ 61 │ 56 │ 41 │ 12 │ 9  │
+│ 6       │ 35 │ 26 │ 5  │ 22 │ 37 │ 44 │ 7  │ 10 │ 39 │ 42 │
+│ 7       │ 4  │ 21 │ 36 │ 25 │ 6  │ 23 │ 38 │ 43 │ 8  │ 11 │
+└─────────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
 ```
 
 Hingegen gilt:
 
-- `print_knight_tour(4, [0, 0]) == null`
-- `print_knight_tour(5, [1, 0]) == null`
+- `find_knight_tour(4, 4, [0, 0]) == null`
+- `find_knight_tour(5, 5, [1, 0]) == null`
 
 # Themen
 
