@@ -1,5 +1,6 @@
 /**
- * Berechnet das Array aller zyklischen Verschiebungen.
+ * Berechnet das Array aller zyklischen Verschiebungen eines Arrays.
+ * Implementierung, die mit diversen Array-Methoden arbeitet.
  */
 function cyclic_shifts<T>(arr: T[]): T[][] {
 	const n = arr.length
@@ -15,10 +16,11 @@ function cyclic_shifts<T>(arr: T[]): T[][] {
 }
 
 /**
- * Berechnet das Array aller zyklischen Verschiebungen.
- * Alternative Implementierung.
+ * Berechnet das Array aller zyklischen Verschiebungen eines Arrays.
+ * Einfache Implementierung, die die Arrays per Hand aufbaut.
+ * Die Performance ist nicht wesentlich anders.
  */
-function cyclic_shifts_alternativel<T>(arr: T[]): T[][] {
+function cyclic_shifts_alternative<T>(arr: T[]): T[][] {
 	const n = arr.length
 
 	const result = new Array<T[]>(n)
@@ -35,4 +37,6 @@ function cyclic_shifts_alternativel<T>(arr: T[]): T[][] {
 }
 
 /* ------ TESTS ------ */
+
+// [ [ 2, 3, 5 ], [ 3, 5, 2 ], [ 5, 2, 3 ] ]
 console.info(cyclic_shifts([2, 3, 5]))

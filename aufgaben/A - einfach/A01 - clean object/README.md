@@ -3,12 +3,22 @@
 Implementiere eine allgemeine Hilfsfunktion, die aus einem Objekt die Werte
 `undefined` und `null` entfernt.
 
+Hinweis: Das vorhandene Objekt wird nicht verändert, es wird ein neues erzeugt. Tiefer geschachtelte Werte wie z. B. in `{ x: { y: null } }` müssen nicht beachtet werden.
+
 # Beispiel
 
+**Eingabe**
+
 ```js
-clean({ x: 0, y: null, z: undefined }) == { x: 0 };
+clean({ x: 0, y: null, z: undefined })
+```
+
+**Ausgabe**
+
+```text
+{ x: 0 }
 ```
 
 # Themen
 
-Objekte, Objekt-Methoden
+Objekte, Schleifen

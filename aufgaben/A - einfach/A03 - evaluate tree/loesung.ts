@@ -1,4 +1,11 @@
+/**
+ * Verschiedene binäre Operatoren
+ */
 type BinaryOperator = "+" | "-" | "*" | "/"
+
+/**
+ * Rekursiv definierter Typ für beschriftete Binärbäume
+ */
 type BinaryTree = number | [BinaryOperator, BinaryTree, BinaryTree]
 
 /**
@@ -27,7 +34,15 @@ function evaluate(tree: BinaryTree): number {
 }
 
 /* ------ TESTS ------ */
+
+// 0
 console.info(evaluate(["-", 3, 3]))
+
+// 0.5
 console.info(evaluate(["/", 1, 2]))
+
+// 6
 console.info(evaluate(["*", ["+", 1, 2], ["-", 4, 2]]))
+
+// 0.6666...
 console.info(evaluate(["/", 1, ["+", 1, ["/", 1, ["+", 1, 1]]]]))

@@ -3,9 +3,7 @@
 Schreibe eine Funktion, die einen mit Operationszeichen und Zahlen beschrifteten
 Binärbaum zu einer Zahl auswertet.
 
-# Beispiel
-
-Der beschriftete Binärbaum
+Dabei werden solche Binärbäume durch geschachtelte Arrays modelliert. Der Binärbaum
 
 ```text
 
@@ -19,19 +17,27 @@ Der beschriftete Binärbaum
       1     2  4    2
 ```
 
-wird ausgewertet zu `(1 + 2) * (4 - 2) = 3 * 2 = 6`.
+wird zum Beispiel durch das Array
 
-Im Code wird der Binärkaum kodiert durch
-
-```js
-const tree = ["*", ["+", 1, 2], ["-", 4, 2]];
+```text
+["*", ["+", 1, 2], ["-", 4, 2]]
 ```
 
-und es soll dann gelten:
+modelliert.
+
+# Beispiel
+
+**Eingabe**
 
 ```js
-evaluate(["*", ["+", 1, 2], ["-", 4, 2]]) == 6;
+evaluate(["*", ["+", 1, 2], ["-", 4, 2]])
 ```
+
+**Ausgabe**
+
+`6`
+
+Denn `(1 + 2) * (4 - 2) = 3 * 2 = 6`.
 
 # Themen
 

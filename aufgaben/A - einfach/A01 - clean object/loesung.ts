@@ -1,20 +1,22 @@
 /**
- * Entfernt aus einem Objekt die Werte 'undefined' und 'null'.
+ * Entfernt aus einem Objekt die Werte `undefined` und `null`.
+ * Implementierung mittels Object.fromEntries und Object.entries.
  */
-function clean<T>(obj: Record<string, T | null | undefined>): Record<string, T> {
+function clean<T>(obj: Record<PropertyKey, T | null | undefined>) {
 	return Object.fromEntries(
 		Object.entries(obj).filter(([_, val]) => val != null),
-	) as Record<string, T>
+	) as Record<PropertyKey, T>
 }
 
 /**
- * Entfernt aus einem Objekt die Werte 'undefined' und 'null'.
- * Alternative Implementierung.
+ * Entfernt aus einem Objekt die Werte `undefined` und `null`.
+ * Direkte Implementierung ohne weitere Hilfsmittel.
+ * Die Performance ist hierbei wesentlich besser.
  */
-function clean_alternative<T>(
-	obj: Record<string, T | null | undefined>,
-): Record<string, T> {
-	const res: Record<string, T> = {}
+function clean_fast<T>(
+	obj: Record<PropertyKey, T | null | undefined>,
+): Record<PropertyKey, T> {
+	const res: Record<PropertyKey, T> = {}
 
 	for (const key in obj) {
 		const val = obj[key]
@@ -25,5 +27,9 @@ function clean_alternative<T>(
 }
 
 /* ------ TESTS ------ */
+
+// { x: 0 }
 console.info(clean({ x: 0, y: null, z: undefined }))
+
+// {}
 console.info(clean({}))

@@ -1,18 +1,23 @@
+/**
+ * Typ für einen Kalendereintrag.
+ */
 type CalendarEvent = {
 	title: string
 	start: string
 	end: string
 }
 
+/**
+ * Typ für einen zeitlichen Konflikt zwischen zwei Einträgen.
+ */
 type CalendarEventConflict = {
 	start: string
 	end: string
-	event_titles: [string, string]
+	events: string[]
 }
 
 /**
- * Bestimmt die Liste der Kalendereinträge, die zeitlich miteinander
- * im Konflikt stehen.
+ * Bestimmt die Liste der Konflikte zwischen Kalendereinträgen.
  */
 function get_conflicting_events(events: CalendarEvent[]): CalendarEventConflict[] {
 	const conflicts: CalendarEventConflict[] = []
@@ -22,10 +27,10 @@ function get_conflicting_events(events: CalendarEvent[]): CalendarEventConflict[
 			const a = events[i]
 			const b = events[j]
 			if (a.end > b.start && b.end > a.start) {
-				const conflict: CalendarEventConflict = {
+				const conflict = {
 					start: a.start <= b.start ? b.start : a.start,
 					end: a.end <= b.end ? a.end : b.end,
-					event_titles: [a.title, b.title],
+					events: [a.title, b.title],
 				}
 				conflicts.push(conflict)
 			}
@@ -45,5 +50,10 @@ const events: CalendarEvent[] = [
 	{ title: "call with tom", start: "16:50", end: "17:20" },
 ]
 
-const conflicts = get_conflicting_events(events)
-console.info(conflicts)
+/*
+[
+	{ start: "17:00", end: "17:20", events: ["train to lusanne", "call with tom"] },
+	{ start: "12:00", end: "12:15", events: ["lunch", "meeting with peter"] },
+]
+*/
+console.info(get_conflicting_events(events))

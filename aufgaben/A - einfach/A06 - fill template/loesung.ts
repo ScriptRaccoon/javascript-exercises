@@ -1,5 +1,5 @@
 /**
- * Füllt eine Textvorlage mit Werten
+ * Füllt eine Textvorlage mit Werten aus einem Datenobjekt aus.
  */
 function fill_template<T extends { toString: () => string }>(
 	txt: string,
@@ -19,4 +19,6 @@ function fill_template<T extends { toString: () => string }>(
 
 const txt = "Hallo {{ first_name }} {{ last_name }}, willkommen im Jahr {{ year }}."
 const data = { first_name: "Gregor", last_name: "Samsa", year: 1912 }
+
+// "Hallo Gregor Samsa, willkommen im Jahr 1912."
 console.info(fill_template(txt, data))

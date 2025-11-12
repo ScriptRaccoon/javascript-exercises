@@ -24,7 +24,15 @@ function evaluate(tree) {
 }
 
 /* ------ TESTS ------ */
+
+// 0
 console.info(evaluate(["-", 3, 3]))
+
+// 0.5
 console.info(evaluate(["/", 1, 2]))
+
+// 6
 console.info(evaluate(["*", ["+", 1, 2], ["-", 4, 2]]))
+
+// 0.6666...
 console.info(evaluate(["/", 1, ["+", 1, ["/", 1, ["+", 1, 1]]]]))

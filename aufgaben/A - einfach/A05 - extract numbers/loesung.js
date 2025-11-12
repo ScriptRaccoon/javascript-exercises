@@ -12,4 +12,6 @@ const text = `
 Rechnung Nr. 108421
 2 Artikel à 19.99 €
 Rückerstattung: -5.25 €`
+
+// [ 108421, 2, 19.99, -5.25 ]
 console.info(extract_numbers(text))
