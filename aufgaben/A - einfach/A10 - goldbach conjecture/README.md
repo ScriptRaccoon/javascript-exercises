@@ -70,6 +70,10 @@ Verifying Goldbach conjecture up to 100 ...
 100 = 3 + 97
 ```
 
+# Bonusaufgabe
+
+Optimiere die Funktion, sodass auch in wenigen Sekunden die Goldbach-Vermutung bis zu 1 Mrd. geprüft werden kann (ohne Ausgabe der Paare).
+
 # Themen
 
 Arithmetik, Mathematik, Primzahlen, Schleifen
