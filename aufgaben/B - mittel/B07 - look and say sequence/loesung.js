@@ -1,13 +1,13 @@
 /**
- * Druckt die ersten n Glieder der Conway-Folge
- * {@link https://en.wikipedia.org/wiki/Look-and-say_sequence}
+ * Druckt die ersten n Einträge der Conway-Folge in die Konsole.
+ * vgl. {@link https://en.wikipedia.org/wiki/Look-and-say_sequence}.
  */
 function look_and_say(n) {
-	let str = ""
+	let str = "1"
 
 	for (let i = 0; i < n; i++) {
-		str = get_next(str)
 		console.info(str)
+		str = get_next(str)
 	}
 }
 
@@ -15,8 +15,6 @@ function look_and_say(n) {
  * Bestimmt den jeweils nächsten Eintrag der Conway-Folge.
  */
 function get_next(str) {
-	if (!str.length) return "1"
-
 	const occurances = []
 
 	for (const char of str) {
@@ -28,8 +26,21 @@ function get_next(str) {
 		}
 	}
 
-	return occurances.map(([char, freq]) => `${freq}${char}`).join("")
+	return occurances.map(([char, freq]) => freq + char).join("")
 }
 
 /* ------ TESTS ------ */
+
+/*
+1
+11
+21
+1211
+111221
+312211
+13112221
+1113213211
+31131211131221
+13211311123113112211
+*/
 look_and_say(10)

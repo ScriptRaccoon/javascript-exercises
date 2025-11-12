@@ -1,8 +1,8 @@
 /**
  * Dekorator-Funktion, die eine Funktion innerhalb eines Intervals auf nur eine
- * Ausführung beschränkt und weitere Aufrufe später ausführt.
+ * Ausführung beschränkt und weitere Aufrufe in diesem Interval später ausführt.
  */
-export function limit(fn, interval) {
+function limit(fn, interval) {
 	const queue = []
 	let running = false
 
@@ -27,10 +27,15 @@ export function limit(fn, interval) {
 }
 
 /* ------ TESTS ------ */
-const log_date = (msg) => console.info(new Date().toLocaleString("DE-de"), msg)
-const log_date_limited = limit(log_date, 1000)
 
-log_date_limited("a")
-log_date_limited("b")
-log_date_limited("c")
-log_date_limited("d")
+const send_message = (msg) => {
+	const time = new Date().toLocaleTimeString("DE-de")
+	console.info(`${time} - sending message: ${msg}`)
+}
+
+const send_message_limited = limit(send_message, 1000)
+
+send_message_limited("a") // 15:09:48 - sending message: a
+send_message_limited("b") // 15:09:49 - sending message: b
+send_message_limited("c") // 15:09:50 - sending message: c
+send_message_limited("d") // 15:09:51 - sending message: d

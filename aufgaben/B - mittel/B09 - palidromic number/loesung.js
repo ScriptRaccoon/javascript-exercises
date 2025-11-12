@@ -3,7 +3,6 @@
  */
 function is_palindrome(str) {
 	const n = str.length
-	if (str.length === 0) return true
 	for (let i = 0; i < Math.floor(n / 2); i++) {
 		if (str[i] !== str[n - 1 - i]) return false
 	}
@@ -12,7 +11,7 @@ function is_palindrome(str) {
 
 /**
  * Bestimmt die kleinste Palindromzahl >= n.
- * Brute-Force-Algorithmus.
+ * Langsamer Brute-Force-Algorithmus.
  */
 function next_palindrome_slow(n) {
 	const is_valid = Number.isInteger(n) && n >= 0
@@ -25,22 +24,21 @@ function next_palindrome_slow(n) {
 /**
  * Hilfsfunktion, die einen String umkehrt.
  */
-
 function reverse_string(s) {
 	return [...s].reverse().join("")
 }
 
 /**
- * Hilfsfunktion, die einen Teilstring umdreht und hinten anhängt.
+ * Hilfsfunktion, die einen Teilstring umgedreht hinten anhängt.
+ * Das Ergebnis ist immer ein Palindrom.
  */
-
 function mirrored(left, len) {
 	return left + reverse_string(len % 2 === 0 ? left : left.slice(0, -1))
 }
 
 /**
  * Bestimmt die kleinste Palindromzahl >= n.
- * Schneller Algorithmus.
+ * Schneller Algorithmus in O(log n).
  */
 function next_palindrome(n) {
 	const is_valid = Number.isInteger(n) && n >= 0
@@ -60,9 +58,9 @@ function next_palindrome(n) {
 
 /* ------ TESTS ------ */
 
-console.info(next_palindrome(99) == 99)
-console.info(next_palindrome(123) == 131)
-console.info(next_palindrome(9190) == 9229)
-console.info(next_palindrome(10004) == 10101)
-console.info(next_palindrome(1129404) == 1130311)
-console.info(next_palindrome(4249812309120352) == 4249812332189424)
+console.info(next_palindrome(99)) // 99
+console.info(next_palindrome(123)) // 131
+console.info(next_palindrome(9190)) // 9229
+console.info(next_palindrome(10004)) // 10101
+console.info(next_palindrome(1129404)) // 1130311
+console.info(next_palindrome(4249812309120352)) // 4249812332189424

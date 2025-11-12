@@ -1,14 +1,14 @@
 /**
  * Dekorator-Funktion, die eine Funktion innerhalb eines Intervals auf nur eine
- * Ausführung beschränkt und weitere Aufrufe später ausführt.
+ * Ausführung beschränkt und weitere Aufrufe in diesem Interval später ausführt.
  */
-export function limit<T extends (...args: any[]) => void>(fn: T, interval: number) {
+function limit<T extends (...args: any[]) => void>(fn: T, interval: number) {
 	type P = Parameters<T>
 
 	const queue: P[] = []
 	let running = false
 
-	function run() {
+	function run(): void {
 		if (queue.length === 0) {
 			running = false
 			return
@@ -29,10 +29,15 @@ export function limit<T extends (...args: any[]) => void>(fn: T, interval: numbe
 }
 
 /* ------ TESTS ------ */
-const log_date = (msg: string) => console.info(new Date().toLocaleString("DE-de"), msg)
-const log_date_limited = limit(log_date, 1000)
 
-log_date_limited("a")
-log_date_limited("b")
-log_date_limited("c")
-log_date_limited("d")
+const send_message = (msg: string) => {
+	const time = new Date().toLocaleTimeString("DE-de")
+	console.info(`${time} - sending message: ${msg}`)
+}
+
+const send_message_limited = limit(send_message, 1000)
+
+send_message_limited("a") // 15:09:48 - sending message: a
+send_message_limited("b") // 15:09:49 - sending message: b
+send_message_limited("c") // 15:09:50 - sending message: c
+send_message_limited("d") // 15:09:51 - sending message: d
