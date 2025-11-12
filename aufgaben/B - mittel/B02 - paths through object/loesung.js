@@ -1,9 +1,9 @@
 /**
- * Gibt die Liste aller vollständigen Schlüsselpfade eines Objektes zurück.
+ * Berechnet das Array der vollständigen Pfade entlang der Schlüssel eines Objektes.
  */
 function paths(obj) {
-	const is_obj = typeof obj === "object" && !Array.isArray(obj) && obj !== null
-	if (!is_obj) return []
+	const is_object = typeof obj === "object" && !Array.isArray(obj) && obj !== null
+	if (!is_object) return []
 
 	const result = []
 
@@ -22,14 +22,18 @@ function paths(obj) {
 }
 
 /* ------ TESTS ------ */
-const obj1 = { a: 1, b: { c: [0, 1], d: 2 } }
-console.info(paths(obj1))
 
-const obj2 = { a: { b: { c: { d: 0 } } } }
-console.info(paths(obj2))
+// [ 'a', 'b' ]
+console.info(paths({ a: 1, b: 2 }))
 
-const obj3 = {}
-console.info(paths(obj3))
+// [ 'a', 'b.c', 'b.d' ]
+console.info(paths({ a: 1, b: { c: 2, d: 3 } }))
 
-const obj4 = 42
-console.info(paths(obj4))
+// [ 'a.b.c.d' ]
+console.info(paths({ a: { b: { c: { d: 0 } } } }))
+
+// []
+console.info(paths([0, 1]))
+
+// []
+console.info(paths(42))

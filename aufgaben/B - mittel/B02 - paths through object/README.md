@@ -1,13 +1,18 @@
 # Aufgabe
 
-Implementiere eine Funktion `paths(obj)`, die zu einem Objekt die Liste aller vollständigen Pfade entlang der Schlüssel zurückgibt.
+Implementiere eine Funktion, die zu einem Objekt das Array der vollständigen Pfade entlang der Schlüssel zurückgibt.
 
-# Beispiel
+Wenn die Eingabe kein Objekt ist, wird ein leeres Array zurückgegeben.
 
-```js
-const obj = { a: 1, b: { c: [0, 1], d: 2 } };
-paths(obj) == ["a", "b.c", "b.d"];
-```
+# Beispiele
+
+| Eingabe                                | Ausgabe                 |
+| -------------------------------------- | ----------------------- |
+| `paths({ a: 1, b: 2 }`                 | `[ 'a', 'b' ]`          |
+| `paths({ a: 1, b: { c: 2, d: 3 } }`    | `[ 'a', 'b.c', 'b.d' ]` |
+| `paths({ a: { b: { c: { d: 0 } } } })` | `[ 'a.b.c.d' ]`         |
+| `paths([0, 1])`                        | `[]`                    |
+| `paths(42)`                            | `[]`                    |
 
 # Themen
 

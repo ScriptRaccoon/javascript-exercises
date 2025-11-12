@@ -6,9 +6,14 @@ function compose<S, T, R>(f: (t: T) => R, g: (s: S) => T): (s: S) => R {
 }
 
 /* ------ TESTS ------ */
+
 const add_one = (n: number) => n + 1
 const double = (n: number) => 2 * n
-const double_then_add_one = compose(add_one, double)
 
-console.info(double_then_add_one(4) === 9)
-console.info(compose(add_one, add_one)(4) === 6)
+const double_then_add_one = compose(add_one, double)
+const add_one_then_double = compose(double, add_one)
+const add_three = compose(add_one, compose(add_one, add_one))
+
+console.info(double_then_add_one(4)) // 9
+console.info(add_one_then_double(4)) // 10
+console.info(add_three(4)) // 7
