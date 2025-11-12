@@ -1,7 +1,12 @@
 /**
+ * Typ für eine Koordinate.
+ */
+type Coord = [number, number]
+
+/**
  * Kodiert eine Koordinate als String.
  */
-const key = ([x, y]: [number, number]) => `${x},${y}`
+const key = ([x, y]: Coord) => `${x},${y}`
 
 /**
  * Liste der vier Richtungen durch das Labyrinth.
@@ -14,42 +19,39 @@ const directions: [number, number][] = [
 ]
 
 /**
- * Findest den kürzesten Pfad zwischen zwei Punkten in einem Labyrinth,
- * kodiert durch eine 0,1-Matrix.
+ * Findet einen kürzesten Pfad zwischen zwei Punkten in einem Labyrinth,
+ * kodiert durch eine 0,1-Matrix, mittels einer Breitensuche.
  */
-function get_shortest_path(
-	maze: number[][],
-	start: [number, number],
-	end: [number, number],
-): null | [number, number][] {
-	const [n, m] = [maze.length, maze[0]?.length || 0]
-	if (n === 0 || m === 0) throw new Error("Größe muss positiv sein")
+function get_shortest_path(maze: number[][], start: Coord, end: Coord): null | Coord[] {
+	const n = maze.length
+	if (n === 0) throw new Error("Größe muss positiv sein")
 
-	const [a, b] = start
-	const [u, v] = end
+	const m = maze[0].length
+	if (m === 0) throw new Error("Größe muss positiv sein")
 
-	if (maze[a][b] || maze[u][v]) return null
+	const has_wall = ([x, y]: Coord) => maze[x][y] > 0
+	const is_valid = ([x, y]: Coord) => x >= 0 && x < n && y >= 0 && y < m
+
+	if (has_wall(start) || has_wall(end)) return null
 
 	const visited = new Set<string>()
-	const queue: [number, number, [number, number][]][] = [[a, b, [start]]]
+
+	const queue: [Coord, Coord[]][] = [[start, [start]]]
 
 	while (queue.length > 0) {
-		const [x, y, path] = queue.shift()!
+		const [coord, path] = queue.shift()!
 
-		if (x === u && y === v) return path
+		if (key(coord) === key(end)) return path
 
 		for (const [dx, dy] of directions) {
-			const x_new = x + dx
-			const y_new = y + dy
-			const next_key = key([x_new, y_new])
+			const next_coord: Coord = [coord[0] + dx, coord[1] + dy]
 
-			const in_bounds = x_new >= 0 && x_new < n && y_new >= 0 && y_new < m
-			if (!in_bounds) continue
-			if (maze[x_new][y_new]) continue
-			if (visited.has(next_key)) continue
+			if (!is_valid(next_coord)) continue
+			if (has_wall(next_coord)) continue
+			if (visited.has(key(next_coord))) continue
 
-			visited.add(next_key)
-			queue.push([x_new, y_new, [...path, [x_new, y_new]]])
+			visited.add(key(next_coord))
+			queue.push([next_coord, [...path, next_coord]])
 		}
 	}
 
@@ -57,13 +59,9 @@ function get_shortest_path(
 }
 
 /**
- * Druckt das Labyrinth und den kürzesten Pfad darin aus.
+ * Druckt das Labyrinth und den kürzesten Pfad darin in diese Konsole.
  */
-function print_shortest_path(
-	maze: number[][],
-	start: [number, number],
-	end: [number, number],
-) {
+function print_shortest_path(maze: number[][], start: Coord, end: Coord) {
 	console.info("Labyrinth:\n")
 	for (const row of maze) {
 		console.info(row.join(" "))
@@ -75,8 +73,6 @@ function print_shortest_path(
 		return
 	}
 
-	console.info(JSON.stringify(path))
-
 	console.info("\nKürzester Pfad:\n")
 
 	const solved_maze: string[][] = maze.map((row, i) =>
@@ -84,8 +80,8 @@ function print_shortest_path(
 			maze[i][j]
 				? "1"
 				: path.some((coord) => coord[0] === i && coord[1] === j)
-				? "*"
-				: "0",
+					? "*"
+					: "0",
 		),
 	)
 
@@ -111,4 +107,32 @@ const sample_maze = [
 	[0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
 ]
 
+/*
+[
+  [ 0, 0 ],   [ 1, 0 ],   [ 1, 1 ],
+  [ 1, 2 ],   [ 0, 2 ],   [ 0, 3 ],
+  [ 0, 4 ],   [ 1, 4 ],   [ 2, 4 ],
+  [ 3, 4 ],   [ 4, 4 ],   [ 5, 4 ],
+  [ 6, 4 ],   [ 6, 5 ],   [ 7, 5 ],
+  [ 8, 5 ],   [ 8, 6 ],   [ 8, 7 ],
+  [ 9, 7 ],   [ 10, 7 ],  [ 11, 7 ],
+  [ 11, 8 ],  [ 11, 9 ],  [ 10, 9 ],
+  [ 9, 9 ],   [ 9, 10 ],  [ 9, 11 ],
+  [ 10, 11 ], [ 11, 11 ]
+]
+*/
+console.info(get_shortest_path(sample_maze, [0, 0], [11, 11]))
+
+// * 1 * * * 0 0 0 0 1 0 1
+// * * * 1 * 1 0 1 0 1 0 0
+// 1 1 1 1 * 1 1 1 0 1 1 0
+// 0 1 0 1 * 1 0 0 0 0 0 0
+// 0 1 0 1 * 1 0 1 1 1 1 0
+// 0 1 0 0 * 1 0 1 0 0 0 0
+// 0 1 1 1 * * 0 1 0 1 1 1
+// 0 1 0 1 1 * 1 1 0 0 0 0
+// 0 0 0 0 0 * * * 1 1 1 0
+// 0 1 1 1 1 1 1 * 1 * * *
+// 0 1 0 0 0 0 1 * 1 * 1 *
+// 0 1 1 0 1 0 0 * * * 1 *
 print_shortest_path(sample_maze, [0, 0], [11, 11])
