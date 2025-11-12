@@ -1,5 +1,5 @@
 /**
- * Klasse für große natürliche Zahlen
+ * Klasse für beliebig große natürliche Zahlen.
  */
 class BigNumber {
 	private digits: number[]
@@ -20,9 +20,7 @@ class BigNumber {
 	}
 
 	private remove_trailing_zeros(): void {
-		while (this.digits.length > 0 && this.digits[this.digits.length - 1] === 0) {
-			this.digits.pop()
-		}
+		while (this.digits.at(-1) === 0) this.digits.pop()
 	}
 
 	get length(): number {
@@ -85,7 +83,7 @@ class BigNumber {
 	}
 }
 
-/* ------ TESTS ------ */
+/* ------ GENERAL TESTS ------ */
 
 function test_addition() {
 	for (let i = 0; i < 1000; i++) {
@@ -115,6 +113,8 @@ function test_multiplication() {
 
 test_multiplication()
 
+/* ------ TESTS ------ */
+
 const x = new BigNumber(8916)
 const y = new BigNumber(12087)
 
@@ -126,4 +126,5 @@ v.print() // '107767692'
 
 const a = new BigNumber(1000000000000000000)
 const b = new BigNumber(42)
-a.add(b).print() // '1000000000000000042'
+const s = a.add(b)
+s.print() // '1000000000000000042'

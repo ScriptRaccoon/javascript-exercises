@@ -1,30 +1,51 @@
 # Aufgabe
 
-Implementiere eine Funktion, die ein Wort als ASCII-Art in die Konsole schreibt.
+Implementiere eine Funktion, die ein beliebiges Wort als ASCII-Art in die Konsole schreibt.
 
-# Beispiel
+Wie die Buchstaben im Einzelnen aussehen, ist dir überlassen. Wichtig ist nur, dass sie gleich hoch (nicht unbedingt gleich breit) sind und stets nebeneinander geschrieben werden.
+
+Unterstützt werden müssen lediglich Buchstaben und die wichtigsten Interpunktionszeichen.
+
+# Beispiel 1
+
+**Eingabe**
 
 ```js
-write("javascript");
+write("javascript!")
 ```
 
-soll Folgendes ausgeben:
+**Ausgabe**
 
 ```text
-
-      **     ****     **    **     ****     ********    ******    ******     **   *******    ********
-      **    **  **    **    **    **  **    **    **   **    **   **   **    **   **    **      **
-      **   **    **   **    **   **    **   **         **         **   **    **   **    **      **
-      **   ********    **  **    ********   ********   **         *****      **   *******       **
-**    **   **    **     *  *     **    **         **   **         **  **     **   **            **
-**    **   **    **      **      **    **   **    **   **    **   **   **    **   **            **
-********   **    **      **      **    **   ********    ******    **    **   **   **            **
+      **     ****     **    **     ****     ********    ******    ******     **   *******    ********    **
+      **    **  **    **    **    **  **    **    **   **    **   **   **    **   **    **      **       **
+      **   **    **   **    **   **    **   **         **         **   **    **   **    **      **       **
+      **   ********   **    **   ********   ********   **         *****      **   *******       **       **
+**    **   **    **    **  **    **    **         **   **         **  **     **   **            **       **
+**    **   **    **     ****     **    **   **    **   **    **   **   **    **   **            **
+********   **    **      **      **    **   ********    ******    **    **   **   **            **       **
 ```
 
-Wie die Buchstaben im Einzelnen aussehen, ist dir überlassen. Wichtig ist nur,
-dass sie gleich hoch (nicht unbedingt gleich breit) sind und stets nebeneinander
-geschrieben werden.
+# Beispiel 2
+
+**Eingabe**
+
+```js
+write("her damit")
+```
+
+**Ausgabe**
+
+```text
+**    **   ********   ******          ******       ****     **    **   **   ********
+**    **   **         **   **         **   ***    **  **    ***  ***   **      **
+**    **   **         **   **         **    **   **    **   ** ** **   **      **
+********   ********   *****           **    **   ********   **    **   **      **
+**    **   **         **  **          **    **   **    **   **    **   **      **
+**    **   **         **   **         **   ***   **    **   **    **   **      **
+**    **   ********   **    **        ******     **    **   **    **   **      **
+```
 
 # Themen
 
-Strings, String-Methoden, Schleifen, Creative Coding
+Strings, Schleifen, Arrays, Konfigurationsobjekte, Creative Coding

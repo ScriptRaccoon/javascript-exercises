@@ -1,4 +1,11 @@
 /**
+ * Summe aller Elemente eines Arrays.
+ */
+function sum(arr) {
+	return arr.reduce((prev, acc) => prev + acc, 0)
+}
+
+/**
  * ASCII-Zeichnung von diversen Zeichen (Buchstaben + Interpunktion)
  */
 const CHARACTERS_ART = `
@@ -12,41 +19,40 @@ const CHARACTERS_ART = `
 `
 
 const CHARACTER_HEIGHT = 7
-const DEFAULT_CHARACTER_WIDTH = 8
 const CHARACTER_GAP = 3
 
-const CHARACTERS_CONFIG = [
-	{ char: "a" },
-	{ char: "b" },
-	{ char: "c" },
-	{ char: "d" },
-	{ char: "e" },
-	{ char: "f" },
-	{ char: "g" },
-	{ char: "h" },
+const CHARACTER_CONFIG = [
+	{ char: "a", width: 8 },
+	{ char: "b", width: 8 },
+	{ char: "c", width: 8 },
+	{ char: "d", width: 8 },
+	{ char: "e", width: 8 },
+	{ char: "f", width: 8 },
+	{ char: "g", width: 8 },
+	{ char: "h", width: 8 },
 	{ char: "i", width: 2 },
-	{ char: "j" },
-	{ char: "k" },
-	{ char: "l" },
-	{ char: "m" },
-	{ char: "n" },
-	{ char: "o" },
-	{ char: "p" },
-	{ char: "q" },
-	{ char: "r" },
-	{ char: "s" },
-	{ char: "t" },
-	{ char: "u" },
-	{ char: "v" },
-	{ char: "w" },
-	{ char: "x" },
-	{ char: "y" },
-	{ char: "z" },
+	{ char: "j", width: 8 },
+	{ char: "k", width: 8 },
+	{ char: "l", width: 8 },
+	{ char: "m", width: 8 },
+	{ char: "n", width: 8 },
+	{ char: "o", width: 8 },
+	{ char: "p", width: 8 },
+	{ char: "q", width: 8 },
+	{ char: "r", width: 8 },
+	{ char: "s", width: 8 },
+	{ char: "t", width: 8 },
+	{ char: "u", width: 8 },
+	{ char: "v", width: 8 },
+	{ char: "w", width: 8 },
+	{ char: "x", width: 8 },
+	{ char: "y", width: 8 },
+	{ char: "z", width: 8 },
 	{ char: " ", width: 2 },
 	{ char: ".", width: 4 },
 	{ char: "!", width: 4 },
-	{ char: "?" },
-].map((c) => ({ char: c.char, width: c.width ?? DEFAULT_CHARACTER_WIDTH }))
+	{ char: "?", width: 8 },
+]
 
 const CHARACTER_LINES = CHARACTERS_ART.split("\n").filter((line) => line.length > 0)
 
@@ -56,7 +62,7 @@ console.assert(
 	CHARACTER_LINES.every(
 		(line) =>
 			line.length ===
-			sum(CHARACTERS_CONFIG.map((item) => item.width + CHARACTER_GAP)),
+			sum(CHARACTER_CONFIG.map((item) => item.width + CHARACTER_GAP)),
 	),
 	"Art has incorrect width",
 )
@@ -68,16 +74,16 @@ function write(text) {
 	const lines = new Array(CHARACTER_HEIGHT).fill("")
 
 	for (const char of text) {
-		const index = CHARACTERS_CONFIG.findIndex((item) => item.char === char)
+		const index = CHARACTER_CONFIG.findIndex((item) => item.char === char)
 		if (index < 0) continue
 
-		const start = sum(
-			CHARACTERS_CONFIG.slice(0, index).map((item) => item.width + CHARACTER_GAP),
+		const start_pos = sum(
+			CHARACTER_CONFIG.slice(0, index).map((item) => item.width + CHARACTER_GAP),
 		)
-		const end = start + CHARACTERS_CONFIG[index].width + CHARACTER_GAP
+		const end_pos = start_pos + CHARACTER_CONFIG[index].width + CHARACTER_GAP
 
 		for (let i = 0; i < lines.length; i++) {
-			lines[i] += CHARACTER_LINES[i].slice(start, end)
+			lines[i] += CHARACTER_LINES[i].slice(start_pos, end_pos)
 		}
 	}
 
@@ -86,22 +92,30 @@ function write(text) {
 	}
 }
 
-/**
- * Schreibt einen mehrzeiligen Text als ASCII-Art in die Konsole.
- */
-function write_texts(texts) {
-	for (const text of texts) {
-		write(text)
-		console.info("\n")
-	}
-}
-
-/**
- * Summe aller Elemente eines Arrays.
- */
-function sum(arr) {
-	return arr.reduce((prev, acc) => prev + acc, 0)
-}
-
 /* ------ TESTS ------ */
-write_texts(["javascript", "ist nice.", "checkst du?"])
+
+/*
+ 
+      **     ****     **    **     ****     ********    ******    ******     **   *******    ********    **    
+      **    **  **    **    **    **  **    **    **   **    **   **   **    **   **    **      **       **    
+      **   **    **   **    **   **    **   **         **         **   **    **   **    **      **       **    
+      **   ********   **    **   ********   ********   **         *****      **   *******       **       **    
+**    **   **    **    **  **    **    **         **   **         **  **     **   **            **       **    
+**    **   **    **     ****     **    **   **    **   **    **   **   **    **   **            **             
+********   **    **      **      **    **   ********    ******    **    **   **   **            **       ** 
+ 
+*/
+write("javascript!")
+
+/*
+ 
+**    **   ********   ******          ******       ****     **    **   **   ********   
+**    **   **         **   **         **   ***    **  **    ***  ***   **      **      
+**    **   **         **   **         **    **   **    **   ** ** **   **      **      
+********   ********   *****           **    **   ********   **    **   **      **      
+**    **   **         **  **          **    **   **    **   **    **   **      **      
+**    **   **         **   **         **   ***   **    **   **    **   **      **      
+**    **   ********   **    **        ******     **    **   **    **   **      **    
+ 
+*/
+write("her damit")
