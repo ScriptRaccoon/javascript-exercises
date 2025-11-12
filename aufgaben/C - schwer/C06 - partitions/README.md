@@ -1,51 +1,40 @@
 # Aufgabe
 
-Wieviele Möglichkeiten gibt es, 7.52 € in Münzen zu zerlegen? Das heißt,
-wieviele Möglichkeiten gibt es, die Zahl 752 als Summe von Zahlen der Form
-1,2,5,10,20,50,100,200 zu schreiben?
+Wieviele Möglichkeiten gibt es, 7.52 € in Münzen zu zerlegen? Das heißt, wieviele Möglichkeiten gibt es, die Zahl 752 als Summe von Zahlen der Form 1,2,5,10,20,50,100,200 zu schreiben?
 
-Schreibe dazu allgemein eine Funktion `count_partitions(n, parts)`, welche
-die Anzahl der Zerlegungen der natürlichen Zahl `n` mit Zahlen aus einer
-Liste von Zahlen `parts` bestimmt.
+Schreibe dazu allgemein eine Funktion `count_partitions(n, parts)`, welche die Anzahl der Summenzerlegungen (Partitionen) der natürlichen Zahl `n` mit Zahlen aus einer Liste von Zahlen `parts` bestimmt.
 
-Die Reihenfolge der Zahlen in der Zerlegung soll keine Rolle spielen, also `1 + 2`
-und `2 + 1` sollen zum Beispiel als nur eine Zerlegung gezählt werden.
+Die Reihenfolge der Zahlen in der Zerlegung soll keine Rolle spielen, also `1 + 2` und `2 + 1` sollen zum Beispiel als nur eine Zerlegung gezählt werden.
 
-Hinweis: Es gibt eine naheliegende rekursive Implementierung, die allerdings
-viel zu langsam ist. Finde eine effiziente Methode.
+Hinweis: Es gibt eine naheliegende rekursive Implementierung, die allerdings sehr langsam ist. Finde eine effiziente Methode.
 
-# Beispiel
+# Beispiele
 
-```js
-const parts = [1, 2, 5, 10];
-count_partitions(12, parts) == 15;
-```
+| Eingabe                                                  | Ausgabe    |
+| -------------------------------------------------------- | ---------- |
+| `count_partitions(12, [1, 2, 5, 10])`                    | `15`       |
+| `count_partitions(101, [50])`                            | `0`        |
+| `count_partitions(752, [1, 2, 5, 10, 20, 50, 100, 200])` | `60510110` |
+| `count_partitions(999, [33, 56, 60])`                    | `6`        |
 
-Die 15 Zerlegungen müssen nicht bestimmt werden, werden hier aber zur Illustration aufgelistet:
+Zur Illustration werden hier die 15 Partitionen von 12 mit 1, 2, 5, 10 aufgelistet (mit aufsteigenden Summanden):
 
 ```text
-10 + 2
-10 + 1 + 1
-5 + 5 + 2
-5 + 5 + 1 + 1
-5 + 2 + 2 + 2 + 1
-5 + 2 + 2 + 1 + 1 + 1
-5 + 2 + 1 + 1 + 1 + 1 + 1
-5 + 1 + 1 + 1 + 1 + 1 + 1 + 1
-2 + 2 + 2 + 2 + 2 + 2
-2 + 2 + 2 + 2 + 2 + 1 + 1
-2 + 2 + 2 + 2 + 1 + 1 + 1 + 1
-2 + 2 + 2 + 1 + 1 + 1 + 1 + 1 + 1
-2 + 2 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
-2 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
-```
-
-Ein größeres Beispiel:
-
-```js
-const parts = [1, 2, 5, 10, 20, 50, 100, 200];
-count_partitions(752, parts) == 50249780;
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2
+1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 + 2
+1 + 1 + 1 + 1 + 2 + 2 + 2 + 2
+1 + 1 + 2 + 2 + 2 + 2 + 2
+2 + 2 + 2 + 2 + 2 + 2
+1 + 1 + 10
+2 + 10
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 5
+1 + 1 + 1 + 1 + 1 + 2 + 5
+1 + 1 + 1 + 2 + 2 + 5
+1 + 2 + 2 + 2 + 5
+1 + 1 + 5 + 5
+2 + 5 + 5
 ```
 
 # Themen

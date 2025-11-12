@@ -1,6 +1,7 @@
 /**
- * Bestimmt die Anzahl der Zerlegungen einer Zahl durch andere Zahlen, wobei
- * die Reihenfolge keine Rolle spielt.
+ * Bestimmt die Anzahl der Partitionen einer Zahl durch andere Zahlen,
+ * wobei die Reihenfolge keine Rolle spielt.
+ * Methode: "bottom-up".
  */
 function count_partitions(n: number, parts: number[]): number {
 	if (!parts.every((p) => Number.isInteger(p) && p > 0)) {
@@ -11,19 +12,24 @@ function count_partitions(n: number, parts: number[]): number {
 		throw new Error("Nur nichtnegative Zahlen sind erlaubt")
 	}
 
-	const cache = Array(n + 1).fill(0)
-	cache[0] = 1
+	const unique_parts = new Set(parts)
 
-	for (const part of parts) {
-		for (let i = part; i <= n; i++) {
-			cache[i] += cache[i - part]
+	const partitions = Array(n + 1).fill(0)
+	partitions[0] = 1
+
+	for (const p of unique_parts) {
+		for (let i = p; i <= n; i++) {
+			// i = (... partition von i - p mit teilen <= p ...) + p
+			partitions[i] += partitions[i - p]
 		}
 	}
 
-	return cache[n]
+	return partitions[n]
 }
 
 /* ------ TESTS ------ */
 
-const parts = [1, 2, 5, 10, 20, 50, 100, 200]
-console.info(count_partitions(752, parts))
+console.info(count_partitions(12, [1, 2, 10, 5])) // 15
+console.info(count_partitions(101, [50])) // 0
+console.info(count_partitions(752, [1, 2, 5, 10, 20, 50, 100, 200])) // 60510110
+console.info(count_partitions(999, [33, 56, 60])) // 6
