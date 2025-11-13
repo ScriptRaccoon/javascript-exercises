@@ -20,7 +20,9 @@ max_path_sum(matrix)
 
 **Ausgabe**
 
-`27`
+```text
+27
+```
 
 Denn der zugehörige Pfad ist
 
@@ -61,7 +63,9 @@ max_path_sum(big_matrix)
 
 **Ausgabe**
 
-`2118`
+```text
+2118
+```
 
 # Themen
 
