@@ -7,7 +7,7 @@ class DFA {
 		this.states = options.states
 		this.alphabet = options.alphabet
 		this.start_state = options.start_state
-		this.final_states = new Set(options.final_states)
+		this.final_states = options.final_states
 		this.transitions = options.transitions
 		this.validate()
 	}
@@ -15,7 +15,7 @@ class DFA {
 	validate() {
 		const is_valid =
 			this.states.includes(this.start_state) &&
-			Array.from(this.final_states).every((state) => this.states.includes(state))
+			this.final_states.every((state) => this.states.includes(state))
 		if (!is_valid) throw new Error("Invalid parameters")
 	}
 
@@ -32,7 +32,19 @@ class DFA {
 			current_state = this.get_next_state(current_state, char)
 		}
 
-		return this.final_states.has(current_state)
+		return this.final_states.includes(current_state)
+	}
+
+	static get_marked_input(input, index) {
+		let result = ""
+		for (let i = 0; i < index; i++) {
+			result += ` ${input[i]}`
+		}
+		result += `[${input[index]}]`
+		for (let i = index + 1; i < input.length; i++) {
+			result += `${input[i]} `
+		}
+		return result
 	}
 
 	process(input) {
@@ -44,23 +56,19 @@ class DFA {
 			const is_valid_char = this.alphabet.includes(char)
 			if (!is_valid_char) throw new Error(`Invalid character: ${char}`)
 
+			const styled_input = DFA.get_marked_input(input, i)
+
 			const next_state = this.get_next_state(current_state, char)
-
-			const styled_input = `${input.slice(
-				0,
-				i,
-			)}\x1b[4m${char}\x1b[0m${input.slice(i + 1)}`
-
 			const styled_transition = `${current_state} ---${char}---> ${next_state}`
 
-			console.info(styled_input, "|", styled_transition)
+			console.info(`${styled_input}  |  ${styled_transition}`)
 
 			current_state = next_state
 		}
 
 		console.info("")
 		console.info("final state:", current_state)
-		console.info("accepted:", this.final_states.has(current_state))
+		console.info("accepted:", this.final_states.includes(current_state))
 	}
 }
 
@@ -86,6 +94,22 @@ console.info(dfa.accepts("aaaaaaaa")) // true
 console.info(dfa.accepts("aabaabaa")) // true
 console.info(dfa.accepts("bbaaabaa")) // false
 console.info(dfa.accepts("bbbaabab")) // false
-// console.info(dfa.accepts("abc")) // wirft einen Fehler!
 
+// console.info(dfa.accepts("abc")) // ---> wirft einen Fehler
+
+/*
+ 
+[b]b a a a b a a   |  q0 ---b---> q1
+ b[b]a a a b a a   |  q1 ---b---> q2
+ b b[a]a a b a a   |  q2 ---a---> q2
+ b b a[a]a b a a   |  q2 ---a---> q2
+ b b a a[a]b a a   |  q2 ---a---> q2
+ b b a a a[b]a a   |  q2 ---b---> q3
+ b b a a a b[a]a   |  q3 ---a---> q3
+ b b a a a b a[a]  |  q3 ---a---> q3
+ 
+final state: q3
+accepted: false
+ 
+*/
 dfa.process("bbaaabaa")

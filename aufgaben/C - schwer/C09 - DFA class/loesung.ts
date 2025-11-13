@@ -3,23 +3,26 @@
  * (engl. deterministic finite automaton, kurz DFA)
  */
 class DFA<States extends readonly string[], Alphabet extends readonly string[]> {
-	private states: States
-	private alphabet: Alphabet
-	private start_state: States[number]
-	private final_states: Set<States[number]>
-	private transitions: Record<States[number], Record<Alphabet[number], States[number]>>
+	private readonly states: States
+	private readonly alphabet: Alphabet
+	private readonly start_state: States[number]
+	private readonly final_states: States[number][]
+	private readonly transitions: Record<
+		States[number],
+		Record<Alphabet[number], States[number]>
+	>
 
 	constructor(options: {
 		states: States
 		alphabet: Alphabet
 		start_state: States[number]
-		final_states: Array<States[number]> | Set<States[number]>
+		final_states: States[number][]
 		transitions: Record<States[number], Record<Alphabet[number], States[number]>>
 	}) {
 		this.states = options.states
 		this.alphabet = options.alphabet
 		this.start_state = options.start_state
-		this.final_states = new Set(options.final_states)
+		this.final_states = options.final_states
 		this.transitions = options.transitions
 		this.validate()
 	}
@@ -27,14 +30,11 @@ class DFA<States extends readonly string[], Alphabet extends readonly string[]> 
 	private validate() {
 		const is_valid =
 			this.states.includes(this.start_state) &&
-			Array.from(this.final_states).every((state) => this.states.includes(state))
+			this.final_states.every((state) => this.states.includes(state))
 		if (!is_valid) throw new Error("Invalid parameters")
 	}
 
-	private get_next_state(
-		state: States[number],
-		char: Alphabet[number],
-	): States[number] {
+	public get_next_state(state: States[number], char: Alphabet[number]): States[number] {
 		return this.transitions[state][char]
 	}
 
@@ -47,7 +47,19 @@ class DFA<States extends readonly string[], Alphabet extends readonly string[]> 
 			current_state = this.get_next_state(current_state, char)
 		}
 
-		return this.final_states.has(current_state)
+		return this.final_states.includes(current_state)
+	}
+
+	private static get_marked_input(input: string, index: number): string {
+		let result = ""
+		for (let i = 0; i < index; i++) {
+			result += ` ${input[i]}`
+		}
+		result += `[${input[index]}]`
+		for (let i = index + 1; i < input.length; i++) {
+			result += `${input[i]} `
+		}
+		return result
 	}
 
 	public process(input: string): void {
@@ -59,20 +71,19 @@ class DFA<States extends readonly string[], Alphabet extends readonly string[]> 
 			const is_valid_char = this.alphabet.includes(char)
 			if (!is_valid_char) throw new Error(`Invalid character: ${char}`)
 
+			const styled_input = DFA.get_marked_input(input, i)
+
 			const next_state = this.get_next_state(current_state, char)
-
-			const styled_input = `${input.slice(0, i)}\x1b[4m${char}\x1b[0m${input.slice(i + 1)}`
-
 			const styled_transition = `${current_state} ---${char}---> ${next_state}`
 
-			console.info(styled_input, "|", styled_transition)
+			console.info(`${styled_input}  |  ${styled_transition}`)
 
 			current_state = next_state
 		}
 
 		console.info("")
 		console.info("final state:", current_state)
-		console.info("accepted:", this.final_states.has(current_state))
+		console.info("accepted:", this.final_states.includes(current_state))
 	}
 }
 
@@ -98,6 +109,22 @@ console.info(dfa.accepts("aaaaaaaa")) // true
 console.info(dfa.accepts("aabaabaa")) // true
 console.info(dfa.accepts("bbaaabaa")) // false
 console.info(dfa.accepts("bbbaabab")) // false
-// console.info(dfa.accepts("abc")) // wirft einen Fehler!
 
+// console.info(dfa.accepts("abc")) // ---> wirft einen Fehler
+
+/*
+ 
+[b]b a a a b a a   |  q0 ---b---> q1
+ b[b]a a a b a a   |  q1 ---b---> q2
+ b b[a]a a b a a   |  q2 ---a---> q2
+ b b a[a]a b a a   |  q2 ---a---> q2
+ b b a a[a]b a a   |  q2 ---a---> q2
+ b b a a a[b]a a   |  q2 ---b---> q3
+ b b a a a b[a]a   |  q3 ---a---> q3
+ b b a a a b a[a]  |  q3 ---a---> q3
+ 
+final state: q3
+accepted: false
+ 
+*/
 dfa.process("bbaaabaa")

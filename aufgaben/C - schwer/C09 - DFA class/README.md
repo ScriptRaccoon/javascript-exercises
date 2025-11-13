@@ -5,23 +5,22 @@ Entwickle eine Klasse, die einen endlichen deterministischen Automaten (DEA) mod
 - ein Array `states` von Strings, genannt _Zustände_
 - ein _Startzustand_ `start_state`
 - ein Array `alphabet` von Zeichen, genannt _Alphabet_
-- ein Array (oder eine Menge) von Endzuständen `final_states`
-- eine Übergangsfunktion `Zustände x Alphabet -> Zustände`, die durch ein geschachteltes Objekt `transitions` der Form `Zustände -> (Alphabet -> Zustände)` modelliert wird (siehe Beispiel unten).
+- ein Array von _Endzuständen_ `final_states`
+- eine Übergangsfunktion `Zustände -> (Alphabet -> Zustände)`, die durch ein geschachteltes Objekt modelliert wird (siehe Beispiel unten).
 
 Die TypeScript-Version soll hierbei vollständig typsicher sein, sodass also zum Beispiel kein Zustand in der Übergangsfunktion fehlen darf.
 
 Die Klasse soll außerdem
 
-1. eine Methode `accepts(input)` bereitstellen, welche feststellt, ob ein Eingabetext vom Automaten akzeptiert wird, also nach der Verarbeitung jedes Zeichens in einem Endzustand landet. Wenn ein Zeichen nicht im Alphabet vorkommt, soll ein Fehler geworfen werden.
+1. eine Methode `accepts(input)` bereitstellen, welche feststellt, ob ein Eingabetext `input` vom Automaten akzeptiert wird, also nach der Verarbeitung jedes Zeichens in einem Endzustand landet. Wenn ein Zeichen nicht im Alphabet vorkommt, soll ein Fehler geworfen werden.
 
-2. eine Methode `process(input)` bereitstellen, die die Verarbeitung des Eingabetextes Schritt für Schritt grafisch ansprechend in der Konsole darstellt (siehe Beispiel unten).
+2. eine Methode `process(input)` bereitstellen, die die Verarbeitung des Eingabetextes `input` Schritt für Schritt grafisch ansprechend in der Konsole darstellt (siehe Beispiel unten).
 
-# Beispiel
+# Beispiele
+
+Dieser DFA akzeptiert Strings, die höchstens zwei b enthalten.
 
 ```js
-/**
- * DEA der Strings akzeptiert die höchstens zwei b enthalten.
- */
 const dfa = new DFA({
 	states: ["q0", "q1", "q2", "q3"],
 	alphabet: ["a", "b"],
@@ -33,29 +32,42 @@ const dfa = new DFA({
 		q2: { a: "q2", b: "q3" },
 		q3: { a: "q3", b: "q3" },
 	},
-});
-
-dfa.accepts("aaaaaaaa") === true;
-dfa.accepts("aabaabaa") === true;
-dfa.accepts("bbaaabaa") === false;
-dfa.accepts("bbbaabab") === false;
+})
 ```
 
-In diesem Beispiel soll
+| Eingabe                   | Ausgabe      |
+| ------------------------- | ------------ |
+| `dfa.accepts("aaaaaaaa")` | `true`       |
+| `dfa.accepts("aabaabaa")` | `true`       |
+| `dfa.accepts("aabaabaa")` | `false`      |
+| `dfa.accepts("bbbaabab")` | `false`      |
+| `dfa.accepts("abc")`      | wirft Fehler |
+
+---
+
+**Eingabe**
 
 ```js
-dfa.accepts("abc");
+dfa.process("bbaaabaa")
 ```
 
-einen Fehler werfen, weil _c_ nicht zum Alphabet gehört. Außerdem soll
+**Ausgabe**
 
-```js
-dfa.process("bbaaabaa");
+```text
+[b]b a a a b a a   |  q0 ---b---> q1
+ b[b]a a a b a a   |  q1 ---b---> q2
+ b b[a]a a b a a   |  q2 ---a---> q2
+ b b a[a]a b a a   |  q2 ---a---> q2
+ b b a a[a]b a a   |  q2 ---a---> q2
+ b b a a a[b]a a   |  q2 ---b---> q3
+ b b a a a b[a]a   |  q3 ---a---> q3
+ b b a a a b a[a]  |  q3 ---a---> q3
+
+final state: q3
+accepted: false
 ```
 
-in etwa Folgendes in die Konsole schreiben (die genaue Visualisierung ist dir überlassen):
-
-![multiline process visualization](./assets/process.png)
+Das ist nur ein Beispiel. Wie die Ausgabe von `.process` im Detail aussieht, ist dir überlassen.
 
 # Themen
 
