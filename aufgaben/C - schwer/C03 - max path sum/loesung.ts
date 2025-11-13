@@ -2,7 +2,7 @@
  * Berechnet die maximale Pfadsumme einer Matrix mit einem rekursiven, "top-down" Ansatz.
  * Diese Methode ist zwar einfach hinzuschreiben, hat aber gerade bei großen
  * Matrizen eine schlechte Laufzeit, weil immer wieder dieselben Berechnungen
- * gemacht und nicht zwischengespeichert werden.
+ * gemacht, aber nicht zwischengespeichert werden.
  */
 function max_path_sum_rec(matrix: number[][]): number {
 	if (matrix.length === 0) return 0
@@ -13,6 +13,29 @@ function max_path_sum_rec(matrix: number[][]): number {
 	const sum_down = max_path_sum_rec(without_first_row)
 	const sum_right = max_path_sum_rec(without_first_column)
 	return matrix[0][0] + Math.max(sum_down, sum_right)
+}
+
+/**
+ * Abwandlung von {@link max_path_sum_rec} bei der ein Cache benutzt wird,
+ * damit vorherige Berechnungen zwischengespeichert und genutzt werden.
+ */
+function max_path_sum_rec_cached(
+	matrix: number[][],
+	cache: Record<string, number> = {},
+): number {
+	const str = JSON.stringify(matrix)
+	if (str in cache) return cache[str]
+
+	if (matrix.length === 0) return 0
+	if (matrix[0].length === 0) return 0
+
+	const without_first_row = matrix.slice(1)
+	const without_first_column = matrix.map((row) => row.slice(1))
+	const sum_down = max_path_sum_rec_cached(without_first_row, cache)
+	const sum_right = max_path_sum_rec_cached(without_first_column, cache)
+	const res = matrix[0][0] + Math.max(sum_down, sum_right)
+	cache[str] = res
+	return res
 }
 
 /**
@@ -73,12 +96,15 @@ function create_random_matrix(n: number, m: number, range: number) {
 }
 
 const big_matrix = create_random_matrix(16, 16, 100)
-console.table(big_matrix)
-
-console.time("iterative method")
-console.info(max_path_sum(big_matrix))
-console.timeEnd("iterative method") // ca. 0.1ms
 
 console.time("recursive method")
 console.info(max_path_sum_rec(big_matrix))
-console.timeEnd("recursive method") // ca. 22s
+console.timeEnd("recursive method") // ca. 21s
+
+console.time("recursive method (cached)")
+console.info(max_path_sum_rec_cached(big_matrix))
+console.timeEnd("recursive method (cached)") // ca. 0.6ms
+
+console.time("iterative method")
+console.info(max_path_sum(big_matrix))
+console.timeEnd("iterative method") // ca. 0.05ms
