@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tilings - Visualization</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				background-color: black;
+				color: white;
+				font-family: Arial, Helvetica, sans-serif;
+				padding-inline: 0.5rem;
+			}
+
+			.tilings {
+				max-width: 1200px;
+				margin-inline: auto;
+				margin-block: 2rem;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 1.5rem;
+			}
+
+			.count {
+				font-family: monospace;
+				margin-bottom: 0.1rem;
+				color: #bbb;
+			}
+
+			.tiling {
+				display: grid;
+				grid-template-columns: repeat(var(--n), 1fr);
+				grid-template-rows: repeat(2, 1fr);
+				grid-auto-flow: dense;
+				gap: 1px;
+			}
+
+			.piece {
+				width: 2rem;
+				aspect-ratio: 1;
+				background-color: var(--color, white);
+				grid-row: var(--row);
+				grid-column: var(--col);
+			}
+
+			menu {
+				display: flex;
+				justify-content: center;
+			}
+
+			input {
+				font: inherit;
+				color: inherit;
+				background: none;
+				border: none;
+				outline: 1px solid #777;
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.2rem;
+			}
+
+			label {
+				display: flex;
+				gap: 0.5rem;
+				align-items: center;
+			}
+
+			header {
+				padding-block: 1rem;
+				text-align: center;
+			}
+
+			h1 {
+				font-weight: 500;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1></h1>
+		</header>
+
+		<menu>
+			<label>
+				Width
+				<input type="number" min="1" max="100" step="1" />
+			</label>
+		</menu>
+
+		<div class="tilings"></div>
+
+		<script>
+			function get_irreducible_tilings(n) {
+				if (!(Number.isInteger(n) && n >= 0)) {
+					throw new Error("Parameter must be a positive integer")
+				}
+
+				if (n === 0) return []
+
+				if (n === 1) {
+					return [
+						[
+							[
+								[0, 0],
+								[1, 0],
+							],
+						],
+					]
+				}
+
+				if (n === 2) {
+					return [
+						[
+							[
+								[0, 0],
+								[0, 1],
+							],
+
+							[
+								[1, 0],
+								[1, 1],
+							],
+						],
+					]
+				}
+
+				const tiling = []
+
+				tiling.push([
+					[0, 0],
+					[1, 0],
+					[1, 1],
+				])
+
+				for (let i = 1; i <= n - 3; i++) {
+					tiling.push([
+						[1 - (i % 2), i],
+						[1 - (i % 2), i + 1],
+					])
+				}
+
+				tiling.push([
+					[1 - (n % 2), n - 2],
+					[1 - (n % 2), n - 1],
+					[n % 2, n - 1],
+				])
+
+				return [tiling, get_flipped_tiling(tiling)]
+			}
+
+			function get_flipped_tiling(tiling) {
+				return tiling.map((tile) => tile.map(([y, x]) => [1 - y, x]))
+			}
+
+			function shift_tiling(tiling, dx) {
+				return tiling.map((tile) => tile.map(([y, x]) => [y, x + dx]))
+			}
+
+			function get_all_tilings(n) {
+				const tilings = Array.from({ length: n + 1 }, () => [])
+				tilings[0] = [[]]
+
+				for (let i = 1; i <= n; i++) {
+					for (let k = 1; k <= i; k++) {
+						for (const tail of get_irreducible_tilings(k)) {
+							const shifted_tail = shift_tiling(tail, i - k)
+							for (const head of tilings[i - k]) {
+								tilings[i].push([...head, ...shifted_tail])
+							}
+						}
+					}
+				}
+
+				return tilings[n]
+			}
+
+			function visualize_tilings(n) {
+				const container = document.querySelector(".tilings")
+				container.innerHTML = ""
+				container.style.setProperty("--n", n)
+				const tilings = get_all_tilings(n)
+
+				const h1 = document.querySelector("h1")
+				h1.innerText = `${tilings.length} tilings of size ${n}x2`
+
+				for (let j = 0; j < tilings.length; j++) {
+					const tiling = tilings[j]
+
+					const tiling_container = document.createElement("div")
+
+					const count_el = document.createElement("div")
+					count_el.classList.add("count")
+					tiling_container.appendChild(count_el)
+					count_el.innerText = j + 1
+
+					const tiling_el = document.createElement("div")
+					tiling_container.appendChild(tiling_el)
+
+					container.appendChild(tiling_container)
+
+					tiling_el.classList.add("tiling")
+					for (let i = 0; i < tiling.length; i++) {
+						const tile = tiling[i]
+						for (const coord of tile) {
+							const [y, x] = coord
+							const piece = document.createElement("div")
+							piece.classList.add("piece")
+							piece.style.setProperty(
+								"--color",
+								`hsl(${i * 60}deg,100%,50%)`,
+							)
+							piece.style.setProperty("--row", y + 1)
+							piece.style.setProperty("--col", x + 1)
+							tiling_el.appendChild(piece)
+						}
+					}
+				}
+			}
+
+			const initial_size = 5
+
+			visualize_tilings(initial_size)
+
+			const input = document.querySelector("input")
+			input.value = initial_size
+
+			input.addEventListener("change", (e) => {
+				const n = parseInt(e.target.value)
+				if (Number.isInteger(n) && n >= 1) {
+					visualize_tilings(n)
+				}
+			})
+		</script>
+	</body>
+</html>
