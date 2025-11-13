@@ -1,31 +1,55 @@
+/**
+ * Typ für eine Koordinate.
+ */
 type Coord = [number, number]
+
+/**
+ * Typ für eine Figur bzw. Kachel, also eine Liste von Koordinaten.
+ */
 type Tile = Coord[]
+
+/**
+ * Typ für eine Pflasterung, also eine Liste von Kacheln, die das Rechteck
+ * ohne Überschneidungen überdecken.
+ */
 type Tiling = Tile[]
 
 /**
  * Bestimmt alle irreduziblen Pflasterungen eines nx2-Rechtecks durch
- * Dominos und L-Trominos. Irreduzibel bedeutet hierbei, dass die Pflasterung
- * keine horizontale Trennlinie beinhaltet und mindestens einen Stein hat.
+ * Dominos und L-Trominos.
+ *
+ * *Irreduzibel* bedeutet hierbei, dass die Pflasterung keine horizontale
+ * Trennlinie beinhaltet und mindestens einen Stein hat.
+ *
+ * Für n = 0 gibt es also keine.
  *
  * Für n = 1 gibt es genau eine irreduzible Pflasterung, bestehend aus
  * einem Domino:
  *
+ * ```
  *   x
  *   x
+ * ```
  *
  * Für n = 2 gibt es ebenfalls genau eine irreduzible Pflasterung,
  * bestehend aus zwei Dominos:
  *
+ *
+ * ```
  *   x x
  *   o o
+ * ```
+ *
  *
  * Für jedes n >= 3 gibt es zwei irreduzible Pflasterungen. Zum Beispiel n = 5:
  *
+ * ```
  *   x x - - x
  *   x o o x x
  *
  *   x o o x x
  *   x x - - x
+ * ```
  */
 function get_irreducible_tilings(n: number): Tiling[] {
 	if (!(Number.isInteger(n) && n >= 0)) {
@@ -92,7 +116,7 @@ function get_flipped_tiling(tiling: Tiling): Tiling {
 }
 
 /**
- * Verschiebt die Koordinaten einer nx2-Pflasterung.
+ * Verschiebt die Koordinaten einer nx2-Pflasterung horizontal.
  */
 function shift_tiling(tiling: Tiling, dx: number): Tiling {
 	return tiling.map((tile) => tile.map(([y, x]) => [y, x + dx]))
@@ -101,25 +125,26 @@ function shift_tiling(tiling: Tiling, dx: number): Tiling {
 /**
  * Bestimmt alle Pflasterungen eines nx2-Rechtecks durch Dominos und L-Trominos.
  * Jede solche Pflasterung setzt sich eindeutig aus irreduziblen Pflasterungen zusammen.
+ * Methode: bottom-up.
  */
-
 function get_all_tilings(n: number): Tiling[] {
-	const cache = Array.from({ length: n + 1 }, () => [] as Tiling[])
-	cache[0] = [[]]
+	// tilings[i] = Liste der Pflasterungen eines ix2-Rechtecks
+	const tilings = Array.from({ length: n + 1 }, () => [] as Tiling[])
+	tilings[0] = [[]]
 
 	for (let i = 1; i <= n; i++) {
+		// Berechne tilings[i] rekursiv.
 		for (let k = 1; k <= i; k++) {
 			for (const tail of get_irreducible_tilings(k)) {
 				const shifted_tail = shift_tiling(tail, i - k)
-				for (const head of cache[i - k]) {
-					const tiling: Tiling = [...head, ...shifted_tail]
-					cache[i].push(tiling)
+				for (const head of tilings[i - k]) {
+					tilings[i].push([...head, ...shifted_tail])
 				}
 			}
 		}
 	}
 
-	return cache[n]
+	return tilings[n]
 }
 
 /**
@@ -152,7 +177,7 @@ function print_tiling(n: number, tiling: Tiling): void {
 /**
  * Druckt alle nx2-Pflasterungen in die Konsole.
  */
-function print_all_tilings(n: number) {
+function print_all_tilings(n: number): void {
 	const tilings = get_all_tilings(n)
 	console.info(`Found ${tilings.length} tilings of length ${n}.\n`)
 	for (const tiling of tilings) {
@@ -163,6 +188,4 @@ function print_all_tilings(n: number) {
 
 /* ------ TESTS ------ */
 
-print_all_tilings(5) // 24 Pflasterungen
-
-console.info(get_all_tilings(5)[23])
+print_all_tilings(5)
