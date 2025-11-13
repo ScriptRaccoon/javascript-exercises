@@ -13,7 +13,7 @@ Hinweis: Die Funktion soll auch mit größeren Werten wie etwa `n = m = 10` oder
 # Beispiel
 
 ```js
-print_knight_tour(5, 5, [0, 0]);
+print_knight_tour(5, 5, [0, 0])
 ```
 
 gibt Folgendes aus (oder eine andere Lösung):
@@ -33,7 +33,7 @@ gibt Folgendes aus (oder eine andere Lösung):
 Auch große Bretter und andere Startfelder funktionieren:
 
 ```js
-print_knight_tour(8, 10, [1, 1]);
+print_knight_tour(8, 10, [1, 1])
 ```
 
 soll Folgendes ausgeben (oder eine andere Lösung):
@@ -60,4 +60,4 @@ Hingegen gilt:
 
 # Themen
 
-Backtracking, Rekursion, Sortierung, Matrizen, Laufzeitoptimierung
+Backtracking, Rekursion, Sortierung, Matrizen, Laufzeitoptimierung, Algorithmen

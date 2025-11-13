@@ -12,7 +12,7 @@ Das hier ist zum Beispiel eine Pflasterung eines 7x2-Rechtecks, bestehend aus 4 
 # Beispiel
 
 ```js
-print_all_tilings(5);
+print_all_tilings(5)
 ```
 
 soll in etwa Folgendes ausgeben:
@@ -116,11 +116,11 @@ get_all_tilings(5)[23] ==
 			[1, 4],
 			[0, 4],
 		],
-	];
+	]
 ```
 
 Die Anzahl der Pflasterungen ist übrigens die OEIS-Folge [A052980](https://oeis.org/A052980). Damit lässt sich dein Ergebnis überprüfen.
 
 # Themen
 
-Kombinatorik, Dynamische Programmierung, Arrays
+Kombinatorik, Dynamische Programmierung, Arrays, Algorithmen

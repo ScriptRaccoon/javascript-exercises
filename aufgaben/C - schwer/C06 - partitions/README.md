@@ -39,4 +39,4 @@ Zur Illustration werden hier die 15 Partitionen von 12 mit 1, 2, 5, 10 aufgelist
 
 # Themen
 
-Dynamische Programmierung, Rekursion, Cache, Arithmetik
+Dynamische Programmierung, Rekursion, Cache, Arithmetik, Algorithmen

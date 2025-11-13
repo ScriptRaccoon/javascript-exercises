@@ -86,4 +86,4 @@ Kürzester Pfad:
 
 # Themen
 
-Breitensuche, Warteschlange, Schleifen, Optimierungsproblem
+Breitensuche, Warteschlange, Schleifen, Optimierungsproblem, Algorithmen
