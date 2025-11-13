@@ -29,7 +29,7 @@ function get_shortest_path(maze, start, end) {
 
 	if (has_wall(start) || has_wall(end)) return null
 
-	const visited = new Set()
+	const visited = new Set([key(start)])
 
 	const queue = [[start, [start]]]
 

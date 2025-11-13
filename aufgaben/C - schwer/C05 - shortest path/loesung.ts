@@ -34,7 +34,7 @@ function get_shortest_path(maze: number[][], start: Coord, end: Coord): null | C
 
 	if (has_wall(start) || has_wall(end)) return null
 
-	const visited = new Set<string>()
+	const visited = new Set<string>([key(start)])
 
 	const queue: [Coord, Coord[]][] = [[start, [start]]]
 
