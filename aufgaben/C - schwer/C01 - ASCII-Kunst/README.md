@@ -1,6 +1,6 @@
 # Aufgabe
 
-Implementiere eine Funktion, die ein beliebiges Wort als ASCII-Art in die Konsole schreibt.
+Implementiere eine Funktion, die ein beliebiges Wort als ASCII-Kunst in die Konsole schreibt.
 
 Wie die Buchstaben im Einzelnen aussehen, ist dir überlassen. Wichtig ist nur, dass sie gleich hoch (nicht unbedingt gleich breit) sind und stets nebeneinander geschrieben werden.
 
