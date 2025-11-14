@@ -1,5 +1,5 @@
 /**
- * Erstellt ein Proxy-Objekt mit Statistiken für Lese- und Schreibzugriffe
+ * Erstellt ein Proxy-Objekt mit Statistiken für Lese- und Schreibzugriffe.
  */
 function create_magic_object(obj) {
 	const stats = {

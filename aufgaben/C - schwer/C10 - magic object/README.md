@@ -14,45 +14,61 @@ Hinweis: Arbeite mit einem Proxy-Objekt.
 
 # Beispiel
 
+**Eingabe**
+
 ```js
 const user = create_magic_object({
 	id: "t4Ra5r",
 	name: "maria",
 	role: "editor",
-});
+})
 
-// { id: 't4Ra5r', name: 'maria', role: 'editor' }
-console.info(user);
+console.info(user)
+console.info(user.__stats__)
+```
 
-/*
+**Ausgabe**
+
+```text
+{
+  id: 't4Ra5r',
+  name: 'maria',
+  role: 'editor'
+}
+
 {
   created_at: '2025-11-11T21:29:46.515Z',
   updated_at: null,
   reads: {},
   writes: {}
 }
-*/
-console.info(user.__stats__);
+```
 
-user.name;
-user.name;
-user.name;
-user.id;
-user.id;
-user.name = "mary";
-user.name = "mary b.";
+**Eingabe**
 
-/*
+```js
+user.name
+user.name
+user.name
+user.id
+user.id
+user.name = "mary"
+user.name = "mary b."
+
+console.info(user.__stats__)
+```
+
+**Ausgabe**
+
+```text
 {
   created_at: '2025-11-11T21:29:46.515Z',
   updated_at: '2025-11-11T21:29:46.515Z',
   reads: { name: 3, id: 2 },
   writes: { name: 2 }
 }
-*/
-console.info(user.__stats__);
 ```
 
 # Themen
 
-Proxys, Closure
+Proxys, Objekte, Abschluss

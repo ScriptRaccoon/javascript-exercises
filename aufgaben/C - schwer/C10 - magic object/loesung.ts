@@ -9,7 +9,7 @@ type Stats<T extends Record<PropertyKey, unknown>> = {
 }
 
 /**
- * Erstellt ein Proxy-Objekt mit Statistiken für Lese- und Schreibzugriffe
+ * Erstellt ein Proxy-Objekt mit Statistiken für Lese- und Schreibzugriffe.
  */
 function create_magic_object<T extends Record<PropertyKey, unknown>>(obj: T) {
 	const stats: Stats<T> = {
