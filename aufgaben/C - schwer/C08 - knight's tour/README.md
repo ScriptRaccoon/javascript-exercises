@@ -1,8 +1,8 @@
 # Aufgabe
 
-Finde eine effiziente Lösung für das Springerproblem: Ein Weg des Springers über ein nxm-Schachbrett, bei dem jedes Feld genau einmal besucht wird. Das Startfeld kann beliebig vorgegeben werden.
+Finde eine effiziente Lösung für das _Springerproblem_: Einen Weg des Springers über das n×m-Schachbrett, bei dem jedes Feld genau einmal besucht wird. Das Startfeld kann beliebig vorgegeben werden.
 
-Genauer gesagt, implementiere eine Funktion `find_knight_tour(n, m, start)`, welche eine nxm-Matrix von Zahlen ausgibt, sodass die i-te Koordinate des Springerweges mit i beschriftet wird. Wenn also zum Beispiel der Springerweg mit den Koordinaten (0,0) -> (2,1) -> (1,3) startet, hat die Matrix an diesen Koordinaten die Werte 1,2,3.
+Genauer gesagt, implementiere eine Funktion `find_knight_tour(n, m, start)`, welche eine n×m-Matrix von Zahlen ausgibt, sodass die i-te Koordinate des Springerweges mit i beschriftet wird. Wenn also zum Beispiel der Springerweg mit den Koordinaten (0,0) -> (2,1) -> (1,3) startet, hat die Matrix an diesen Koordinaten die Werte 1,2,3.
 
 Wenn es keine Lösung gibt, soll `null` zurückgegeben werden.
 
@@ -10,13 +10,15 @@ Implementiere außerdem eine Funktion `print_knight_tour(n, m, start)`, welche d
 
 Hinweis: Die Funktion soll auch mit größeren Werten wie etwa `n = m = 10` oder gar `n = m = 20` schnell ein Ergebnis liefern. Der Algorithmus muss entsprechend optimiert werden.
 
-# Beispiel
+# Beispiel 1
+
+**Eingabe**
 
 ```js
 print_knight_tour(5, 5, [0, 0])
 ```
 
-gibt Folgendes aus (oder eine andere Lösung):
+**Ausgabe**
 
 ```text
 ┌─────────┬────┬────┬────┬────┬────┐
@@ -30,13 +32,19 @@ gibt Folgendes aus (oder eine andere Lösung):
 └─────────┴────┴────┴────┴────┴────┘
 ```
 
+Das ist nur eine Lösung, es gibt auch andere.
+
+# Beispiel 2
+
 Auch große Bretter und andere Startfelder funktionieren:
+
+**Eingabe**
 
 ```js
 print_knight_tour(8, 10, [1, 1])
 ```
 
-soll Folgendes ausgeben (oder eine andere Lösung):
+**Ausgabe**
 
 ```text
 ┌─────────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
@@ -53,10 +61,16 @@ soll Folgendes ausgeben (oder eine andere Lösung):
 └─────────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
 ```
 
-Hingegen gilt:
+# Beispiel 3
 
-- `find_knight_tour(4, 4, [0, 0]) == null`
-- `find_knight_tour(5, 5, [1, 0]) == null`
+Hingegen liefern
+
+```js
+find_knight_tour(4, 4, [0, 0])
+find_knight_tour(5, 5, [1, 0])
+```
+
+jeweils `null`.
 
 # Themen
 
