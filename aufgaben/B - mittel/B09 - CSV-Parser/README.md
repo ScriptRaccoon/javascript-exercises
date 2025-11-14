@@ -1,4 +1,6 @@
-# Aufgabe
+# CSV-Parser
+
+## Aufgabe
 
 Entwickle einen einfachen CSV-Parser, das heißt eine Funktion, die einen mehrzeiligen Text im tabellarischen CSV-Format entgegennimmt und ein Array aus Objekten daraus erzeugt.
 
@@ -6,7 +8,7 @@ Als Trennzeichen zwischen den Einträgen wird ein Komma verwendet.
 
 Hinweis: Randfälle (Felder in Anführungsstrichen, Kommata in den Feldern, usw.) können ignoriert werden. Formatierungsfehler müssen auch nicht strikt behandelt werden. Mache es dir so einfach wie möglich! Für wasserdichte CSV-Parser verwendet man ohnehin am besten eine Bibliothek.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -29,6 +31,6 @@ basic_CSV_parser(csv)
 ]
 ```
 
-# Themen
+## Themen
 
 Strings, Arrays, Objekte

@@ -1,10 +1,12 @@
-# Aufgabe
+# Wiederholungssteuerung
+
+## Aufgabe
 
 Implementiere eine Funktion, die eine Funktion mehrfach mit einer gewissen Verzögerung ausführt. (Eine Art `setInterval`, nur mit zusätzlicher Abbruchbedingung.)
 
 Genauer gesagt, implementiere eine Funktion `repeat_with_delay(fn, delay, repetitions)`, die eine Funktion, eine Verzögerung, sowie eine Anzahl von Wiederholungen erwartet. Führt man diese aus, wird die ursprüngliche Funktion entsprechend oft ausgeführt, aber dazwischen wird immer gewartet.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -24,6 +26,6 @@ log_time_3_times()
 15:19:24
 ```
 
-# Themen
+## Themen
 
 Abschluss, Funktionen höherer Ordnung, Dekorator-Funktion, Scheduling

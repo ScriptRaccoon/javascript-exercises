@@ -1,4 +1,6 @@
-# Aufgabe
+# Kürzester Pfad
+
+## Aufgabe
 
 Schreibe eine Funktion, die einen kürzesten Pfad durch ein Labyrinth berechnet. Ein Labyrinth wird hierbei durch eine 0,1-Matrix beschrieben, wobei 0 für einen leeren Raum bzw. 1 für eine Wand steht.
 
@@ -8,7 +10,7 @@ Ein Pfad wird durch die Liste der besuchten Koordinaten beschrieben. Wenn kein P
 
 Implementiere außerdem eine Funktion, welche den Pfad grafisch ansprechend in die Konsole schreibt.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -84,6 +86,6 @@ Kürzester Pfad:
 0 1 1 0 1 0 0 * * * 1 *
 ```
 
-# Themen
+## Themen
 
 Breitensuche, Warteschlange, Schleifen, Optimierungsproblem, Algorithmen

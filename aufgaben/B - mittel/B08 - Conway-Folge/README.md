@@ -1,4 +1,6 @@
-# Aufgabe
+# Conway-Folge
+
+## Aufgabe
 
 Implementiere eine Funktion, welche die ersten `n` Einträge der [Conway-Folge](https://de.wikipedia.org/wiki/Conway-Folge) in die Konsole schreibt. Deren Idee ist, dass jedes Folgenglied das Vorherige "vorliest":
 
@@ -9,7 +11,7 @@ Implementiere eine Funktion, welche die ersten `n` Einträge der [Conway-Folge](
 - "1211" besteht aus einer Eins, einer Zwei, zwei Einsen ---> "111221"
 - usw.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -32,6 +34,6 @@ look_and_say(10)
 13211311123113112211
 ```
 
-# Themen
+## Themen
 
 Mathematik, Strings, Schleifen

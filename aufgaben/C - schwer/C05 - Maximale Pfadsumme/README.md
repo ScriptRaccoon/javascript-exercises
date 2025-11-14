@@ -1,10 +1,12 @@
-# Aufgabe
+# Maximale Pfadsumme
+
+## Aufgabe
 
 Implementiere eine Funktion, die für eine Matrix aus Zahlen die maximale Summe eines Pfades berechnet, der von oben links nach unten rechts wandert. Jeder Schritt geht dabei entweder nach rechts oder unten, und aufsummiert werden die besuchten Zahlen der Matrix.
 
 Hinweis: Es gibt eine naheliegende rekursive Implementierung, die allerdings eine schlechte Laufzeit aufweist. Finde eine bessere Methode, die auch für große Matrizen (`16x16` und größer) schnell ein Ergebnis liefert.
 
-# Beispiel 1
+## Beispiel 1
 
 **Eingabe**
 
@@ -34,7 +36,7 @@ Denn der zugehörige Pfad ist
 
 und hat als Summe 5 + 3 + 9 + 2 + 8 = 27. Alle anderen Pfade durch die Matrix ergeben eine kleinere Summe.
 
-# Beispiel 2
+## Beispiel 2
 
 **Eingabe**
 
@@ -67,6 +69,6 @@ max_path_sum(big_matrix)
 2118
 ```
 
-# Themen
+## Themen
 
 Arrays, Matrizen, Rekursion, dynamische Programmierung, Laufzeitoptimierung

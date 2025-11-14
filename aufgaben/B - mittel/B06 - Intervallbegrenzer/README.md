@@ -1,10 +1,12 @@
-# Aufgabe
+# Intervallbegrenzer
+
+## Aufgabe
 
 Implementiere eine Dekorator-Funktion, die eine Funktion so abändert, dass sie innerhalb eines vorgegebenen Zeitintervalls nur einmal ausgeführt werden kann. Alle zusätzlichen Aufrufe in diesem Interval werden später ausgeführt (das ist der Unterschied zum throttle-Dekorator).
 
 Genauer gesagt, entwickle eine Funktion `limit(fn, interval)`, die eine Funktion `fn` entgegennimmt sowie ein Zeitintervall (in Millisekunden) und eine Funktion zurückgibt, welche `fn` maximal einmal pro Intervall ausführt. Wenn innerhalb des Intervalls die Funktion trotzdem aufgerufen wird, wird dieser Aufruf später ausgeführt.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -33,6 +35,6 @@ send_message_limited("d")
 
 Obwohl die vier Funktionsaufrufe von `send_message_limited` im Code unmittelbar hintereinander passieren, wird `send_message` in einem Abstand von einer Sekunde von 1s ausgeführt.
 
-# Themen
+## Themen
 
 Abschluss, Funktionen höherer Ordnung, Dekorator-Funktion, Scheduling

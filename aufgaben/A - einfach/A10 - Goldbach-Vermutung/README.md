@@ -1,13 +1,15 @@
-# Kontext
+# Goldbach-Vermutung
+
+## Kontext
 
 Die [Goldbach-Vermutung](https://de.wikipedia.org/wiki/Goldbachsche_Vermutung) aus der Mathematik besagt, dass jede gerade Zahl > 2 als Summe von zwei Primzahlen geschrieben werden kann (z.B. `12 = 5 + 7`). Auch wenn sie für sehr viele Zahlen bereits bestätigt ist, ist die allgemeine Aussage bis heute ein ungelöstes Problem.
 
-# Aufgabe
+## Aufgabe
 
 Schreibe eine Funktion `verify_goldbach_up_to(n)`, welche die Goldbach-Vermutung
 für alle geraden Zahlen kleiner oder gleich `n` prüft und eine entsprechende Zerlegung in die Konsole schreibt. Es müssen nicht alle Zerlegungen bestimmt werden; eine reicht aus.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -70,10 +72,10 @@ Verifying Goldbach conjecture up to 100 ...
 100 = 3 + 97
 ```
 
-# Bonusaufgabe
+## Bonusaufgabe
 
 Optimiere die Funktion, sodass auch in wenigen Sekunden die Goldbach-Vermutung bis zu 1 Mrd. geprüft werden kann (ohne Ausgabe der Paare).
 
-# Themen
+## Themen
 
 Arithmetik, Mathematik, Primzahlen, Schleifen

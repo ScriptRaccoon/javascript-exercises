@@ -1,10 +1,12 @@
-# Aufgabe
+# Schlüsselpfade
+
+## Aufgabe
 
 Implementiere eine Funktion, die zu einem Objekt das Array der vollständigen Pfade entlang der Schlüssel zurückgibt.
 
 Wenn die Eingabe kein Objekt ist, wird ein leeres Array zurückgegeben.
 
-# Beispiele
+## Beispiele
 
 | Eingabe                                | Ausgabe                 |
 | -------------------------------------- | ----------------------- |
@@ -14,6 +16,6 @@ Wenn die Eingabe kein Objekt ist, wird ein leeres Array zurückgegeben.
 | `paths([0, 1])`                        | `[]`                    |
 | `paths(42)`                            | `[]`                    |
 
-# Themen
+## Themen
 
 Rekursion, Objekte, Strings

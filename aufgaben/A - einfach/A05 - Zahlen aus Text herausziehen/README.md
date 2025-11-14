@@ -1,8 +1,10 @@
-# Aufgabe
+# Zahlen aus Text herausziehen
+
+## Aufgabe
 
 Implementiere eine Funktion, die alle Zahlen aus einem Text herauszieht. Erfasst werden positive ganze Zahlen, negative ganze Zahlen, wie auch rationale Zahlen. Das Ergebnis soll ein Array der enthaltenden Zahlen sein.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -21,6 +23,6 @@ extract_numbers(text)
 [ 108421, 2, 19.99, -5.25 ]
 ```
 
-# Themen
+## Themen
 
 Strings, reguläre Ausdrücke

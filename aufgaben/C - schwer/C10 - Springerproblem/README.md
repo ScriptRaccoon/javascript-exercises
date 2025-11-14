@@ -1,4 +1,6 @@
-# Aufgabe
+# Springerproblem
+
+## Aufgabe
 
 Finde eine effiziente Lösung für das _Springerproblem_: Einen Weg des Springers über das n×m-Schachbrett, bei dem jedes Feld genau einmal besucht wird. Das Startfeld kann beliebig vorgegeben werden.
 
@@ -10,7 +12,7 @@ Implementiere außerdem eine Funktion `print_knight_tour(n, m, start)`, welche d
 
 Hinweis: Die Funktion soll auch mit größeren Werten wie etwa `n = m = 10` oder gar `n = m = 20` schnell ein Ergebnis liefern. Der Algorithmus muss entsprechend optimiert werden.
 
-# Beispiel 1
+## Beispiel 1
 
 **Eingabe**
 
@@ -34,7 +36,7 @@ print_knight_tour(5, 5, [0, 0])
 
 Das ist nur eine Lösung, es gibt auch andere.
 
-# Beispiel 2
+## Beispiel 2
 
 Auch große Bretter und andere Startfelder funktionieren:
 
@@ -61,7 +63,7 @@ print_knight_tour(8, 10, [1, 1])
 └─────────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
 ```
 
-# Beispiel 3
+## Beispiel 3
 
 Hingegen liefern
 
@@ -72,6 +74,6 @@ find_knight_tour(5, 5, [1, 0])
 
 jeweils `null`.
 
-# Themen
+## Themen
 
 Backtracking, Rekursion, Sortierung, Matrizen, Laufzeitoptimierung, Algorithmen

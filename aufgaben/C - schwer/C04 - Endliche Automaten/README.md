@@ -1,4 +1,6 @@
-# Aufgabe
+# Endliche Automaten
+
+## Aufgabe
 
 Entwickle eine Klasse, die einen endlichen deterministischen Automaten (DEA) modelliert, vgl. [Wikipedia](https://de.wikipedia.org/wiki/Deterministischer_endlicher_Automat). Der Konstruktur soll 5 Objekte entgegennehmen:
 
@@ -16,7 +18,7 @@ Die Klasse soll außerdem
 
 2. eine Methode `process(input)` bereitstellen, die die Verarbeitung des Eingabetextes `input` Schritt für Schritt grafisch ansprechend in der Konsole darstellt (siehe Beispiel unten).
 
-# Beispiele
+## Beispiele
 
 Dieser DFA akzeptiert Strings, die höchstens zwei b enthalten.
 
@@ -69,6 +71,6 @@ accepted: false
 
 Das ist nur ein Beispiel. Wie die Ausgabe von `.process` im Detail aussieht, ist dir überlassen.
 
-# Themen
+## Themen
 
 Automaten, Klassen, Strings

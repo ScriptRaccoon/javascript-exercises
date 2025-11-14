@@ -1,4 +1,6 @@
-# Aufgabe
+# Binärbäume auswerten
+
+## Aufgabe
 
 Schreibe eine Funktion, die einen mit Operationszeichen und Zahlen beschrifteten
 Binärbaum zu einer Zahl auswertet.
@@ -25,7 +27,7 @@ wird zum Beispiel durch das Array
 
 modelliert.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -41,6 +43,6 @@ evaluate(["*", ["+", 1, 2], ["-", 4, 2]])
 
 Denn `(1 + 2) * (4 - 2) = 3 * 2 = 6`.
 
-# Themen
+## Themen
 
 Rekursion, Fallunterscheidung

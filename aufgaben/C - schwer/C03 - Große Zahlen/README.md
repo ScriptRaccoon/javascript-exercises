@@ -1,4 +1,6 @@
-# Kontext
+# Große Zahlen
+
+## Kontext
 
 Normale Zahlen lassen sich in JavaScript nur bis zu einer bestimmten Grenze verarbeiten:
 
@@ -15,7 +17,7 @@ Number.MAX_SAFE_INTEGER + 2 == 9007199254740992 // ???
 Number.MAX_SAFE_INTEGER + 3 == 9007199254740994
 ```
 
-# Aufgabe
+## Aufgabe
 
 Entwickle eine Klasse `BigNumber` (ähnlich wie die bereits in JS eingebaute Klasse `BigInt`), die beliebig große natürliche Zahlen verarbeiten und mit ihnen rechnen kann. Unterstützt werden sollen Addition und Multiplikation in Form von zwei Klassenmethoden `.add` und `.multiply`.
 
@@ -23,7 +25,7 @@ Außerdem soll es eine Methode `.print` geben, mit der die Zahl in die Konsole g
 
 Der Konstruktor nimmt sowohl Zahlen, Strings, als auch Arrays von Ziffern entgegen.
 
-# Beispiel 1
+## Beispiel 1
 
 **Eingabe**
 
@@ -45,7 +47,7 @@ v.print()
 21003
 ```
 
-# Beispiel 2
+## Beispiel 2
 
 Auch große Zahlen funktionieren nun:
 
@@ -64,6 +66,6 @@ s.print()
 1000000000000000042
 ```
 
-# Themen
+## Themen
 
 Mathematik, Arithmetik, Klassen, Methoden, Schleifen

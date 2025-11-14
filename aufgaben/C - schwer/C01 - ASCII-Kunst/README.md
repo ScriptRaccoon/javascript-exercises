@@ -1,4 +1,6 @@
-# Aufgabe
+# ASCII-Kunst
+
+## Aufgabe
 
 Implementiere eine Funktion, die ein beliebiges Wort als ASCII-Kunst in die Konsole schreibt.
 
@@ -6,7 +8,7 @@ Wie die Buchstaben im Einzelnen aussehen, ist dir überlassen. Wichtig ist nur, 
 
 Unterstützt werden müssen lediglich Buchstaben und die wichtigsten Interpunktionszeichen.
 
-# Beispiel 1
+## Beispiel 1
 
 **Eingabe**
 
@@ -26,7 +28,7 @@ write("javascript!")
 ********   **    **      **      **    **   ********    ******    **    **   **   **            **       **
 ```
 
-# Beispiel 2
+## Beispiel 2
 
 **Eingabe**
 
@@ -46,6 +48,6 @@ write("her damit")
 **    **   ********   **    **        ******     **    **   **    **   **      **
 ```
 
-# Themen
+## Themen
 
 Strings, Schleifen, Arrays, Konfigurationsobjekte, Creative Coding

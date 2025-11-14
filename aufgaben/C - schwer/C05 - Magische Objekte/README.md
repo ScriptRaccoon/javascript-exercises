@@ -1,4 +1,6 @@
-# Aufgabe
+# Magische Objekte
+
+## Aufgabe
 
 Schreibe eine Funktion `create_magic_object(obj)`, die aus einem Objekt ein Objekt `magic_obj` erzeugt, welches sich genauso verhält und dieselben Eigenschaften besitzt wie `obj`, allerdings eine weitere besondere Eigenschaft `magic_obj.__stats__` besitzt. Dies soll ein Objekt sein, in dem die Lese- und Schreibzugriffe auf "magische Weise" gespeichert werden. Wird zum Beispiel eine Eigenschaft namens `name` zweimal gelesen und einmal geändert, soll `magic_obj.__stats__`
 
@@ -12,7 +14,7 @@ Die TypeScript-Version soll vollständig typsicher sein.
 
 Hinweis: Arbeite mit einem Proxy-Objekt.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -69,6 +71,6 @@ console.info(user.__stats__)
 }
 ```
 
-# Themen
+## Themen
 
 Proxys, Objekte, Abschluss

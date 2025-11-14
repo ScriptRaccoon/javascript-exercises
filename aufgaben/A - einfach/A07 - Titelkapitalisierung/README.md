@@ -1,10 +1,12 @@
-# Aufgabe
+# Titelkapitalisierung
+
+## Aufgabe
 
 Auf der Website der [New York Times](https://www.nytimes.com/) wird in Überschriften der [Title Case](https://en.wikipedia.org/wiki/Title_case) verwendet. Abgesehen von Artikeln, kurzen Präpositionen und einigen Konjunktionen werden dabei alle Wörter großgeschrieben.
 
 Implementiere eine Funktion, die einen Text in Title Case umwandelt. Sie soll einen Text sowie eine optionale Liste von Ausnahmen entgegennehmen.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -21,6 +23,6 @@ to_title_case(
 "How the Trump Administration Is Giving Even More Tax Breaks to the Wealthy"
 ```
 
-# Themen
+## Themen
 
 Strings, Arrays

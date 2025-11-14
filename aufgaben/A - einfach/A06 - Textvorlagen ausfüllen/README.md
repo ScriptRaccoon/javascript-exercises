@@ -1,8 +1,10 @@
-# Aufgabe
+# Textvorlagen ausfüllen
+
+## Aufgabe
 
 Schreibe eine Funktion, welche eine Textvorlage mit Werten aus einem Datenobjekt ausfüllt. Dabei wird jeweils ein Textabschnitt der Form `{{ name }}` durch den entsprechenden Wert ersetzt.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -18,6 +20,6 @@ fill_template(txt, data)
 "Hallo Gregor Samsa, willkommen im Jahr 1912."
 ```
 
-# Themen
+## Themen
 
 Strings, Schleifen

@@ -1,4 +1,6 @@
-# Aufgabe
+# Partitionen
+
+## Aufgabe
 
 Wieviele Möglichkeiten gibt es, 7.52 € in Münzen zu zerlegen? Das heißt, wieviele Möglichkeiten gibt es, die Zahl 752 als Summe von Zahlen der Form 1,2,5,10,20,50,100,200 zu schreiben?
 
@@ -8,7 +10,7 @@ Die Reihenfolge der Zahlen in der Zerlegung soll keine Rolle spielen, also `1 + 
 
 Hinweis: Es gibt eine naheliegende rekursive Implementierung, die allerdings sehr langsam ist. Finde eine effiziente Methode.
 
-# Beispiele
+## Beispiele
 
 | Eingabe                                                  | Ausgabe    |
 | -------------------------------------------------------- | ---------- |
@@ -37,6 +39,6 @@ Zur Illustration werden hier die 15 Partitionen von 12 mit 1, 2, 5, 10 aufgelist
 2 + 5 + 5
 ```
 
-# Themen
+## Themen
 
 Dynamische Programmierung, Rekursion, Cache, Arithmetik, Algorithmen

@@ -1,4 +1,6 @@
-# Aufgabe
+# Primzahlgenerator
+
+## Aufgabe
 
 Implementiere einen Primzahlgenerator. Genauer gesagt, definiere ein Objekt `primes` das eine Methode `.next()` beinhaltet, die jeweils die nächste Primzahl ausgibt:
 
@@ -23,10 +25,10 @@ primes.next() == 5
 
 Hinweis: Es muss nicht unbedingt mit Klassen gearbeitet werden.
 
-# Bonusaufgabe
+## Bonusaufgabe
 
 Finde eine Lösung, die es unmöglich macht, die aktuelle Primzahl von außen zu manipulieren. Zum Beispiel sollte `primes.current = 7` unmöglich sein.
 
-# Themen
+## Themen
 
 Generatoren, Objektorientierte Programmierung, Abschluss, Methoden

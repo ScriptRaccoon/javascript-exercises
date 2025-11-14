@@ -1,4 +1,6 @@
-# Aufgabe
+# Wordstatistik
+
+## Aufgabe
 
 Schreibe eine Funktion, welche die Wörter in einem deutschsprachigen Text analysiert. Berechnet werden ...
 
@@ -13,7 +15,7 @@ Wichtig:
 
 Verbessere anschließend die Funktion, indem optional unwesentliche Wörter (z. B. Präpositionen, Artikel und Konjunktionen) herausgefiltert werden, damit das Thema des Ausgangstextes besser ersichtlich wird. Übergib außerdem einen weiteren optionalen Parameter für die Mindesthäufigkeit der angezeigten Wörter.
 
-# Beispiel 1
+## Beispiel 1
 
 **Eingabe**
 
@@ -56,7 +58,7 @@ word_stats(sample_txt, { exclude_common_words: true, min_frequency: 2 })
 }
 ```
 
-# Beispiel 2
+## Beispiel 2
 
 Aus dem [Grundgesetz für die Bundesrepublik Deutschland](https://www.gesetze-im-internet.de/gg/GG.pdf) erhält man die folgende Wordstatistik (mit `min_frequency: 50`):
 
@@ -90,6 +92,6 @@ Aus dem [Grundgesetz für die Bundesrepublik Deutschland](https://www.gesetze-im
 }
 ```
 
-# Themen
+## Themen
 
 Strings, Arrays, Objekte, reguläre Ausdrücke, Sortierung, Optionsobjekt

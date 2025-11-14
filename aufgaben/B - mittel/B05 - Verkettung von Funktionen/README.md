@@ -1,4 +1,6 @@
-# Aufgabe
+# Verkettung von Funktionen
+
+## Aufgabe
 
 Implementiere eine abstrakte Funktion `compose(f,g)`, die zwei Funktionen
 `f` und `g` entgegennimmt und die verkettete Funktion `f o g` zurückgibt,
@@ -6,7 +8,7 @@ die also erst `g` und dann `f` ausführt.
 
 Hinweis: Beide Funktionen `f` und `g` haben der Einfachheit halber nur ein Argument.
 
-# Beispiel
+## Beispiel
 
 ```js
 const add_one = (n) => n + 1
@@ -21,6 +23,6 @@ add_one_then_double(4) // -> 10
 add_three(4) // -> 7
 ```
 
-# Themen
+## Themen
 
 Funktionen höherer Ordnung, Funktionen als Argumente, Funktionen als Rückgabewerte, Hilfsfunktionen

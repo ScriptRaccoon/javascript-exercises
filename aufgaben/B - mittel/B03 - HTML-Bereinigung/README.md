@@ -1,4 +1,6 @@
-# Kontext
+# HTML-Bereinigung
+
+## Kontext
 
 Bei der Darstellung von User-generiertem HTML auf Websites ist es wichtig, dass unerwünschte oder sogar potenziell gefährliche HTML-Tags nicht gerendert werden. Ansonsten kann das Layout der Website verändert oder sogar JavaScript eingeschleust werden:
 
@@ -14,7 +16,7 @@ Bei der Darstellung von User-generiertem HTML auf Websites ist es wichtig, dass 
 </script>
 ```
 
-# Aufgabe
+## Aufgabe
 
 Schreibe eine Funktion, welche einen HTML-Text bereinigt.
 
@@ -22,7 +24,7 @@ Erstelle dazu eine Whitelist mit erlaubten, harmlosen Tags wie z. B. `div`, `spa
 
 Außerdem müssen alle Attribute aus den erlaubten Tags entfernt werden, worunter zum Beispiel auch `onclick` fällt.
 
-# Beispiel
+## Beispiel
 
 **Eingabe**
 
@@ -58,6 +60,6 @@ Kicke hier
 <div>Klicke mich</div>
 ```
 
-# Themen
+## Themen
 
 Strings, Sicherheit, reguläre Ausdrücke
