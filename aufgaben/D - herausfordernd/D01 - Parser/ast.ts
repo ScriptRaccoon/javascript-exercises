@@ -30,6 +30,22 @@ export class AST_UTILS {
 		}
 	}
 
+	static get_variable_names(node: AST): string[] {
+		switch (node.type) {
+			case "number":
+				return []
+			case "variable":
+				return [node.name]
+			case "unary":
+				return AST_UTILS.get_variable_names(node.expr)
+			case "binary":
+				return [
+					...AST_UTILS.get_variable_names(node.left),
+					...AST_UTILS.get_variable_names(node.right),
+				]
+		}
+	}
+
 	static evaluate(node: AST, vars: Record<string, number> = {}): number {
 		switch (node.type) {
 			case "number":
