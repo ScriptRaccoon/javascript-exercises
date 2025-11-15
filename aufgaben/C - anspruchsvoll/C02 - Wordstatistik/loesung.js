@@ -115,8 +115,5 @@ const grundgesetz_text = readFileSync("./grundgesetz.txt", "utf8")
 }
 */
 console.info(
-	word_stats(grundgesetz_text, {
-		exclude_common_words: true,
-		min_frequency: 50,
-	}),
+	word_stats(grundgesetz_text, { exclude_common_words: true, min_frequency: 50 }),
 )
