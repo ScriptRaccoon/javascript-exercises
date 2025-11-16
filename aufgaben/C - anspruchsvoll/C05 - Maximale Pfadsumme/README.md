@@ -65,7 +65,7 @@ max_path_sum(big_matrix)
 
 **Ausgabe**
 
-```text
+```json
 2118
 ```
 

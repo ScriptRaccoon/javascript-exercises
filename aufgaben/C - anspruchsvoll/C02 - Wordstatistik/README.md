@@ -33,28 +33,32 @@ word_stats(sample_txt, { exclude_common_words: true, min_frequency: 2 })
 
 **Ausgabe**
 
-```text
+```json
 {
-  words_total: 49,
-  words_unique: 40,
-  words_with_frequencies: [
-    [ 'von', 3 ],
-    [ 'zu', 3 ],
-    [ 'JavaScript', 2 ],
-    [ 'die', 2 ],
-    [ 'HTML', 2 ],
-    [ 'in', 2 ],
-    [ 'und', 2 ],
+	"words_total": 49,
+	"words_unique": 40,
+	"words_with_frequencies": [
+		["von", 3],
+		["zu", 3],
+		["JavaScript", 2],
+		["die", 2],
+		["HTML", 2],
+		["in", 2],
+		["und", 2]
     ...
-  ]
+    ...
+	]
 }
 ```
 
-```text
+```json
 {
-  words_total: 49,
-  words_unique: 40,
-  words_with_frequencies: [ [ 'JavaScript', 2 ], [ 'HTML', 2 ] ]
+	"words_total": 49,
+	"words_unique": 40,
+	"words_with_frequencies": [
+		["JavaScript", 2],
+		["HTML", 2]
+	]
 }
 ```
 
@@ -62,33 +66,33 @@ word_stats(sample_txt, { exclude_common_words: true, min_frequency: 2 })
 
 Aus dem [Grundgesetz für die Bundesrepublik Deutschland](https://www.gesetze-im-internet.de/gg/GG.pdf) erhält man die folgende Wordstatistik (mit `min_frequency: 50`):
 
-```text
+```json
 {
-  words_total: 22827,
-  words_unique: 3634,
-  words_with_frequencies: [
-    [ 'Art', 225 ],
-    [ 'Länder', 158 ],
-    [ 'Artikel', 134 ],
-    [ 'Bund', 125 ],
-    [ 'Zustimmung', 119 ],
-    [ 'Bundesrates', 116 ],
-    [ 'Bundesgesetz', 107 ],
-    [ 'Absatz', 98 ],
-    [ 'Bundes', 93 ],
-    [ 'Ländern', 88 ],
-    [ 'Bundesregierung', 87 ],
-    [ 'Satz', 78 ],
-    [ 'Abs', 76 ],
-    [ 'können', 76 ],
-    [ 'Gesetz', 70 ],
-    [ 'Recht', 69 ],
-    [ 'Bundestag', 65 ],
-    [ 'Bundestages', 62 ],
-    [ 'Gemeinden', 55 ],
-    [ 'Nähere', 52 ],
-    [ 'Grund', 50 ]
-  ]
+	"words_total": 22827,
+	"words_unique": 3634,
+	"words_with_frequencies": [
+		["Art", 225],
+		["Länder", 158],
+		["Artikel", 134],
+		["Bund", 125],
+		["Zustimmung", 119],
+		["Bundesrates", 116],
+		["Bundesgesetz", 107],
+		["Absatz", 98],
+		["Bundes", 93],
+		["Ländern", 88],
+		["Bundesregierung", 87],
+		["Satz", 78],
+		["Abs", 76],
+		["können", 76],
+		["Gesetz", 70],
+		["Recht", 69],
+		["Bundestag", 65],
+		["Bundestages", 62],
+		["Gemeinden", 55],
+		["Nähere", 52],
+		["Grund", 50]
+	]
 }
 ```
 

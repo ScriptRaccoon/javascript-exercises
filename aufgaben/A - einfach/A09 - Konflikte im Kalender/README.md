@@ -23,10 +23,10 @@ get_conflicting_events(events)
 
 **Ausgabe**
 
-```text
+```json
 [
-	{ start: "17:00", end: "17:20", events: ["train to lusanne", "call with tom"] },
-	{ start: "12:00", end: "12:15", events: ["lunch", "meeting with peter"] },
+	{ "start": "17:00", "end": "17:20", "events": ["train to lusanne", "call with tom"] },
+	{ "start": "12:00", "end": "12:15", "events": ["lunch", "meeting with peter"] }
 ]
 ```
 

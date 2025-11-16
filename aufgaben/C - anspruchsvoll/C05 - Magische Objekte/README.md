@@ -31,18 +31,20 @@ console.info(user.__stats__)
 
 **Ausgabe**
 
-```text
+```json
 {
-  id: 't4Ra5r',
-  name: 'maria',
-  role: 'editor'
+	"id": "t4Ra5r",
+	"name": "maria",
+	"role": "editor"
 }
+```
 
+```json
 {
-  created_at: '2025-11-11T21:29:46.515Z',
-  updated_at: null,
-  reads: {},
-  writes: {}
+	"created_at": "2025-11-11T21:29:46.515Z",
+	"updated_at": null,
+	"reads": {},
+	"writes": {}
 }
 ```
 
@@ -62,12 +64,12 @@ console.info(user.__stats__)
 
 **Ausgabe**
 
-```text
+```json
 {
-  created_at: '2025-11-11T21:29:46.515Z',
-  updated_at: '2025-11-11T21:29:46.515Z',
-  reads: { name: 3, id: 2 },
-  writes: { name: 2 }
+	"created_at": "2025-11-11T21:29:46.515Z",
+	"updated_at": "2025-11-11T21:29:46.515Z",
+	"reads": { "name": 3, "id": 2 },
+	"writes": { "name": 2 }
 }
 ```
 

@@ -17,8 +17,8 @@ clean({ x: 0, y: null, z: undefined })
 
 **Ausgabe**
 
-```text
-{ x: 0 }
+```json
+{ "x": 0 }
 ```
 
 ## Themen

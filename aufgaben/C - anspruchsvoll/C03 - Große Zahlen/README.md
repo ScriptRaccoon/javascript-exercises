@@ -42,7 +42,7 @@ v.print()
 
 **Ausgabe**
 
-```text
+```json
 21003
 21003
 ```
@@ -62,7 +62,7 @@ s.print()
 
 **Ausgabe**
 
-```text
+```json
 1000000000000000042
 ```
 

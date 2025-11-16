@@ -24,10 +24,10 @@ basic_CSV_parser(csv)
 
 **Ausgabe**
 
-```text
+```json
 [
-  { name: 'Manfred', age: '30', city: 'Berlin' },
-  { name: 'Maria', age: '25', city: 'Göttingen' }
+	{ "name": "Manfred", "age": "30", "city": "Berlin" },
+	{ "name": "Maria", "age": "25", "city": "Göttingen" }
 ]
 ```
 

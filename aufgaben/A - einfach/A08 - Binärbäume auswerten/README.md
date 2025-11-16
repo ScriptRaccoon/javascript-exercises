@@ -21,7 +21,7 @@ Dabei werden solche Binärbäume durch geschachtelte Arrays modelliert. Der Bin�
 
 wird zum Beispiel durch das Array
 
-```text
+```json
 ["*", ["+", 1, 2], ["-", 4, 2]]
 ```
 
@@ -37,7 +37,7 @@ evaluate(["*", ["+", 1, 2], ["-", 4, 2]])
 
 **Ausgabe**
 
-```text
+```json
 6
 ```
 

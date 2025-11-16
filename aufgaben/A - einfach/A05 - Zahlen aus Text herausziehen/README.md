@@ -19,8 +19,8 @@ extract_numbers(text)
 
 **Ausgabe**
 
-```text
-[ 108421, 2, 19.99, -5.25 ]
+```json
+[108421, 2, 19.99, -5.25]
 ```
 
 ## Themen
