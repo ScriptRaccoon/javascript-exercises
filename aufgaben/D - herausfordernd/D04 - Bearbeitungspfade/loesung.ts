@@ -46,6 +46,8 @@ function get_edit_path(a: string, b: string): string[] {
 				continue
 			}
 
+			// Remark: The order of options determines which ones are preferreed
+			// if multiple are possible. Currently, replace > insert > delete.
 			const options: (Edit & { value: number })[] = [
 				{ type: "replace", prev: [i - 1, j - 1], value: dist[i - 1][j - 1] + 1 },
 				{ type: "insert", prev: [i, j - 1], value: dist[i][j - 1] + 1 },
