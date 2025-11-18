@@ -78,7 +78,6 @@ function get_edit_path(a: string, b: string): string[] {
 
 	for (const edit of edits) {
 		const i = edit.index + offset
-		console.log(edit.op)
 		if (edit.op === "replace") {
 			current = current.substring(0, i) + edit.new_char + current.substring(i + 1)
 		} else if (edit.op === "insert") {
