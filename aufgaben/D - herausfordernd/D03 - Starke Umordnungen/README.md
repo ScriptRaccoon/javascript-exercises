@@ -47,4 +47,4 @@ Für festes `d` erhält man eine Zahlenfolge `count_derangements(-, d)`. Für $0
 
 ## Themen
 
-Laufzeitoptimierung, Permutationen, Binärzahlen, Matrizen
+Laufzeitoptimierung, Permutationen, Binärzahlen, Matrizen, Algorithmen

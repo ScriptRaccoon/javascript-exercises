@@ -170,4 +170,4 @@ AST_UTILS.evaluate(ast, { x: 10, y: 2 })
 
 ## Themen
 
-Rekursion, Parser, Strings, Bäume
+Rekursion, Parser, Strings, Bäume, Algorithmen
