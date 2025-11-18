@@ -1,10 +1,10 @@
 /**
- * Union type of allowed string edits.
+ * Returns the minimum of an array with respect to a property.
  */
-type Edit =
-	| { op: "insert"; index: number; char: string }
-	| { op: "delete"; index: number; char: string }
-	| { op: "replace"; index: number; char: string; new_char: string }
+function minimize<T>(arr: T[], prop: (a: T) => number): T {
+	if (arr.length === 0) throw new Error("Array must be non-empty")
+	return arr.reduce((min, x) => (prop(x) < prop(min) ? x : min), arr[0])
+}
 
 /**
  * Computes the shortest edit path between two strings.
@@ -13,84 +13,76 @@ function get_edit_path(a: string, b: string): string[] {
 	const n = a.length
 	const m = b.length
 
-	// --- Compute the edit distance ---
-
 	/**
 	 * dist[i][j] = edit distance between the prefixes a[0:i] and b[0:j] of length i resp. j
 	 */
 	const dist: number[][] = Array.from({ length: n + 1 }, () => Array(m + 1).fill(0))
 
-	for (let i = 0; i <= n; i++) dist[i][0] = i // delete
-	for (let j = 0; j <= m; j++) dist[0][j] = j // insert
+	type Edit = {
+		type: "insert" | "delete" | "match" | "replace"
+		prev: [number, number]
+	}
+
+	/**
+	 * edit[i][j] = type of editing at this step and the previous coordinate
+	 */
+	const edit: Edit[][] = Array.from({ length: n + 1 }, () => Array(m + 1).fill(null))
+
+	for (let i = 0; i <= n; i++) {
+		dist[i][0] = i
+		edit[i][0] = { type: "delete", prev: [i - 1, 0] }
+	}
+
+	for (let j = 1; j <= m; j++) {
+		dist[0][j] = j
+		edit[0][j] = { type: "insert", prev: [0, j - 1] }
+	}
 
 	for (let i = 1; i <= n; i++) {
 		for (let j = 1; j <= m; j++) {
 			if (a[i - 1] === b[j - 1]) {
-				dist[i][j] = dist[i - 1][j - 1] // match
-			} else {
-				dist[i][j] = Math.min(
-					dist[i - 1][j - 1] + 1, // replace
-					dist[i][j - 1] + 1, // insert
-					dist[i - 1][j] + 1, // delete
-				)
+				dist[i][j] = dist[i - 1][j - 1]
+				edit[i][j] = { type: "match", prev: [i - 1, j - 1] }
+				continue
 			}
+
+			const options: (Edit & { value: number })[] = [
+				{ type: "replace", prev: [i - 1, j - 1], value: dist[i - 1][j - 1] + 1 },
+				{ type: "insert", prev: [i, j - 1], value: dist[i][j - 1] + 1 },
+				{ type: "delete", prev: [i - 1, j], value: dist[i - 1][j] + 1 },
+			]
+
+			const { type, prev, value } = minimize(options, ({ value }) => value)
+
+			dist[i][j] = value
+			edit[i][j] = { prev, type }
 		}
 	}
 
-	// --- Backtrack to get list of edits ---
-
-	const edits: Edit[] = []
+	const edit_path: string[] = [b]
 	let i = n
 	let j = m
+	let current = b
 
 	while (i > 0 || j > 0) {
-		if (i > 0 && j > 0 && a[i - 1] === b[j - 1]) {
-			i--
-			j--
-		} else if (i > 0 && j > 0 && dist[i][j] === dist[i - 1][j - 1] + 1) {
-			edits.push({
-				op: "replace",
-				index: i - 1,
-				char: a[i - 1],
-				new_char: b[j - 1],
-			})
-			i--
-			j--
-		} else if (j > 0 && (i === 0 || dist[i][j] === dist[i][j - 1] + 1)) {
-			edits.push({ op: "insert", index: i, char: b[j - 1] })
-			j--
-		} else if (i > 0 && (j === 0 || dist[i][j] === dist[i - 1][j] + 1)) {
-			edits.push({ op: "delete", index: i - 1, char: a[i - 1] })
-			i--
-		} else {
-			throw new Error("Invalid case")
+		const { type, prev } = edit[i][j]
+		const [u, v] = prev
+
+		if (type === "replace") {
+			current = current.slice(0, v) + a[u] + current.slice(v + 1)
+		} else if (type === "insert") {
+			current = current.slice(0, v) + current.slice(v + 1)
+		} else if (type === "delete") {
+			current = current.slice(0, v) + a[u] + current.slice(v)
 		}
+
+		if (type !== "match") edit_path.push(current)
+		i = u
+		j = v
 	}
 
-	edits.reverse()
-
-	// --- Apply edits with index tracking ---
-
-	const path: string[] = [a]
-
-	let current = a
-	let offset = 0
-
-	for (const edit of edits) {
-		const i = edit.index + offset
-		if (edit.op === "replace") {
-			current = current.substring(0, i) + edit.new_char + current.substring(i + 1)
-		} else if (edit.op === "insert") {
-			current = current.substring(0, i) + edit.char + current.substring(i)
-			offset++
-		} else if (edit.op === "delete") {
-			current = current.substring(0, i) + current.substring(i + 1)
-			offset--
-		}
-		path.push(current)
-	}
-
-	return path
+	edit_path.reverse()
+	return edit_path
 }
 
 /* ------ TESTS ------ */
@@ -104,8 +96,8 @@ console.info(get_edit_path("banane", "badewanne"))
 // [ 'anschauung', 'nschauung', 'schauung', 'schaueng', 'schauen' ]
 console.info(get_edit_path("anschauung", "schauen"))
 
-// [ 'kantig', 'rantig', 'runtig', 'runig', 'rung', 'rund' ]
+// [ 'rund', 'kund', 'kand', 'kantd', 'kantid', 'kantig' ]
 console.info(get_edit_path("rund", "kantig"))
 
-// [ 'rund', 'kund', 'kand', 'kantd', 'kantid', 'kantig' ]
+// [ 'kantig', 'rantig', 'runtig', 'runig', 'rung', 'rund' ]
 console.info(get_edit_path("kantig", "rund"))
