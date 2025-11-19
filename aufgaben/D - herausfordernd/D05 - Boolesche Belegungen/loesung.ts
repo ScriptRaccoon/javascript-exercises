@@ -301,8 +301,15 @@ export function* get_assignments_iterator(
 }
 
 /**
+ * Returns the list of all assignments of a boolean expression that make it true.
+ */
+export function get_assignments(expr: BooleanExpression): Assignment[] {
+	return [...get_assignments_iterator(expr)]
+}
+
+/**
  * Generates a random boolean expression with a given depth
- * and a list of variables. Can be used for testing purposes.
+ * and a list of variables. This is used for testing purposes.
  */
 export function generate_random_expr(depth: number, vars: string[]): BooleanExpression {
 	if (depth === 0) {
