@@ -16,7 +16,7 @@ const or = "or"
 /**
  * Type for a boolean expression with variables
  */
-type BooleanExpression =
+export type BooleanExpression =
 	| boolean
 	| string
 	| [typeof not, BooleanExpression]
@@ -25,7 +25,7 @@ type BooleanExpression =
 /**
  * Converts a boolean expression to a readable string.
  */
-function stringify_expr(expr: BooleanExpression): string {
+export function stringify_expr(expr: BooleanExpression): string {
 	if (typeof expr === "boolean") {
 		return expr ? "⊤" : "⊥"
 	}
@@ -105,7 +105,7 @@ function get_variables(expr: BooleanExpression): string[] {
 /**
  * Replaces a list of variables of a boolean expression with other boolean expressions.
  */
-function replace_variables(
+export function replace_variables(
 	expr: BooleanExpression,
 	replacements: Record<string, BooleanExpression>,
 ): BooleanExpression {
@@ -132,7 +132,7 @@ function replace_variables(
 /**
  * Returns a simplified version of the given boolean expression.
  */
-function simplify_expression(expr: BooleanExpression): BooleanExpression {
+export function simplify_expression(expr: BooleanExpression): BooleanExpression {
 	if (typeof expr === "boolean" || typeof expr === "string") {
 		return expr
 	}
@@ -269,7 +269,7 @@ function* extend_assignment(
  * Uses backtracking and prunes partial assignments early by simplifying
  * substituted expressions.
  */
-function* get_assignments_iterator(
+export function* get_assignments_iterator(
 	expr: BooleanExpression,
 ): IterableIterator<Assignment> {
 	const vars = get_variables(expr)
@@ -304,7 +304,7 @@ function* get_assignments_iterator(
  * Generates a random boolean expression with a given depth
  * and a list of variables. Can be used for testing purposes.
  */
-function generate_random_expr(depth: number, vars: string[]): BooleanExpression {
+export function generate_random_expr(depth: number, vars: string[]): BooleanExpression {
 	if (depth === 0) {
 		const i = Math.floor(Math.random() * vars.length)
 		return vars[i]
@@ -321,23 +321,4 @@ function generate_random_expr(depth: number, vars: string[]): BooleanExpression 
 		b = generate_random_expr(depth - 1, vars)
 	}
 	return [op, a, b]
-}
-
-/* ------ RANDOMIZED TESTS ------ */
-
-for (let depth = 0; depth < 5; depth++) {
-	const expr: BooleanExpression = generate_random_expr(depth, "abcdef".split(""))
-	console.info(`\nChecking expression:\n${stringify_expr(expr)}`)
-	const assignments = get_assignments_iterator(expr)
-	console.info(`Assignments:`)
-	let count = 0
-	for (const assignment of assignments) {
-		count++
-		console.info(assignment)
-		console.assert(
-			simplify_expression(replace_variables(expr, assignment)) === true,
-			"❌ Assignment invalid",
-		)
-	}
-	console.info(`Found ${count} assignments.`)
 }

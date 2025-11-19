@@ -9,7 +9,7 @@ function minimize<T>(arr: T[], prop: (a: T) => number): T {
 /**
  * Computes the shortest edit path between two strings.
  */
-function get_edit_path(a: string, b: string): string[] {
+export function get_edit_path(a: string, b: string): string[] {
 	const n = a.length
 	const m = b.length
 
@@ -86,20 +86,3 @@ function get_edit_path(a: string, b: string): string[] {
 	edit_path.reverse()
 	return edit_path
 }
-
-/* ------ TESTS ------ */
-
-// [ 'keiner', 'einer', 'eimer' ]
-console.info(get_edit_path("keiner", "eimer"))
-
-// [ 'banane', 'badnane', 'badenane', 'badewane', 'badewanne' ]
-console.info(get_edit_path("banane", "badewanne"))
-
-// [ 'anschauung', 'nschauung', 'schauung', 'schaueng', 'schauen' ]
-console.info(get_edit_path("anschauung", "schauen"))
-
-// [ 'rund', 'kund', 'kand', 'kantd', 'kantid', 'kantig' ]
-console.info(get_edit_path("rund", "kantig"))
-
-// [ 'kantig', 'rantig', 'runtig', 'runig', 'rung', 'rund' ]
-console.info(get_edit_path("kantig", "rund"))
