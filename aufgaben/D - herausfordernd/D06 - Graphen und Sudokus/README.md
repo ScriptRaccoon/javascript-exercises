@@ -114,6 +114,33 @@ get_colorings(graph, colors, { A: "red" })
 ]
 ```
 
+```mermaid
+graph LR
+
+	A((A))
+	B((B))
+	C((C))
+  	D((D))
+	E((E))
+	F((F))
+
+	A --- B
+	A --- D
+	B --- C
+	B --- E
+	D --- E
+	E --- F
+	C --- F
+
+  style A fill:red
+  style C fill:red
+  style E fill:red
+
+  style B fill:blue
+  style D fill:blue
+  style F fill:blue
+```
+
 **Eingabe**
 
 ```js
