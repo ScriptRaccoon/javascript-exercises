@@ -8,7 +8,8 @@
 		"build:ts": "node build-files.js",
 		"format:js": "prettier --write 'aufgaben/**/*.js'",
 		"format:files": "prettier --write 'aufgaben/**/*.{js,ts}'",
-		"build": "pnpm build:ts && pnpm format:js"
+		"build": "pnpm build:ts && pnpm format:js",
+		"test": "vitest"
 	},
 	"keywords": [],
 	"author": "",
@@ -18,6 +19,7 @@
 		"@types/node": "^24.10.1",
 		"glob": "^11.0.3",
 		"prettier": "^3.6.2",
-		"remove-types": "^1.0.0"
+		"remove-types": "^1.0.0",
+		"vitest": "^4.0.10"
 	}
 }
