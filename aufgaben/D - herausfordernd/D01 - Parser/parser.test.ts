@@ -1,15 +1,15 @@
 import { describe, it, expect } from "vitest"
-import { parse } from "./parser"
+import { parse_expression } from "./parser"
 
 describe("parse", () => {
 	it("parses numbers", () => {
-		const ast = parse("0.5")
+		const ast = parse_expression("0.5")
 		const expected = { type: "number", value: 0.5 }
 		expect(ast).toEqual(expected)
 	})
 
 	it("parses unary operations and variables", () => {
-		const ast = parse("-x")
+		const ast = parse_expression("-x")
 
 		const expected = {
 			type: "unary",
@@ -21,7 +21,7 @@ describe("parse", () => {
 	})
 
 	it("parses binary operations", () => {
-		const ast = parse("x + 42")
+		const ast = parse_expression("x + 42")
 
 		const expected = {
 			type: "binary",
@@ -34,7 +34,7 @@ describe("parse", () => {
 	})
 
 	it("respects operator precedence", () => {
-		const ast = parse("x * y + z")
+		const ast = parse_expression("x * y + z")
 
 		const expected = {
 			type: "binary",
@@ -52,7 +52,7 @@ describe("parse", () => {
 	})
 
 	it("parses complex expressions", () => {
-		const ast = parse("3.5/(2 - 1/(3 - p))")
+		const ast = parse_expression("3.5/(2 - 1/(3 - p))")
 
 		const expected = {
 			type: "binary",

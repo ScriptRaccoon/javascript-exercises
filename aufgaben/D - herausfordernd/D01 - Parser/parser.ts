@@ -94,7 +94,7 @@ class Parser {
 	}
 }
 
-export function parse(txt: string): AST | null {
+export function parse_expression(txt: string): AST | null {
 	try {
 		return new Parser(txt).parse()
 	} catch (err) {

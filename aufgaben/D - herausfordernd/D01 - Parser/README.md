@@ -29,7 +29,7 @@ Schreibe außerdem eine Funktion, die einen abstrakten Syntaxbaum (mit der von d
 **Eingabe**
 
 ```js
-parse("0.5")
+parse_expression("0.5")
 ```
 
 **Ausgabe**
@@ -43,7 +43,7 @@ parse("0.5")
 **Eingabe**
 
 ```js
-parse("-x")
+parse_expression("-x")
 ```
 
 **Ausgabe**
@@ -61,7 +61,7 @@ parse("-x")
 **Eingabe**
 
 ```js
-parse("x + 42")
+parse_expression("x + 42")
 ```
 
 **Ausgabe**
@@ -94,7 +94,7 @@ parse("x + 42")
 **Eingabe**
 
 ```js
-parse("x * y + z")
+parse_expression("x * y + z")
 ```
 
 **Ausgabe**
@@ -118,7 +118,7 @@ parse("x * y + z")
 **Eingabe**
 
 ```js
-parse("3.5/(2 - 1/(3 - p))")
+parse_expression("3.5/(2 - 1/(3 - p))")
 ```
 
 **Ausgabe**

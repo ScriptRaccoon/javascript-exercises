@@ -1,4 +1,4 @@
-import { parse } from "../D01 - Parser/parser"
+import { parse_expression } from "../D01 - Parser/parser"
 import { type AST, AST_UTILS } from "../D01 - Parser/ast"
 
 class Cell {
@@ -17,7 +17,7 @@ class Cell {
 				throw new Error(`Definition '${defi}' does not start with =`)
 			}
 			const formula = defi.slice(1)
-			const ast = parse(formula)
+			const ast = parse_expression(formula)
 			if (!ast) {
 				throw new Error(`Invalid formula: ${formula}`)
 			}
