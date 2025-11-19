@@ -1,5 +1,6 @@
 import { describe, expect, test } from "../test.utils"
 import { get_colorings, Graph } from "./colorings"
+import { get_normalized_latin_squares } from "./latin_squares"
 import { get_sudoku_solutions } from "./sudoku"
 
 /* ------ TESTS ------ */
@@ -274,5 +275,63 @@ describe("get_sudoku_solutions", () => {
 		]
 
 		expect(JSON.stringify(solutions)).toBe(JSON.stringify(expected))
+	})
+})
+
+describe("get_normalized_latin_squares", () => {
+	test("works for n = 1", () => {
+		const list = [...get_normalized_latin_squares(1)]
+		expect(list.length).toBe(1)
+		expect(JSON.stringify(list[0])).toBe(JSON.stringify([[0]]))
+	})
+
+	test("works for n = 2", () => {
+		const list = [...get_normalized_latin_squares(2)]
+		expect(list.length).toBe(1)
+		expect(JSON.stringify(list[0])).toBe(
+			JSON.stringify([
+				[0, 1],
+				[1, 0],
+			]),
+		)
+	})
+
+	test("works for n = 3", () => {
+		const list = [...get_normalized_latin_squares(3)]
+		expect(list.length).toBe(1)
+		expect(JSON.stringify(list[0])).toBe(
+			JSON.stringify([
+				[0, 1, 2],
+				[1, 2, 0],
+				[2, 0, 1],
+			]),
+		)
+	})
+
+	test("works for n = 4", () => {
+		const list = [...get_normalized_latin_squares(4)]
+		expect(list.length).toBe(4)
+		const sample = [
+			[0, 1, 2, 3],
+			[1, 3, 0, 2],
+			[2, 0, 3, 1],
+			[3, 2, 1, 0],
+		]
+		// TODO: do not expect this to be the first one necessarily
+		expect(JSON.stringify(list[0])).toBe(JSON.stringify(sample))
+	})
+
+	test("works for n = 5", () => {
+		const list = [...get_normalized_latin_squares(5)]
+		expect(list.length).toBe(56)
+		const sample = [
+			[0, 1, 2, 3, 4],
+			[1, 4, 0, 2, 3],
+			[2, 0, 3, 4, 1],
+			[3, 2, 4, 1, 0],
+			[4, 3, 1, 0, 2],
+		]
+		// TODO: do not expect this to be the first one necessarily
+		expect(JSON.stringify(list[0])).toBe(JSON.stringify(sample))
 	})
 })
