@@ -183,7 +183,49 @@ function* get_sudoku_solutions(matrix: number[][]) {
 /* ------ TESTS ------ */
 
 describe("get_colorings", () => {
-	test("returns the unique valid coloring", () => {
+	test("line segment with one color", () => {
+		/*
+				A --- B
+		*/
+		const graph: Graph = {
+			A: ["B"],
+			B: ["A"],
+		}
+		const colors = ["red"]
+
+		const all_colorings = [...get_colorings(graph, colors)]
+		expect(all_colorings.length).toBe(0)
+	})
+
+	test("line segment with two colors", () => {
+		/*
+				A --- B
+		*/
+		const graph: Graph = {
+			A: ["B"],
+			B: ["A"],
+		}
+		const colors = ["red", "blue"]
+
+		const all_colorings = [...get_colorings(graph, colors)]
+		expect(all_colorings.length).toBe(2)
+	})
+
+	test("line segment with prescribed color", () => {
+		/*
+				A --- B
+		*/
+		const graph: Graph = {
+			A: ["B"],
+			B: ["A"],
+		}
+		const colors = ["red", "blue"]
+
+		const all_colorings = [...get_colorings(graph, colors, { A: "red" })]
+		expect(all_colorings.length).toBe(1)
+	})
+
+	test("rectangular graph", () => {
 		/*
 				A -- B -- C
 				|    |    |
@@ -207,7 +249,7 @@ describe("get_colorings", () => {
 		expect(JSON.stringify(all_colorings)).toBe(JSON.stringify(expected))
 	})
 
-	test("returns the two valid colorings with numbers", () => {
+	test("numbers as colors", () => {
 		/*
 				A -- B -- C
 		*/
@@ -229,7 +271,7 @@ describe("get_colorings", () => {
 		expect(JSON.stringify(all_colorings)).toBe(JSON.stringify(expected))
 	})
 
-	test("confirms that there is no valid coloring", () => {
+	test("cycle", () => {
 		/*
 				  A
 				 / \
@@ -240,9 +282,33 @@ describe("get_colorings", () => {
 			B: ["A", "C"],
 			C: ["A", "B"],
 		}
-		const colors = [true, false]
+		const colors = ["red", "blue"]
 		const colorings = [...get_colorings(graph, colors)]
 		expect(colorings.length).toBe(0)
+	})
+
+	test("bipartite graph K(3,3)", () => {
+		/*
+				A---   B   ---C
+				|\  \ /|\ /  /|
+				| \  / | \  / |
+				|  \/ \|/ \/  |
+				|  /\ /|\ /\  |
+				| /  \ | /  \ |
+				|/  / \|/ \  \|
+				X---   Y   ---Z	
+		*/
+		const graph: Graph = {
+			A: ["X", "Y", "Z"],
+			B: ["X", "Y", "Z"],
+			C: ["X", "Y", "Z"],
+			X: ["A", "B", "C"],
+			Y: ["A", "B", "C"],
+			Z: ["A", "B", "C"],
+		}
+		const colors = ["red", "blue"]
+		const colorings = [...get_colorings(graph, colors)]
+		expect(colorings.length).toBe(2)
 	})
 })
 
