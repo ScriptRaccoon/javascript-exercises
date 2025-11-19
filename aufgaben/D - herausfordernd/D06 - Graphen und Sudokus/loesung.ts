@@ -191,7 +191,7 @@ describe("get_colorings", () => {
 		*/
 		const graph: Graph = {
 			A: ["B", "D"],
-			B: ["A", "D", "C"],
+			B: ["A", "E", "C"],
 			C: ["B", "F"],
 			D: ["A", "E"],
 			E: ["D", "B", "F"],
