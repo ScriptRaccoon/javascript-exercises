@@ -1,0 +1,35 @@
+# Ordnung einer Zugabfolge
+
+## Kontext
+
+Jede Zugabfolge auf dem Zauberwürfel hat eine _Ordnung_: die kleinste Anzahl von Wiederholungen der Zugabfolge, die man machen muss, bis der Würfel wieder im Ursprungszustand ist. Mehr dazu kann man zum Beispiel in dem Artikel [Was die Zahl 1260 so besonders macht](https://cubingfreunde.wordpress.com/2025/08/11/1260-maximale-ordnung/) nachlesen.
+
+Zugabfolgen werden dabei als Strings kodiert. Zum Beispiel dreht man bei der Zugabfolge `R2 U R' F` zweimal rechts im UZS, dann oben einmal im UZS, dann rechts einmal gegen den UZS, und schließlich vorne einmal gegen den UZS. Details zur Notation findet man im Artikel [Zauberwürfel: Notation](https://freshcuber.wordpress.com/2012/01/18/zauberwuerfel-notation/).
+
+## Aufgabe
+
+Implementiere eine Funktion, die die Ordnung einer Zugabfolge auf dem Zauberwürfel bestimmt.
+
+Für illegale Zugabfolgen wird ein Fehler geworfen.
+
+## Beispiele
+
+| Eingabe                                | Ausgabe |
+| -------------------------------------- | ------- |
+| ` `                                    | `1`     |
+| `R`                                    | `4`     |
+| `R'`                                   | `4`     |
+| `U`                                    | `4`     |
+| `R U`                                  | `105`   |
+| `R U'`                                 | `63`    |
+| `R U R' U'`                            | `6`     |
+| `R U F`                                | `80`    |
+| `R D F U`                              | `252`   |
+| `R3 D' F' U3 D F U`                    | `72`    |
+| `R U R' U' R' F R2 U' R' U' R U R' F'` | `2`     |
+| `R U' R U R U R U' R' U' R2`           | `3`     |
+| `R U2 D' B D'`                         | `1260`  |
+
+## Themen
+
+Reguläre Ausdrücke, Permutationen, Mathematik, Kombinatorik, Modellierung
