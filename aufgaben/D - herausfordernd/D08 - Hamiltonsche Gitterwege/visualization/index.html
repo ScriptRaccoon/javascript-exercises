@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Visualization of Hamiltonian Paths</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				background-color: black;
+				color: white;
+				line-height: 1.5;
+				font-family: Arial, Helvetica, sans-serif;
+				padding: 1rem;
+			}
+
+			h1 {
+				font-weight: 500;
+				text-align: center;
+			}
+
+			main {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+
+				justify-content: center;
+			}
+
+			canvas {
+				display: block;
+			}
+
+			menu {
+				padding: 1rem;
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+
+			button {
+				border: none;
+				font: inherit;
+				cursor: pointer;
+				background: skyblue;
+				color: black;
+				padding: 0.2rem 1rem;
+				border-radius: 0.25rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Hamiltonian Paths</h1>
+		</header>
+		<menu>
+			<button id="3x3-full">3x3</button>
+			<button id="4x4-full">4x4</button>
+			<button id="5x5-full">5x5</button>
+			<button id="3x3-restricted">3x3 restricted</button>
+			<button id="4x4-restricted">4x4 restricted</button>
+			<button id="5x5-restricted">5x5 restricted</button>
+			<button id="6x6-restricted">6x6 restricted</button>
+			<button id="7x7-restricted">7x7 restricted</button>
+		</menu>
+
+		<main></main>
+		<script src="data.js"></script>
+		<script>
+			const UNIT = 50
+
+			const main = document.querySelector("main")
+			const h1 = document.querySelector("h1")
+
+			function draw_path(path_str, N) {
+				const coords = path_str.split(";").map((c) => c.split(".").map(Number))
+				const offset = 20
+				const size = UNIT * (N - 1) + 2 * offset
+				const canvas = document.createElement("canvas")
+				canvas.width = size
+				canvas.height = size
+				const ctx = canvas.getContext("2d")
+				ctx.lineCap = "round"
+				ctx.translate(offset, offset)
+
+				ctx.strokeStyle = "#333"
+				ctx.lineWidth = 5
+
+				for (let y = 0; y < N; y++) {
+					ctx.beginPath()
+					ctx.moveTo(0, y * UNIT)
+					ctx.lineTo((N - 1) * UNIT, y * UNIT)
+					ctx.stroke()
+					ctx.closePath()
+				}
+
+				for (let x = 0; x < N; x++) {
+					ctx.beginPath()
+					ctx.moveTo(x * UNIT, 0)
+					ctx.lineTo(x * UNIT, (N - 1) * UNIT)
+					ctx.stroke()
+					ctx.closePath()
+				}
+
+				ctx.strokeStyle = "white"
+				ctx.lineWidth = 10
+
+				ctx.beginPath()
+				const [a, b] = coords[0]
+				ctx.moveTo(a * UNIT, b * UNIT)
+				for (let i = 1; i < coords.length; i++) {
+					const [x, y] = coords[i]
+					ctx.lineTo(x * UNIT, y * UNIT)
+				}
+				ctx.stroke()
+				ctx.closePath()
+
+				main.appendChild(canvas)
+			}
+
+			const paths_dict = {
+				"3x3-full": [3, paths_3x3_full],
+				"4x4-full": [4, paths_4x4_full],
+				"5x5-full": [5, paths_5x5_full],
+				"3x3-restricted": [3, paths_3x3_restricted],
+				"4x4-restricted": [4, paths_4x4_restricted],
+				"5x5-restricted": [5, paths_5x5_restricted],
+				"6x6-restricted": [6, paths_6x6_restricted],
+				"7x7-restricted": [7, paths_7x7_restricted],
+			}
+
+			function draw_paths(id) {
+				main.innerHTML = ""
+				if (!(id in paths_dict)) return
+				const [n, paths] = paths_dict[id]
+				for (const path_str of paths) {
+					draw_path(path_str, n)
+				}
+
+				h1.innerText = `${paths.length} Hamiltonian Paths`
+			}
+
+			const buttons = document.querySelectorAll("menu button")
+			buttons.forEach((button) => {
+				button.addEventListener("click", () => {
+					draw_paths(button.id)
+				})
+			})
+		</script>
+	</body>
+</html>
