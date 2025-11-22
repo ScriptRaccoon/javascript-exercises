@@ -2,7 +2,7 @@
 
 ## Aufgabe
 
-In einem Online-Tetris-Spiel können Nutzer ihr bestes Spielergebnis speichern, die Anzahl der aufgelösten Linien. Die Ergebnisse werden in einem Objekt gespeichert, wobei jedem Nutzernamen das Ergebnis zugeordnet wird. Gesucht wird der Spieler mit dem besten Ergebnis.
+In einem Online-Tetris-Spiel können Nutzer ihr bestes Spielergebnis speichern, d.h., die Anzahl der aufgelösten Linien. Die Ergebnisse werden in einem Objekt gespeichert, wobei jedem Nutzernamen das Ergebnis zugeordnet wird. Gesucht wird der Spieler mit dem besten Ergebnis.
 
 Implementiere dazu eine Funktion, die aus einem Objekt aus String-Zahl-Paaren das Paar mit der größten Zahl ermittelt.
 

@@ -1,6 +1,7 @@
 /**
  * Implementiert den Bubblesort-Algorithmus für ein Array von Zahlen.
- * Dieses wird dabei modifiziert. Es wird kein neues Array zurückgegeben.
+ * Dieses wird an Ort und Stelle modifiziert.
+ * Es wird kein neues Array zurückgegeben.
  */
 function bubble_sort(arr) {
 	for (let m = arr.length - 1; m >= 0; m--) {

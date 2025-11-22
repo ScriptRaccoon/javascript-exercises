@@ -2,7 +2,7 @@
 
 ## Aufgabe
 
-Ein Objekt in JavaScript kann beliebig tief geschachtelt sein.
+Ein Objekt in JavaScript kann beliebig tief geschachtelt werden.
 
 ```js
 {

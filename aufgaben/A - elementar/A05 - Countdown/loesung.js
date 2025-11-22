@@ -6,7 +6,7 @@ function countdown(n) {
 	if (!Number.isInteger(n) || n < 0) throw new Error(`Illegal input: ${n}`)
 
 	if (n === 0) {
-		console.info(`${0} - LIFT OFF`)
+		console.info(`0 - LIFT OFF`)
 	} else {
 		console.info(n)
 		setTimeout(() => {

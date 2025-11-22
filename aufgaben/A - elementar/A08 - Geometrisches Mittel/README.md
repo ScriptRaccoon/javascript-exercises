@@ -3,7 +3,8 @@
 ## Aufgabe
 
 Das _geometrische Mittel_ von positiven Zahlen $x_1,\dotsc,x_n$ ist definiert als
-$$(x_1 \cdot \dotsc \cdot  x_n)^{1/n}.$$
+$(x_1 \cdot \dotsc \cdot  x_n)^{1/n}$.
+
 Implementiere eine Funktion, die das geometrische Mittel eines Arrays von positiven Zahlen berechnet.
 
 ## Beispiele

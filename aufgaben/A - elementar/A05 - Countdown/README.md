@@ -27,4 +27,4 @@ Die Zahl 5 wird hierbei sofort in die Konsole geschrieben, die 4 eine Sekunde sp
 
 ## Themen
 
-Rekursion, Scheduling, Logging, Template-Strings
+Rekursion, Scheduling, Logging

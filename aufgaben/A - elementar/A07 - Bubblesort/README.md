@@ -2,7 +2,7 @@
 
 ## Kontext
 
-Der _Bubblesort-Algorithmus_ ist ein einfacher Algorithmus zum Sortieren eines Arrays von Zahlen. Er vertauscht im Wesentlichen immer wieder zwei benachbarte Zahlen, wenn sie nicht in der richtigen Reihenfolge sind.
+Der _Bubblesort-Algorithmus_ ist ein einfacher Algorithmus zum Sortieren eines Arrays von Zahlen. Er vertauscht im Wesentlichen immer wieder zwei benachbarte Zahlen, wenn sie nicht in der richtigen Reihenfolge sind (d.h., die Zahl links größer als die rechte ist).
 
 Der Pseudocode lautet:
 
