@@ -7,8 +7,8 @@ import { removeTypes } from "remove-types"
 async function build() {
 	const ts_files = await glob(`aufgaben/**/*.ts`)
 	for (const ts_file of ts_files) {
-		if (ts_file.startsWith("aufgaben/D - herausfordernd")) {
-			console.log("skip", ts_file)
+		if (ts_file.startsWith("aufgaben/E - herausfordernd")) {
+			console.info("skip", ts_file)
 			continue
 		}
 		const source = fs.readFileSync(ts_file, "utf-8")

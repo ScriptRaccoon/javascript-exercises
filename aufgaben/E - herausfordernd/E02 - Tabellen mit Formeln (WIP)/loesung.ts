@@ -1,5 +1,5 @@
-import { parse_expression } from "../D01 - Parser/parser"
-import { type AST, AST_UTILS } from "../D01 - Parser/ast"
+import { parse_expression } from "../E01 - Parser/parser"
+import { type AST, AST_UTILS } from "../E01 - Parser/ast"
 
 class Cell {
 	private ast: AST = { type: "number", value: 0 }
