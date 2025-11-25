@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es2023",
+		"target": "esnext",
 		"strict": true,
 		"noEmit": true,
 		"noUnusedParameters": true,
