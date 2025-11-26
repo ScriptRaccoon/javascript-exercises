@@ -7,7 +7,7 @@ import { removeTypes } from "remove-types"
 async function build() {
 	const ts_files = await glob(`aufgaben/**/*.ts`)
 	for (const ts_file of ts_files) {
-		if (ts_file.startsWith("aufgaben/E - herausfordernd")) {
+		if (ts_file.startsWith("aufgaben/E") || ts_file.startsWith("aufgaben/F")) {
 			console.info("skip", ts_file)
 			continue
 		}
