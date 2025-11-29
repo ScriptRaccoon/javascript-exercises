@@ -42,40 +42,6 @@ export function stringify_poly(f: Polynomial): string {
 	return str.trim()
 }
 
-function add_poly(f: Polynomial, g: Polynomial, p: number): Polynomial {
-	const sum: Polynomial = []
-	for (let i = 0; i < Math.max(f.length, g.length); i++) {
-		sum.push(mod((f[i] ?? 0) + (g[i] ?? 0), p))
-	}
-	cleanup(sum, p)
-	return sum
-}
-
-function sub_poly(f: Polynomial, g: Polynomial, p: number): Polynomial {
-	const diff: Polynomial = []
-	for (let i = 0; i < Math.max(f.length, g.length); i++) {
-		diff.push(mod((f[i] ?? 0) - (g[i] ?? 0), p))
-	}
-	cleanup(diff, p)
-	return diff
-}
-
-function mult_poly(f: Polynomial, g: Polynomial, p: number): Polynomial {
-	const prod: Polynomial = Array(f.length + g.length - 1).fill(0)
-	for (let i = 0; i < f.length; i++) {
-		for (let j = 0; j < g.length; j++) {
-			prod[i + j] += f[i] * g[j]
-		}
-	}
-	const prod_p = prod.map((c) => mod(c, p))
-	cleanup(prod_p, p)
-	return prod_p
-}
-
-function get_monomial(coeff: number, n: number): Polynomial {
-	return Array.from({ length: n + 1 }, (_, i) => (i === n ? coeff : 0))
-}
-
 function structural_equal(f: Polynomial, g: Polynomial) {
 	return f.length === g.length && f.every((_, i) => f[i] === g[i])
 }
@@ -85,18 +51,24 @@ function structural_equal(f: Polynomial, g: Polynomial) {
 function divmod(f: Polynomial, g: Polynomial, p: number): [Polynomial, Polynomial] {
 	if (g.length === 0) throw new Error("Polynomial must be non-zero.")
 
-	let r: Polynomial = [...f]
-	let q: Polynomial = []
+	const r: Polynomial = [...f]
+	const q: Polynomial = Array(f.length).fill(0)
 
 	const g_lead = g[g.length - 1]
 	const g_lead_inv = invert(g_lead, p)
 
 	while (r.length >= g.length) {
 		const r_lead = r[r.length - 1]
-		const m = get_monomial(mod(r_lead * g_lead_inv, p), r.length - g.length)
-		q = add_poly(q, m, p)
-		r = sub_poly(r, mult_poly(m, g, p), p)
+		const d = r.length - g.length
+		const c = mod(r_lead * g_lead_inv, p)
+		q[d] = c
+		for (let i = d; i < r.length; i++) {
+			r[i] = mod(r[i] - c * g[i - d], p)
+		}
+		cleanup(r, p)
 	}
+
+	cleanup(q, p)
 
 	return [q, r]
 }
@@ -179,12 +151,3 @@ export function* get_monic_irreducibles(
 		}
 	}
 }
-
-// perf test
-
-const p = 5
-const f: Polynomial = [2, 1, 0, 0, 0, 0, 1] // X^6 + X + 2
-console.info("check if", stringify_poly(f), "is irreducible mod", p, "...")
-console.time("c")
-console.info(is_irreducible(f, 5))
-console.timeEnd("c") // 7.199s <----- slow

@@ -29,7 +29,6 @@ describe("is_irreducible", () => {
 		expect(irred).toBe(false)
 	})
 
-	// slow, TODO: improve speed
 	it("confirms that X^5 + 3X + 1 is not irreducible mod 7", () => {
 		const irred = is_irreducible([1, 3, 0, 0, 0, 1], 7)
 		expect(irred).toBe(true)
@@ -45,7 +44,7 @@ describe("get_monic_irreducible", () => {
 		[2, 3, "X^2 + 1"],
 		[5, 3, "X^5 + 2X + 1"],
 		[2, 5, "X^2 + 2"],
-		[6, 5, "X^6 + X + 2"], // slow, TODO: improve speed
+		[6, 5, "X^6 + X + 2"],
 		[3, 7, "X^3 + 2"],
 	]
 
