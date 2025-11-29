@@ -63,7 +63,7 @@ export class Polynomial {
 			else if (i > 1) power = `X^${i}`
 
 			const op = c > 0 ? "+" : "-"
-			const coeff = Math.abs(c) === 1 ? "" : `${Math.abs(c)}`
+			const coeff = Math.abs(c) === 1 && i > 0 ? "" : `${Math.abs(c)}`
 			let monomial = `${op} ${coeff}${power} `
 
 			if (i === n - 1) {
