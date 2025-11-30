@@ -88,10 +88,20 @@ describe("get_monic_irreducibles", () => {
 
 	it("has the correct numbers for p = 2", () => {
 		// https://oeis.org/A001037
-		const expected = [2, 1, 2, 3, 6, 9, 18, 30, 56]
+		const expected = [2, 1, 2, 3, 6, 9, 18, 30, 56, 99, 186, 335, 630, 1161, 2182]
 		const actual = []
-		for (let n = 1; n <= 9; n++) {
+		for (let n = 1; n <= expected.length; n++) {
 			actual.push([...get_monic_irreducibles(n, 2)].length)
+		}
+		expect(actual).toEqual(expected)
+	})
+
+	it("has the correct numbers for p = 3", () => {
+		// https://oeis.org/A027376
+		const expected = [3, 3, 8, 18, 48, 116, 312, 810, 2184, 5880]
+		const actual = []
+		for (let n = 1; n <= expected.length; n++) {
+			actual.push([...get_monic_irreducibles(n, 3)].length)
 		}
 		expect(actual).toEqual(expected)
 	})

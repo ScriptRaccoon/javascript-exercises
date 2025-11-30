@@ -1,12 +1,4 @@
-import { get_monic_irreducible, is_irreducible, stringify_poly } from "./loesung"
-
-console.time("c")
-console.info(is_irreducible([2, 1, 0, 0, 0, 0, 1], 5)) // X^6 + X + 2 (mod 5)
-console.timeEnd("c") // EXTREMELY FAST
-
-console.time("c")
-console.info(is_irreducible([2, 0, 0, 0, 0, 0, 0, 0, 0, 1], 7)) // X^9 + 2 (mod 7)
-console.timeEnd("c") // EXTREMELY FAST
+import { get_monic_irreducible, stringify_poly } from "./loesung"
 
 console.time("c")
 console.info(stringify_poly(get_monic_irreducible(200, 2)!)) // X^200 + X^5 + X^3 + X^2 + 1
