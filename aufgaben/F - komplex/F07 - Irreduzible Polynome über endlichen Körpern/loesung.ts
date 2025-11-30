@@ -20,37 +20,19 @@ function cleanup(f: Polynomial, p: number): void {
 export function stringify_poly(f: Polynomial): string {
 	const n = f.length
 
-	if (n === 0) {
-		return "0"
-	}
+	if (n === 0) return "0"
 
-	if (n === 1) {
-		return `${f[0]}`
-	}
-
-	let str = ""
+	const monomials: string[] = []
 
 	for (let i = n - 1; i >= 0; i--) {
 		const c = f[i]
 		if (c === 0) continue
-
-		let power = ""
-		if (i === 1) power = "X"
-		else if (i > 1) power = `X^${i}`
-
-		const op = c > 0 ? "+" : "-"
-		const coeff = Math.abs(c) === 1 && i > 0 ? "" : `${Math.abs(c)}`
-		let mon = `${op} ${coeff}${power} `
-
-		if (i === n - 1) {
-			const sign = c > 0 ? "" : "-"
-			mon = `${sign}${coeff}${power} `
-		}
-
-		str += mon
+		const coeff = c === 1 ? "" : c
+		const monomial = i === 0 ? `${c}` : i === 1 ? `${coeff}X` : `${coeff}X^${i}`
+		monomials.push(monomial)
 	}
 
-	return str.trim()
+	return monomials.join(" + ")
 }
 
 /**

@@ -8,8 +8,23 @@ import {
 
 describe("stringify_poly", () => {
 	it("returns a readable string version of the polynomial", () => {
-		const str = stringify_poly([2, -1, 0, 0, 2, -3, 5])
-		expect(str).toBe("5X^6 - 3X^5 + 2X^4 - X + 2")
+		const str = stringify_poly([2, 1, 0, 0, 2, 3, 5])
+		expect(str).toBe("5X^6 + 3X^5 + 2X^4 + X + 2")
+	})
+
+	it("works with constants", () => {
+		const str = stringify_poly([2])
+		expect(str).toBe("2")
+	})
+
+	it("works with the zero polynomial", () => {
+		const str = stringify_poly([])
+		expect(str).toBe("0")
+	})
+
+	it("works with negative coefficients", () => {
+		const str = stringify_poly([1, -3, -2])
+		expect(str).toBe("-2X^2 + -3X + 1")
 	})
 })
 
