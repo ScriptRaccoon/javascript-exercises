@@ -1,3 +1,6 @@
+/**
+ * Checks if a natural number is prime.
+ */
 export function is_prime_number(n: number): boolean {
 	if (!Number.isInteger(n) || n <= 1) return false
 	for (let d = 2; d * d <= n; d++) {
@@ -6,6 +9,9 @@ export function is_prime_number(n: number): boolean {
 	return true
 }
 
+/**
+ * Returns the smallest prime divisor of a natural number.
+ */
 function get_smallest_prime_divisor(n: number): number | null {
 	if (n === 1) return null
 	for (let k = 2; k <= n; k++) {
@@ -14,6 +20,9 @@ function get_smallest_prime_divisor(n: number): number | null {
 	return null
 }
 
+/**
+ * Returns the set of all prime divisors of a natural number.
+ */
 export function prime_divisors(n: number): Set<number> {
 	const p = get_smallest_prime_divisor(n)
 	if (p === null) return new Set()
@@ -22,10 +31,16 @@ export function prime_divisors(n: number): Set<number> {
 	return divs
 }
 
+/**
+ * Modulo operation. In contrast to % it always returns a positive value.
+ */
 export function mod(x: number, p: number): number {
 	return ((x % p) + p) % p
 }
 
+/**
+ * Returns the multiplicative inverse of a number modulo a prime.
+ */
 export function invert(a: number, p: number): number {
 	for (let b = 1; b < p; b++) {
 		if (mod(a * b, p) === 1) return b
