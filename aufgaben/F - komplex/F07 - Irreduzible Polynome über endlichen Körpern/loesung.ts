@@ -46,6 +46,15 @@ function structural_equal(f: Polynomial, g: Polynomial) {
 	return f.length === g.length && f.every((_, i) => f[i] === g[i])
 }
 
+function apply_frobenius(f: Polynomial, p: number): Polynomial {
+	if (f.length <= 1) return f
+	const g: Polynomial = Array(p * (f.length - 1) + 1).fill(0)
+	for (let i = 0; i < f.length; i++) {
+		g[p * i] = f[i]
+	}
+	return g
+}
+
 // polynomial division:
 // computes q,r with f = gq + r with deg(r) < deg(g).
 function divmod(f: Polynomial, g: Polynomial, p: number): [Polynomial, Polynomial] {
@@ -79,26 +88,44 @@ function gcd_poly(f: Polynomial, g: Polynomial, p: number): Polynomial {
 	return gcd_poly(g, r, p)
 }
 
+function subtractX(f: Polynomial, p: number): void {
+	if (f.length === 0) {
+		f = [0, p - 1]
+	} else if (f.length === 1) {
+		f.push(p - 1)
+	} else {
+		f[1] = mod(f[1] - 1, p)
+		cleanup(f, p)
+	}
+}
+
 // rabin's test for irreducibility mod p
 export function is_irreducible(f: Polynomial, p: number): boolean {
 	cleanup(f, p)
+	const n = f.length - 1
 
-	if (f.length <= 1) return false
+	if (n <= 0) return false
+	if (n === 1) return true
 
-	function test_poly(k: number): Polynomial {
-		const g = Array(p ** k + 1).fill(0)
-		g[p ** k] = 1
-		g[1] = p - 1
-		return g
+	// polys[k] = X^(p^k) mod f
+	const X: Polynomial = [0, 1]
+	const polys: Polynomial[] = [X]
+
+	for (let k = 1; k <= n; k++) {
+		polys[k] = divmod(apply_frobenius(polys[k - 1], p), f, p)[1]
 	}
 
-	const n = f.length - 1
+	// polys[k] = X^(p^k) - X mod f
+	for (let k = 0; k <= n; k++) {
+		subtractX(polys[k], p)
+	}
+
 	const primes = prime_divisors(n)
 	for (const q of primes) {
-		const g = gcd_poly(f, test_poly(n / q), p)
+		const g = gcd_poly(f, polys[n / q], p)
 		if (g.length !== 1) return false
 	}
-	const h = gcd_poly(f, test_poly(n), p)
+	const h = gcd_poly(f, polys[n], p)
 	return structural_equal(h, f)
 }
 

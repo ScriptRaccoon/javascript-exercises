@@ -32,7 +32,7 @@ describe("is_irreducible", () => {
 	it("confirms that X^5 + 3X + 1 is not irreducible mod 7", () => {
 		const irred = is_irreducible([1, 3, 0, 0, 0, 1], 7)
 		expect(irred).toBe(true)
-	}, 20_000)
+	})
 })
 
 describe("get_monic_irreducible", () => {
@@ -46,18 +46,17 @@ describe("get_monic_irreducible", () => {
 		[2, 5, "X^2 + 2"],
 		[6, 5, "X^6 + X + 2"],
 		[3, 7, "X^3 + 2"],
+		[20, 13, "X^20 + X^2 + X + 9"],
+		[44, 11, "X^44 + X^2 + 4X + 7"],
+		[200, 2, "X^200 + X^5 + X^3 + X^2 + 1"],
 	]
 
-	it.each(cases)(
-		"for n = %d and p = %d yields %s",
-		(n, p, s) => {
-			const f = get_monic_irreducible(n, p)
-			expect(f).toBeTruthy()
-			const f_str = stringify_poly(f!)
-			expect(f_str).toBe(s)
-		},
-		10_000,
-	)
+	it.each(cases)("for n = %d and p = %d yields %s", (n, p, s) => {
+		const f = get_monic_irreducible(n, p)
+		expect(f).toBeTruthy()
+		const f_str = stringify_poly(f!)
+		expect(f_str).toBe(s)
+	})
 })
 
 describe("get_monic_irreducibles", () => {
