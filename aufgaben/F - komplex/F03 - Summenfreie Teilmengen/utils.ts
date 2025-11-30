@@ -1,18 +1,11 @@
 /**
- * Checks of a set of numbers consists only of positive integers.
+ * Checks if a set of numbers consists only of positive integers.
  */
 export function is_set_of_positive_integers(set: Set<number>): boolean {
 	for (const x of set) {
 		if (!(Number.isInteger(x) && x > 0)) return false
 	}
 	return true
-}
-
-/**
- * Computes the sum of elements in an array of numbers.
- */
-export function sum(arr: number[]): number {
-	return arr.reduce((prev, val) => prev + val, 0)
 }
 
 /**

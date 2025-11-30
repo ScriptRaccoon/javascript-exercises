@@ -1,4 +1,4 @@
-import { is_set_of_positive_integers, lex_smaller, sum } from "./utils"
+import { is_set_of_positive_integers, lex_smaller } from "./utils"
 
 /**
  * Computes the largest sum-free subset of a finite set of positive integers.
@@ -11,7 +11,6 @@ export function get_largest_sum_free_subset(set: Set<number>): Set<number> {
 
 	let largest: number[] = []
 	let max_size = 0
-	let min_sum = Infinity
 
 	const allowed = [...set].sort((a, b) => a - b)
 
@@ -43,14 +42,12 @@ export function get_largest_sum_free_subset(set: Set<number>): Set<number> {
 	 */
 	function recurse(index: number) {
 		if (index === allowed.length) {
-			const current_sum = sum(current)
 			if (
 				current.length > max_size ||
 				(current.length >= max_size && lex_smaller(current, largest))
 			) {
 				largest = [...current]
 				max_size = current.length
-				min_sum = current_sum
 			}
 			return
 		}
