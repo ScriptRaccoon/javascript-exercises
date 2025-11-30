@@ -100,7 +100,7 @@ function subtractX(f: Polynomial, p: number): void {
 }
 
 // rabin's test for irreducibility mod p
-export function is_irreducible(f: Polynomial, p: number): boolean {
+export function is_irreducible(f: Polynomial, p: number, primes?: Set<number>): boolean {
 	cleanup(f, p)
 	const n = f.length - 1
 
@@ -120,7 +120,7 @@ export function is_irreducible(f: Polynomial, p: number): boolean {
 		subtractX(polys[k], p)
 	}
 
-	const primes = prime_divisors(n)
+	primes ??= prime_divisors(n)
 	for (const q of primes) {
 		const g = gcd_poly(f, polys[n / q], p)
 		if (g.length !== 1) return false
@@ -154,7 +154,7 @@ export function get_monic_irreducible(n: number, p: number): Polynomial | null {
 
 	for (const t of iterate_tuples(n, p)) {
 		const f: Polynomial = [...t, 1]
-		if (is_irreducible(f, p)) {
+		if (is_irreducible(f, p, prime_divisors(n))) {
 			return f
 		}
 	}
@@ -173,7 +173,7 @@ export function* get_monic_irreducibles(
 
 	for (const t of iterate_tuples(n, p)) {
 		const f: Polynomial = [...t, 1]
-		if (is_irreducible(f, p)) {
+		if (is_irreducible(f, p, prime_divisors(n))) {
 			yield f
 		}
 	}
