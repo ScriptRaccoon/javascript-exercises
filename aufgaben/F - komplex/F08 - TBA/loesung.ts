@@ -12,6 +12,19 @@ export function dedekind_number(n: number) {
 	const N = 1 << n
 
 	/**
+	 * supersets[A] = list of supersets of A (encoded as bitmasks).
+	 */
+	const supersets: number[][] = Array.from({ length: N }, () => [])
+
+	for (let A = 0; A < N; A++) {
+		for (let B = 0; B < N; B++) {
+			if ((A & ~B) === 0) {
+				supersets[A].push(B)
+			}
+		}
+	}
+
+	/**
 	 * remaining[A] = 1 means that subset A can still be included
 	 * to construct the remaining upper set.
 	 */
@@ -41,12 +54,11 @@ export function dedekind_number(n: number) {
 			// Option 2: Include A in the upper set.
 
 			/**
-			 * Array of all supersets of A, which we will remove.
+			 * Array of all remaining supersets of A, which we will remove.
 			 */
 			const removed: number[] = []
 
-			for (let B = 0; B < N; B++) {
-				const C = A | B
+			for (const C of supersets[A]) {
 				if (remaining[C]) {
 					remaining[C] = 0
 					removed.push(C)
