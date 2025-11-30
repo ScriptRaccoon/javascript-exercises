@@ -77,3 +77,8 @@ export function dedekind_number(n: number) {
 
 	return count
 }
+
+for (let n = 0; n <= 6; n++) {
+	const x = dedekind_number(n)
+	console.info(`| \`dedekind_number(${n})\` | ${x} |`)
+}
