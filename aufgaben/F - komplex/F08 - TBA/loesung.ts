@@ -1,0 +1,67 @@
+/**
+ * Computes the number of upper sets in the power set P(n),
+ * or equivalently, the number of antichains in P(n).
+ * {@link https://en.wikipedia.org/wiki/Dedekind_number}
+ */
+export function dedekind_number(n: number) {
+	let count = 0
+
+	/**
+	 * Number of subsets, which we encode using bitmasks of length n.
+	 */
+	const N = 1 << n
+
+	/**
+	 * remaining[A] = 1 means that subset A can still be included
+	 * to construct the remaining upper set.
+	 */
+	const remaining = new Uint16Array(N).fill(1)
+
+	/**
+	 * Tries to extend the given upper set by one subset.
+	 */
+	function extend(index: number): void {
+		while (index < N && !remaining[index]) index++
+
+		const A = index
+
+		if (A === N) {
+			count++
+			return
+		}
+
+		{
+			// Option 1: Do not include A in the uppset set.
+			remaining[A] = 0
+			extend(A + 1)
+			remaining[A] = 1
+		}
+
+		{
+			// Option 2: Include A in the upper set.
+
+			/**
+			 * Array of all supersets of A, which we will remove.
+			 */
+			const removed: number[] = []
+
+			for (let B = 0; B < N; B++) {
+				const C = A | B
+				if (remaining[C]) {
+					remaining[C] = 0
+					removed.push(C)
+				}
+			}
+
+			extend(A + 1)
+
+			for (const C of removed) {
+				remaining[C] = 1
+			}
+		}
+	}
+
+	extend(0)
+
+	return count
+}
