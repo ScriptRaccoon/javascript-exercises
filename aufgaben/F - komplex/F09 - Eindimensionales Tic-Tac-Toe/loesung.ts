@@ -51,40 +51,6 @@ function mex(arr: number[]): number {
 }
 
 /**
- * Cache for storing the Grundy value of a heap of a given size.
- */
-const cache = new Map<number, number>()
-
-/**
- * Returns the Grundy value of a Treblecross board (after being simplified
- * as above) of a size n. The P-positions are those with Grundy value 0.
- */
-function treblecross_grundy(n: number): number {
-	if (n === 0) return 0
-
-	const cached_value = cache.get(n)
-	if (cached_value !== undefined) return cached_value
-
-	const options: number[] = []
-
-	if (n <= 5) options.push(0)
-	for (const d of [3, 4, 5]) {
-		if (n > d) options.push(treblecross_grundy(n - d))
-	}
-	for (let a = 1; a <= (n - 5) / 2; a++) {
-		const b = n - 5 - a
-		if (b >= 1) {
-			const s = treblecross_grundy(a) ^ treblecross_grundy(b)
-			options.push(s)
-		}
-	}
-
-	const res = mex(options)
-	cache.set(n, res)
-	return res
-}
-
-/**
  * Returns the list of sizes n for which Treblecross of size n
  * is won by the second player (in optimal play).
  */
@@ -92,10 +58,29 @@ export function get_losing_sizes(limit: number, print = true): number[] {
 	if (print) console.info("Determine P-positions in Treblecross")
 	const P_positions: number[] = [0, 2]
 
+	const grundys = new Uint16Array(limit + 1)
+	grundys[1] = 1
+	grundys[2] = 1
+
 	for (let n = 3; n <= limit; n++) {
 		if (print && n % 1_000 === 0) console.info("Computing numbers >=", n, "...")
+		const options: number[] = []
 
-		const g = treblecross_grundy(n)
+		if (n <= 5) options.push(0)
+		for (const d of [3, 4, 5]) {
+			if (n > d) options.push(grundys[n - d])
+		}
+		for (let a = 1; a <= (n - 5) / 2; a++) {
+			const b = n - 5 - a
+			if (b >= 1) {
+				const s = grundys[a] ^ grundys[b]
+				options.push(s)
+			}
+		}
+
+		const g = mex(options)
+		grundys[n] = g
+
 		if (g === 0) {
 			if (print) console.info("👀 Found P-position:", n)
 			P_positions.push(n)
