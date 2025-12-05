@@ -41,12 +41,19 @@ the website https://wwwhomes.uni-bielefeld.de/achim/octal.html.
 See also https://math.stackexchange.com/q/4283174 for an explanation.
 */
 
-import { create_lru_cache, mex } from "./utils"
+/**
+ * Returns the minimal element excluded from the array.
+ */
+function mex(arr: number[]): number {
+	let res = 0
+	while (arr.includes(res)) res++
+	return res
+}
 
 /**
  * Cache for storing the Grundy value of a heap of a given size.
  */
-const grundy_cache = create_lru_cache<number, number>(1_000_000, 10_000)
+const cache = new Map<number, number>()
 
 /**
  * Returns the Grundy value of a Treblecross board (after being simplified
@@ -55,7 +62,7 @@ const grundy_cache = create_lru_cache<number, number>(1_000_000, 10_000)
 function treblecross_grundy(n: number): number {
 	if (n === 0) return 0
 
-	const cached_value = grundy_cache.get(n)
+	const cached_value = cache.get(n)
 	if (cached_value !== undefined) return cached_value
 
 	const options: number[] = []
@@ -73,7 +80,7 @@ function treblecross_grundy(n: number): number {
 	}
 
 	const res = mex(options)
-	grundy_cache.set(n, res)
+	cache.set(n, res)
 	return res
 }
 
@@ -87,6 +94,7 @@ export function get_losing_sizes(limit: number, print = true): number[] {
 
 	for (let n = 3; n <= limit; n++) {
 		if (print && n % 1_000 === 0) console.info("Computing numbers >=", n, "...")
+
 		const g = treblecross_grundy(n)
 		if (g === 0) {
 			if (print) console.info("👀 Found P-position:", n)
