@@ -10,5 +10,5 @@ describe("get_losing_sizes", () => {
 			7356, 7866, 16168,
 		]
 		expect(actual).toEqual(expected)
-	}, 30_000)
+	}, 10_000)
 })

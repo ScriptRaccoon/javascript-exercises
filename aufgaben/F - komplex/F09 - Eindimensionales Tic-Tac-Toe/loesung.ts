@@ -42,12 +42,13 @@ See also https://math.stackexchange.com/q/4283174 for an explanation.
 */
 
 /**
- * Returns the minimal element excluded from the array.
+ * Returns the minimal element excluded from the array,
+ * whose elements are encoded as indices for fast access.
  */
-function mex(arr: number[]): number {
-	let res = 0
-	while (arr.includes(res)) res++
-	return res
+function mex(seen: Uint8Array): number {
+	let n = 0
+	while (seen[n]) n++
+	return n
 }
 
 /**
@@ -63,22 +64,22 @@ export function get_losing_sizes(limit: number, print = true): number[] {
 	grundys[2] = 1
 
 	for (let n = 3; n <= limit; n++) {
-		if (print && n % 1_000 === 0) console.info("Computing numbers >=", n, "...")
-		const options: number[] = []
+		if (print && n % 10_000 === 0) console.info("Computing numbers >=", n, "...")
+		const seen = new Uint8Array(n + 1)
 
-		if (n <= 5) options.push(0)
+		if (n <= 5) seen[0] = 1
 		for (const d of [3, 4, 5]) {
-			if (n > d) options.push(grundys[n - d])
+			if (n > d) seen[grundys[n - d]] = 1
 		}
 		for (let a = 1; a <= (n - 5) / 2; a++) {
 			const b = n - 5 - a
 			if (b >= 1) {
 				const s = grundys[a] ^ grundys[b]
-				options.push(s)
+				seen[s] = 1
 			}
 		}
 
-		const g = mex(options)
+		const g = mex(seen)
 		grundys[n] = g
 
 		if (g === 0) {
@@ -86,11 +87,14 @@ export function get_losing_sizes(limit: number, print = true): number[] {
 			P_positions.push(n)
 		}
 	}
+	if (print) console.info(`Found ${P_positions.length} P-positions.`)
 	return P_positions
 }
 
 // Usage:
+// console.time("c")
 // console.info(get_losing_sizes(100_000))
+// console.timeEnd("c")
 
 /*
 [
