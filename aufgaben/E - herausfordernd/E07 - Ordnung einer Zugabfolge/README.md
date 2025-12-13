@@ -4,6 +4,8 @@
 
 Jede Zugabfolge auf dem Zauberwürfel hat eine _Ordnung_: die kleinste Anzahl von Wiederholungen der Zugabfolge, die man machen muss, bis der Würfel wieder im Ursprungszustand ist. Mehr dazu kann man zum Beispiel in dem Artikel [Was die Zahl 1260 so besonders macht](https://cubingfreunde.wordpress.com/2025/08/11/1260-maximale-ordnung/) nachlesen.
 
+<img width="500" alt="ruf" src="https://github.com/user-attachments/assets/efdc3cbf-7476-4991-87a7-cb6ae4cb614c" />
+
 Zugabfolgen werden dabei als Strings kodiert. Zum Beispiel dreht man bei der Zugabfolge `R2 U R' F` zweimal rechts im UZS, dann oben einmal im UZS, dann rechts einmal gegen den UZS, und schließlich vorne einmal gegen den UZS. Details zur Notation findet man im Artikel [Zauberwürfel: Notation](https://freshcuber.wordpress.com/2012/01/18/zauberwuerfel-notation/).
 
 ## Aufgabe
