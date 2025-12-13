@@ -1,4 +1,4 @@
-# Pflasterungen
+# Pflasterungen mit Dominos und Trominos
 
 ## Aufgabe
 
