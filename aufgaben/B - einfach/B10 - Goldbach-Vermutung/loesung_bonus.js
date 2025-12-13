@@ -48,6 +48,6 @@ function verify_goldbach_fast(limit) {
 	console.info("✅ Verified")
 }
 
-console.time("⏱️  Computation")
+console.time("⏱️ Computation")
 verify_goldbach_fast(1_000_000_000)
-console.timeEnd("⏱️  Computation")
+console.timeEnd("⏱️ Computation")
