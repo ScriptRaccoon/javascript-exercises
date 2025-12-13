@@ -12,7 +12,7 @@ Entwickle einen Parser für arithmetische Ausdrücke wie zum Beispiel `x * y + 7
   x   y              5
 ```
 
-Die Eingabe ist jeweils ein String, die Ausgabe ist ein Objekt, welches einen solchen Baum kodiert. Unterstützt werden sollen:
+Die Eingabe ist jeweils ein String, die Ausgabe ein Objekt, welches einen solchen Baum kodiert. Unterstützt werden sollen:
 
 - Zahlen
 - Variablen
@@ -22,7 +22,7 @@ Die Eingabe ist jeweils ein String, die Ausgabe ist ein Objekt, welches einen so
 - Klammern
 - Beliebige Schachtelungen
 
-Schreibe außerdem eine Funktion, die einen abstrakten Syntaxbaum (mit der von dir gewählten Kodierung) mit Hilfe einer Belegung der Variablen auswertet (vgl. Aufgabe A08). Für mehr Details siehe die Beispiele.
+Schreibe außerdem eine Funktion, die einen abstrakten Syntaxbaum (mit der von dir gewählten Kodierung) mit Hilfe einer Belegung der Variablen auswertet (vgl. Aufgabe B08). Für mehr Details siehe die Beispiele.
 
 ## Beispiel 1
 
@@ -70,22 +70,8 @@ parse_expression("x + 42")
 {
 	"type": "binary",
 	"op": "+",
-	"left": {
-		"type": "binary",
-		"op": "*",
-		"left": {
-			"type": "variable",
-			"name": "x"
-		},
-		"right": {
-			"type": "variable",
-			"name": "y"
-		}
-	},
-	"right": {
-		"type": "variable",
-		"name": "z"
-	}
+	"left": { "type": "variable", "name": "x" },
+	"right": { "type": "number", "value": 42 }
 }
 ```
 
@@ -106,10 +92,19 @@ parse_expression("x * y + z")
 	"left": {
 		"type": "binary",
 		"op": "*",
-		"left": { "type": "variable", "name": "x" },
-		"right": { "type": "variable", "name": "y" }
+		"left": {
+			"type": "variable",
+			"name": "x"
+		},
+		"right": {
+			"type": "variable",
+			"name": "y"
+		}
 	},
-	"right": { "type": "variable", "name": "z" }
+	"right": {
+		"type": "variable",
+		"name": "z"
+	}
 }
 ```
 

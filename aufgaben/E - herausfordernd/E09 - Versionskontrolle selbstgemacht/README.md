@@ -13,9 +13,9 @@ _Commits_ enthalten Daten, die in diesem Fall einfach Schlüssel-Wert-Paare sind
 Commits können aneinander gehangen werden. Genauer zeigt jeder Commit (bis auf den Root-Commit) auf einen vorherigen Commit:
 
 ```text
-          { "a": 1 }    { "b": 2 }
-            /             /
-ROOT <-- COMMIT_1 <--- COMMIT_2 <--- ...
+           { "a": 1 }    { "b": 2 }
+             /             /
+ROOT <--- COMMIT_1 <--- COMMIT_2 <--- ...
 ```
 
 In jedem Commit kann man den Wert für einen Schlüssel auslesen, der eventuell auch bereits von vorigen Commits gesetzt worden ist. Im obigen Beispiel wäre also `a = 1` und `b = 2` in `COMMIT_2`.
@@ -23,9 +23,9 @@ In jedem Commit kann man den Wert für einen Schlüssel auslesen, der eventuell 
 Die Daten sind in einem Commit unveränderlich gespeichert. Eine "Veränderung" kann nur durch einen späteren Commit erfolgen. Wenn ein Wert gelöscht werden soll, setzt man ihn auf `null`:
 
 ```text
-          { "a": 1 }    { "a": null }
-            /             /
-ROOT <-- COMMIT_1 <--- COMMIT_2 <--- ...
+           { "a": 1 }    { "a": null }
+             /             /
+ROOT <--- COMMIT_1 <--- COMMIT_2 <--- ...
 ```
 
 Zur besseren Unterscheidung bekommt jeder Commit eine eindeutige ID.
@@ -34,10 +34,10 @@ Ein _Branch_ (Zweig) besteht aus einem Namen und einem Zeiger auf einen Commit, 
 
 ```text
 
-           MAIN          FEAT
-            |             |
-            v             v
-ROOT <-- COMMIT_1 <--- COMMIT_2 <--- ...
+            MAIN          FEAT
+             |             |
+             v             v
+ROOT <--- COMMIT_1 <--- COMMIT_2 <--- ...
 ```
 
 Wenn man in einem Branch commitet, wird der Zeiger auf den neuen Commit gesetzt. Die Daten kann man auch bei einem Branch auslesen, was einfach die Daten des letzten Commits sind.
@@ -49,47 +49,48 @@ Branches sollen außerdem die folgenden Funktionalitäten haben:
 - Es lässt sich der letzte Commit entfernen. Dadurch wird er nicht zerstört, sondern lediglich der Zeiger des Branches verändert:
 
     ```text
-                            MAIN
-                             |
-                             v
-    ROOT <-- COMMIT_1 <-- COMMIT_2
+                              MAIN
+                               |
+                               v
+    ROOT <--- COMMIT_1 <--- COMMIT_2
     ```
 
     ```text
-               MAIN
-                |
-                v
-    ROOT <-- COMMIT_1 <-- COMMIT_2
+                MAIN
+                 |
+                 v
+    ROOT <--- COMMIT_1 <--- COMMIT_2
     ```
 
 - Allgeminer lässt sich ein Branch auf einen vorherigen Commit zurücksetzen:
 
     ```text
-                                        MAIN
-                                         |
-                                         v
-    ROOT <-- COMMIT_1 <-- COMMIT_2 <-- COMMIT_3
+                                           MAIN
+                                            |
+                                            v
+    ROOT <--- COMMIT_1 <--- COMMIT_2 <--- COMMIT_3
     ```
 
     ```text
-               MAIN
-                |
-                v
-    ROOT <-- COMMIT_1 <-- COMMIT_2 <-- COMMIT_3
+                MAIN
+                 |
+                 v
+    ROOT <--- COMMIT_1 <--- COMMIT_2 <--- COMMIT_3
     ```
 
 - Ein vorheriger Commit lässt sich rückgängig machen: dadurch wird am Ende ein neuer Commit angehangen, dessen Daten die Änderungen rückgängig machten.
 
     ```text
-             {"a": 1}   {"a": 2, "b": 3}   {"a": 1, "b": null}
-                /             /             /
-    ROOT <-- COMMIT_1 <-- COMMIT_2 <--- COMMIT_2_REV
+              {"a": 1}    {"a": 2, "b": 3}    {"a": 1, "b": null}
+                 /              /              /
+    ROOT <--- COMMIT_1 <--- COMMIT_2 <--- COMMIT_2_REV
     ```
 
 - Zwei Branches lassen sich _mergen_ (zusammenführen). Dadurch werden sämtliche Commits eines Branches nach der Abzweigung vom Hauptbranch zu einem _Merge Commit_ zusammengefasst, und dieser wird dem Hauptbranch angehangen. Es kann dabei _Merge Conflicts_ geben, wenn der Hauptbranch andere Änderungen an denselben Daten vorgenommen hat. In diesem Fall wird ein Fehler ausgeworfen.
 
     ```text
     ROOT <--- COMMIT_1 <--- COMMIT_2 <--- COMMIT_3 (MAIN)
+                 |
                  |
                   ---- COMMIT_4 <--- COMMIT_5 (FEAT)
     ```
@@ -98,7 +99,7 @@ Branches sollen außerdem die folgenden Funktionalitäten haben:
     ROOT <--- COMMIT_1 <--- COMMIT_2 <--- COMMIT_3 <--- MERGE_COMMIT (MAIN)
     ```
 
-Um diese Form der Versionskontrolle zu realisieren, entwickle zwei Klassen `Commit` und `Branch` mit entsprechenden Klassenmethoden.
+Um diese Versionskontrolle zu realisieren, entwickle zwei Klassen `Commit` und `Branch` mit entsprechenden Klassenmethoden.
 
 ## Beispiele
 
@@ -123,7 +124,9 @@ console.info(commit_3.get("a")) // null
 **Branches**
 
 ```ts
-// --- GRUNDLAGEN ---
+// ----------------------------
+//    COMMITS UND BRANCHES
+// ----------------------------
 
 const root = new Commit()
 const main = new Branch("main", root)
@@ -141,7 +144,9 @@ main.log()
 
 console.info(main.to_json()) // { a: 2, c: 5 }
 
-// --- COMMITS RÜCKGÄNGIG MACHEN ---
+// --------------------------------
+//    COMMITS RÜCKGÄNGIG MACHEN
+// --------------------------------
 
 main.drop_last_commit()
 
@@ -196,7 +201,9 @@ Commit history of main:
 */
 main.log()
 
-// --- BRANCHES MERGEN ----
+// --------------------------
+//      BRANCHES MERGEN
+// --------------------------
 
 main.commit({ x: 0 })
 

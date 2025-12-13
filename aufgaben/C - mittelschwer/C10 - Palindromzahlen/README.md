@@ -6,7 +6,7 @@ Eine natürliche Zahl heißt _Palindromzahl_, wenn sie im Dezimalsystem von vorn
 
 Implementiere eine Funktion `next_palindrome(n)`, die für eine natürliche Zahl $n$ die kleinste Palindromzahl bestimmt, die $\geq n$ ist.
 
-Benutze dabei eine effiziente Methode, die _nicht_ lediglich die Zahlen $n$, $n + 1$, $n + 2$, ... durchgeht und prüft, welche davon erstmals eine Palindromzahl ist. Die Methode sollte auch für große $n$ sehr schnell das Ergebnis liefern. Genauer gesagt soll die Laufzeit $O(\log n)$ sein.
+Benutze dabei eine effiziente Methode, die _nicht_ lediglich die Zahlen $n$, $n + 1$, $n + 2$, ... durchgeht und prüft, welche davon erstmals eine Palindromzahl ist. Die Methode sollte auch für große $n$ sehr schnell das Ergebnis liefern. Genauer gesagt soll die Laufzeit $O(\log(n))$ sein.
 
 ## Beispiele
 

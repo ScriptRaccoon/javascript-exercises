@@ -2,7 +2,7 @@
 
 ## Aufgabe
 
-Implementiere einen Primzahlgenerator. Genauer gesagt, definiere ein Objekt `primes` das eine Methode `.next()` beinhaltet, die jeweils die nächste Primzahl ausgibt:
+Implementiere einen Primzahlgenerator. Genauer gesagt, definiere ein Objekt `primes`, welches eine Methode `.next()` beinhaltet, die jeweils die nächste Primzahl ausgibt:
 
 ```js
 primes.next() == 2

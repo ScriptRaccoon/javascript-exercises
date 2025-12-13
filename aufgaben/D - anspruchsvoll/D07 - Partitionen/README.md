@@ -2,11 +2,11 @@
 
 ## Aufgabe
 
-Wieviele Möglichkeiten gibt es, 7.52 € in Münzen zu zerlegen? Das heißt, wieviele Möglichkeiten gibt es, die Zahl 752 als Summe von Zahlen der Form 1,2,5,10,20,50,100,200 zu schreiben?
+Wieviele Möglichkeiten gibt es, 7.52 € in Münzen zu zerlegen? Das heißt, wieviele Möglichkeiten gibt es, die Zahl 752 als Summe von Zahlen der Form 1, 2, 5, 10, 20, 50, 100, 200 zu schreiben?
 
-Schreibe dazu allgemein eine Funktion `count_partitions(n, parts)`, welche die Anzahl der Summenzerlegungen (Partitionen) der natürlichen Zahl `n` mit Zahlen aus einer Liste von Zahlen `parts` bestimmt.
+Schreibe dazu allgemein eine Funktion `count_partitions(n, parts)`, welche die Anzahl der Summenzerlegungen (Partitionen) der natürlichen Zahl `n` mit Zahlen aus einem Array `parts` von Zahlen bestimmt.
 
-Die Reihenfolge der Zahlen in der Zerlegung soll keine Rolle spielen, also `1 + 2` und `2 + 1` sollen zum Beispiel als nur eine Zerlegung gezählt werden.
+Die Reihenfolge der Zahlen in der Zerlegung soll keine Rolle spielen. Zum Beispiel sollen `1 + 2` und `2 + 1` als nur eine Zerlegung gezählt werden.
 
 Hinweis: Es gibt eine naheliegende rekursive Implementierung, die allerdings sehr langsam ist. Finde eine effiziente Methode.
 

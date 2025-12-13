@@ -13,7 +13,7 @@ Wichtig:
 - Satzzeichen werden ignoriert.
 - Wörter mit Umlauten werden unterstützt.
 
-Verbessere anschließend die Funktion, indem optional unwesentliche Wörter (z. B. Präpositionen, Artikel und Konjunktionen) herausgefiltert werden, damit das Thema des Ausgangstextes besser ersichtlich wird. Übergib außerdem einen weiteren optionalen Parameter für die Mindesthäufigkeit der angezeigten Wörter.
+Verbessere anschließend die Funktion, indem unwesentliche Wörter (z. B. Präpositionen, Artikel und Konjunktionen) herausgefiltert werden, damit das Thema des Ausgangstextes besser ersichtlich wird. Übergib außerdem einen weiteren optionalen Parameter für die Mindesthäufigkeit der angezeigten Wörter.
 
 ## Beispiel 1
 
@@ -27,8 +27,6 @@ von HTML zu erweitern. Heute wird JavaScript auch außerhalb von Browsern angewe
 etwa auf Servern und in Microcontrollern.`
 
 word_stats(sample_txt)
-
-word_stats(sample_txt, { exclude_common_words: true, min_frequency: 2 })
 ```
 
 **Ausgabe**
@@ -50,6 +48,14 @@ word_stats(sample_txt, { exclude_common_words: true, min_frequency: 2 })
 	]
 }
 ```
+
+**Eingabe**
+
+```js
+word_stats(sample_txt, { exclude_common_words: true, min_frequency: 2 })
+```
+
+**Ausgabe**
 
 ```json
 {

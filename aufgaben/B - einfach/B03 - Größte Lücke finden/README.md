@@ -2,9 +2,9 @@
 
 ## Aufgabe
 
-Eine _Lücke_ in einem Arrays von Zahlen sei die Differenz von zwei Zahlen in diesem Array, zwischen denen sich keine andere Zahl im Array befindet. Zum Beispiel ist 3 eine Lücke im Array `[1, 6, 4]` als Differenz `4 - 1`, weil `2`, `3` nicht im Array enthalten sind.
+Eine _Lücke_ in einem Array von ganzen Zahlen sei die Differenz von zwei Zahlen in diesem Array, zwischen denen sich keine andere Zahl im Array befindet. Zum Beispiel ist 3 eine Lücke im Array `[1, 6, 4]` als Differenz `4 - 1`, weil `2`, `3` nicht im Array enthalten sind.
 
-Implementiere eine Funktion, die zu einem Array von Zahlen die größte Lücke in diesem Array berechnet.
+Implementiere eine Funktion, die zu einem Array von ganzen Zahlen die größte Lücke berechnet.
 
 Für ein leeres Array soll `null` zurückgegeben werden.
 

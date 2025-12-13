@@ -2,7 +2,7 @@
 
 ## Kontext
 
-Jede positive ganze Zahl kann man als einen arithmetischen Ausdruck darstellen, der sich aus der 4 ergibt sowie den fünf gängigen Operationen Addition (`+`), Multiplikation (`*`), Subtraktion (`-`), Division (`/`) und Exponentiation (`**`).
+Jede positive ganze Zahl kann man als einen arithmetischen Ausdruck darstellen, der sich aus der 4 ergibt sowie den fünf gängigen Operationen: Addition (`+`), Multiplikation (`*`), Subtraktion (`-`), Division (`/`) und Exponentiation (`**`).
 
 Zum Beispiel gilt:
 
@@ -17,7 +17,7 @@ Es gibt jeweils sehr viele solcher Darstellungen. So gilt etwa `6 = 4+((4/4)+(4/
 
 Implementiere eine Funktion, die effizient für jede positive ganze Zahl `n` einen arithmetischen Ausdruck mit Vieren ausgibt, der sich zu `n` auswertet und die Anzahl der verwendeten Operatoren minimal ist.
 
-Anstelle der `4` lasse auch eine beliebige positive ganze Zahl zu.
+Anstelle der `4` lasse auch eine beliebige positive ganze Zahl als "Basis" zu.
 
 Optimiere die Funktion so, dass sie auch für `n <= 99999` innerhalb von (Milli-)Sekunden ein Ergebnis liefert.
 

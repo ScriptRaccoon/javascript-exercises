@@ -2,7 +2,7 @@
 
 ## Kontext
 
-Eine Menge $S$ von positiven ganzen Zahlen heißt _summenfrei_, wenn für alle $x,y \in S$ gilt, dass $x + y \notin S$.
+Eine Menge $S$ von positiven ganzen Zahlen heißt _summenfrei_, wenn für alle $x,y \in S$ gilt, dass $x + y \notin S$. Zum Beispiel ist $\lbrace 1,6,10 \rbrace$ summenfrei, aber $\lbrace 1,4,6,10 \rbrace$ nicht.
 
 ## Aufgabe
 

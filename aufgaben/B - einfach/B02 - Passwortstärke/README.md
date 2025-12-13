@@ -15,7 +15,7 @@ Implementiere eine Funktion, die die Stärke eines Passworts bestimmt. Die Stär
 Die maximale Stärke ist demnach 7.
 
 Vergib außerdem einen _Punktabzug_, wenn das Passwort eines der gängigen Wörter
-(z. B. `test`, `password`, `login`, usw.) beinhaltet.
+(z. B. `test`, `password`, `login`, usw., die genaue Liste kannst du festlegen) beinhaltet.
 
 ## Beispiele
 

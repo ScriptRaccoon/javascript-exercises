@@ -2,11 +2,13 @@
 
 ## Kontext
 
-Für $n \geq 0$ ist die _Dedekind-Zahl_ $M(n)$ die Anzahl der Antiketten in der Potenzmenge $P(n)$, oder äquivalent, die Anazhl der "oberen Teilmengen" von $P(n)$, also jene Familien, die unter Obermengen abgeschlossen sind. Mehr dazu erfährt man bei [Wikipedia](https://de.wikipedia.org/wiki/Dedekind-Zahl).
+Für $n \geq 0$ ist die _Dedekind-Zahl_ $M(n)$ die Anzahl der Antiketten in der Potenzmenge $P(n)$, oder äquivalent, die Anzahl der Teilmengen von $P(n)$, die unter Obermengen abgeschlossen sind. Mehr dazu erfährt man bei [Wikipedia](https://de.wikipedia.org/wiki/Dedekind-Zahl).
 
 ## Aufgabe
 
 Implementiere eine Funktion, welche die Dedekind-Zahlen für $0 \leq n \leq 6$ möglichst effizient berechnet.
+
+Hinweis: Die Werte sind nur für $n \leq 9$ bekannt, vgl. [A000372](https://oeis.org/A000372).
 
 ## Beispiele
 

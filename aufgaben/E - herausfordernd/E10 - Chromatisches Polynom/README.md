@@ -4,9 +4,13 @@
 
 Graphen sind in diesem Kontext einfach, ungerichtet, und endlich.
 
-Eine $k$-_Färbung_ eines Graphen $G$ ordnet jedem Knoten von $G$ eine von $k$ festen Farben zu, sodass benachbarte Knoten unterschiedliche Farben haben (vgl. Aufgabe "Graphen und Sudokus").
+Eine $k$-_Färbung_ eines Graphen $G$ ordnet jedem Knoten von $G$ eine von $k$ festen Farben zu, sodass benachbarte Knoten unterschiedliche Farben haben (vgl. Aufgabe E06).
 
-Die Funktion $P(G,-)$, die einem $k \geq 0$ die Anzahl der $k$-Färbungen von $G$ zuordnet, stellt sich als ein Polynom mit ganzzahligen Koeffizienten heraus. Das heißt, es gibt ein Polynom $P(G,X) \in \mathbb{Z}[X]$, das _chromatische Polynom_ von $G$, sodass $P(G,k)$ für jedes $k \geq 0$ die Anzahl der $k$-Färbungen von $G$ ist. Mehr Informationen dazu finden sich im [Wikipedia-Artikel](https://en.wikipedia.org/wiki/Chromatic_polynomial).
+Die Funktion $P(G,-)$, die einem $k \geq 0$ die Anzahl der $k$-Färbungen von $G$ zuordnet, stellt sich als ein Polynom mit ganzzahligen Koeffizienten heraus. Das heißt, es gibt ein Polynom
+
+$P(G,X) \in ℤ[X]$,
+
+das _chromatische Polynom_ von $G$, sodass $P(G,k)$ für jedes $k \geq 0$ die Anzahl der $k$-Färbungen von $G$ ist. Mehr Informationen dazu finden sich im [Wikipedia-Artikel](https://en.wikipedia.org/wiki/Chromatic_polynomial).
 
 Das kleinste $k \geq 0$, für das es eine $k$-Färbung gibt, heißt die _chromatische Zahl_ des Graphen.
 
@@ -14,13 +18,13 @@ Das kleinste $k \geq 0$, für das es eine $k$-Färbung gibt, heißt die _chromat
 
 Implementiere eine Funktion, die das chromatische Polynom eines Graphen berechnet.
 
-Entwickle dafür zunächst eine Klasse für Polynome, die Rechenoperationen bereitstellt. Außerdem sollten Polynome eine leserliche String-Repräsentation haben (siehe Beispiele unten).
+Entwickle dafür zunächst eine Klasse für Polynome, die Rechenoperationen bereitstellt. Außerdem sollen Polynome eine leserliche String-Repräsentation haben (siehe Beispiele unten).
 
 Benutze dann die Rekursionsgleichung
 
 $$P(G,X) = P(G-vw,X) - P(G / vw,X)$$
 
-aus dem Wikipedia-Artikel.
+aus dem verlinkten Wikipedia-Artikel.
 
 Implementiere anschließend eine Funktion, die die chromatische Zahl eines Graphen berechnet. Benutze dafür das chromatische Polynom.
 

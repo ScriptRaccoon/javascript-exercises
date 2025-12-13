@@ -17,9 +17,9 @@ Es sind die folgenden Daten über 10 Personen gegeben:
 | `Noura`   | `25` | `Saudi Arabia` |
 | `Elias`   | `30` | `Lebanon`      |
 
-Implementiere eine Funktion, die einfache Fragen zu diesen Personen entgegennimmt und sie in der Konsole beantwortet. Die genaue Formulierung einer Frage ist nicht vorgegeben, wodurch wir hier eine Art "Bot" programmieren. Aber dieser "Bot" achtet auf Schlüsselwörter, damit klar ist, zu welcher Person gefragt wird und ob es um das Alter und/oder das Land geht.
+Implementiere eine Funktion, die einfache Fragen zu diesen Personen entgegennimmt und sie in der Konsole beantwortet. Die genaue Formulierung einer Frage ist nicht vorgegeben, wodurch wir hier eine Art "Bot" programmieren. Dieser "Bot" achtet auf Schlüsselwörter, damit klar ist, zu welcher Person gefragt wird und ob es um das Alter und/oder das Land geht.
 
-Falls die Person, nach der gefragt wird, nicht in den Daten vorhanden ist, enthält die Antwort lediglich einen Hinweis, dass die Frage nicht beantwortet werden kann. Falls zwar eine bekannte Person erwähnt wird, aber anscheinend weder nach dem Alter oder nach dem Land gefragt wird, wird um Klarstellung gebeten.
+Falls die Person, nach der gefragt wird, nicht in den Daten vorhanden ist, antwortet der Bot lediglich, dass die Frage nicht beantwortet werden kann. Falls zwar eine bekannte Person erwähnt wird, aber anscheinend weder nach dem Alter oder nach dem Land gefragt wird, wird um Klarstellung gebeten.
 
 Fragen und Antworten sollen hier in Englisch sein.
 

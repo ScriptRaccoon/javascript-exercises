@@ -2,19 +2,19 @@
 
 ## Kontext
 
-Für jede Primzahl $p$ gibt es einen sog. _endlichen Körper_ $\mathbb{F}_p$ mit $p$ Elementen: eine algebraische Struktur, bei der man wie gewohnt mit ganzen Zahlen rechnet, aber modulo $p$, sodass die Zahlen $0,1,\dotsc,p-1$ immer ausreichen. Zum Beispiel besteht $\mathbb{F}_3$ aus den drei Zahlen $0,1,2$, und es gilt $2 + 2 = 1$ in $\mathbb{F}_3$.
+Für jede Primzahl $p$ gibt es einen sog. _endlichen Körper_ $𝔽_p$ mit $p$ Elementen: eine algebraische Struktur, bei der man wie gewohnt mit ganzen Zahlen rechnet, aber modulo $p$, sodass die Zahlen $0,1,\dotsc,p-1$ immer ausreichen. Zum Beispiel besteht $𝔽_3$ aus den drei Zahlen $0,1,2$, und es gilt $2 + 2 = 1$ in $𝔽_3$.
 
-Ein Polynom $f \in \mathbb{F}_p[X]$ mit Koeffizienten in $\mathbb{F}_p$ heißt _irreduzibel_, wenn es nicht konstant ist und für jede Zerlegung $f = g \cdot h$ mit Polynomen $g,h \in \mathbb{F}_p[X]$ gilt: $g$ oder $h$ ist konstant.
+Ein Polynom $f \in 𝔽_p[X]$ mit Koeffizienten in $𝔽_p$ heißt _irreduzibel_, wenn es nicht konstant ist und für jede Zerlegung $f = g \cdot h$ mit Polynomen $g,h \in 𝔽_p[X]$ gilt: $g$ oder $h$ ist konstant.
 
-Es ist ein Fakt, dass es für jedes $n \geq 1$ ein normiertes irreduzibles Polynom vom Grad $n$ über $\mathbb{F}_p$ gibt.
+Es ist ein Fakt, dass es für jedes $n \geq 1$ ein normiertes irreduzibles Polynom vom Grad $n$ über $𝔽_p$ gibt.
 
 ## Aufgabe
 
-Implementiere eine Funktion `get_monic_irreducible(n, p)`, die effizient für jedes $n \geq 1$ und jede Primzahl $p$ ein normiertes irreduzibles Polynom vom Grad $n$ über $\mathbb{F}_p$ berechnet, und zwar das Polynom, das lexikographisch\* am kleinsten ist.
+Implementiere eine Funktion `get_monic_irreducible(n, p)`, die effizient für jedes $n \geq 1$ und jede Primzahl $p$ ein normiertes irreduzibles Polynom vom Grad $n$ über $𝔽_p$ berechnet, und zwar das Polynom, das lexikographisch\* am kleinsten ist.
 
 Welcher Algorithmus dafür verwendet wird, ist nicht vorgegeben, allerdings soll er auch für große Werte von $n$ bzw. $p$ schnell funktionieren.
 
-Implementiere außerdem eine Funktion `get_monic_irreducibles(n,p)`, die sämtliche normierten irreduziblen Polynome vom Grad $n$ über $\mathbb{F}_p$ berechnet.
+Implementiere außerdem eine Funktion `get_monic_irreducibles(n,p)`, die sämtliche normierten irreduziblen Polynome vom Grad $n$ über $𝔽_p$ berechnet.
 
 \*Die Sortierung wird gestartet bei $X^0$, dann $X^1$, usw.
 

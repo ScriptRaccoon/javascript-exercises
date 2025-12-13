@@ -25,7 +25,7 @@ wird zum Beispiel durch das Array
 ["*", ["+", 1, 2], ["-", 4, 2]]
 ```
 
-modelliert.
+modelliert. Als Operationszeichen sind `+`, `-`, `*` und `/` zugelassen.
 
 ## Beispiel
 

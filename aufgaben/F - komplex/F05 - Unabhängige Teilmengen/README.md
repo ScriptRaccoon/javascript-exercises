@@ -2,7 +2,7 @@
 
 ## Aufgabe
 
-Implementiere eine Funktion, die für einen Graphen möglichst effizient eine größte unabhängige Teilmenge von Knoten bestimmt. Dabei heißt eine Teilmenge _unabhängig_, wenn je zwei Knoten nicht adjazent sind, und sie ist die größte, wenn es keine solche mit größerer Kardinalität gibt.
+Implementiere eine Funktion, die für einen Graphen möglichst effizient eine größte unabhängige Menge von Knoten bestimmt. Dabei heißt eine Menge von Knoten _unabhängig_, wenn je zwei Knoten nicht adjazent sind, und sie ist die größte, wenn es keine unabhängige Menge mit größerer Kardinalität gibt.
 
 Für dieses Problem gibt es (vermutlich) keinen Algorithmus mit polynomieller Laufzeit, allerdings kann der Brute-Force-Algorithmus verbessert werden.
 
@@ -17,6 +17,7 @@ Benutze die Funktion anschließend, um das folgende Problem zu lösen: für eine
 			0 --- 1 --- 2 --- 3
 */
 const g = [[1], [0, 2], [1, 3], [2]]
+
 get_largest_independent_subset(g)
 ```
 
@@ -37,6 +38,7 @@ get_largest_independent_subset(g)
 		      6
 */
 const g = [[1], [0, 2, 3], [1, 4], [1, 4, 6], [2, 3, 7], [], [3], [4], []]
+
 get_largest_independent_subset(g)
 ```
 
@@ -59,6 +61,7 @@ get_largest_independent_subset(g)
 				    6   7
 */
 const g = [[1, 2], [0, 3, 4], [0, 5], [1], [1, 6], [2, 7], [4], [5]]
+
 get_largest_independent_subset(g)
 ```
 
@@ -72,6 +75,7 @@ get_largest_independent_subset(g)
 
 ```ts
 const arr = ["baa", "ba", "bb", "bbb", "b", "a", "ab"]
+
 get_independent_strings(arr)
 ```
 

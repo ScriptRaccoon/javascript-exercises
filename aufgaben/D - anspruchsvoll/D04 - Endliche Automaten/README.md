@@ -2,7 +2,7 @@
 
 ## Aufgabe
 
-Entwickle eine Klasse, die einen endlichen deterministischen Automaten (DEA) modelliert, vgl. [Wikipedia](https://de.wikipedia.org/wiki/Deterministischer_endlicher_Automat). Der Konstruktur soll 5 Objekte entgegennehmen:
+Entwickle eine Klasse, die einen endlichen deterministischen Automaten (DEA) modelliert (vgl. [Wikipedia](https://de.wikipedia.org/wiki/Deterministischer_endlicher_Automat)). Der Konstruktur soll 5 Objekte entgegennehmen:
 
 - ein Array `states` von Strings, genannt _Zustände_
 - ein _Startzustand_ `start_state`
@@ -69,7 +69,7 @@ final state: q3
 accepted: false
 ```
 
-Das ist nur ein Beispiel. Wie die Ausgabe von `.process` im Detail aussieht, ist dir überlassen.
+Das ist nur ein Vorschlag. Wie die Ausgabe von `.process` im Detail aussieht, ist dir überlassen.
 
 ## Themen
 

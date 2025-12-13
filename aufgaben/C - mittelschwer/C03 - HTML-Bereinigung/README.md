@@ -20,7 +20,7 @@ Bei der Darstellung von User-generiertem HTML auf Websites ist es wichtig, dass 
 
 Schreibe eine Funktion, welche einen HTML-Text bereinigt.
 
-Erstelle dazu eine Whitelist mit erlaubten, harmlosen Tags wie z. B. `div`, `span`, `p`, `ol`, usw. Diese werden erhalten. Alle anderen Tags werden entfernt bzw. durch den Text darin ersetzt, womit also `<script>XYZ</script>` zu `XYZ` wird.
+Erstelle dazu eine Whitelist mit erlaubten, harmlosen Tags wie z. B. `div`, `span`, `p`, `ol`, usw. Diese werden erhalten. Alle anderen Tags werden entfernt bzw. durch den Text darin ersetzt, womit also z. B. `<script>XYZ</script>` zu `XYZ` wird.
 
 Außerdem müssen alle Attribute aus den erlaubten Tags entfernt werden, worunter zum Beispiel auch `onclick` fällt.
 

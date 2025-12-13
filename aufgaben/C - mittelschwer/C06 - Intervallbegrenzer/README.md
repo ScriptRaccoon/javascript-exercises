@@ -11,7 +11,7 @@ Genauer gesagt, entwickle eine Funktion `limit(fn, interval)`, die eine Funktion
 **Eingabe**
 
 ```js
-const send_message = (msg: string) => {
+const send_message = (msg) => {
 	const time = new Date().toLocaleTimeString("DE-de")
 	console.info(`${time} - sending message: ${msg}`)
 }

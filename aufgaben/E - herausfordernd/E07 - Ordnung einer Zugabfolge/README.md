@@ -14,21 +14,21 @@ Für illegale Zugabfolgen wird ein Fehler geworfen.
 
 ## Beispiele
 
-| Eingabe                                | Ausgabe |
-| -------------------------------------- | ------- |
-| ` `                                    | `1`     |
-| `R`                                    | `4`     |
-| `R'`                                   | `4`     |
-| `U`                                    | `4`     |
-| `R U`                                  | `105`   |
-| `R U'`                                 | `63`    |
-| `R U R' U'`                            | `6`     |
-| `R U F`                                | `80`    |
-| `R D F U`                              | `252`   |
-| `R3 D' F' U3 D F U`                    | `72`    |
-| `R U R' U' R' F R2 U' R' U' R U R' F'` | `2`     |
-| `R U' R U R U R U' R' U' R2`           | `3`     |
-| `R U2 D' B D'`                         | `1260`  |
+| Eingabe                                                      | Ausgabe |
+| ------------------------------------------------------------ | ------- |
+| `get_sequence_order(" ")`                                    | `1`     |
+| `get_sequence_order("R")`                                    | `4`     |
+| `get_sequence_order("R'")`                                   | `4`     |
+| `get_sequence_order("U")`                                    | `4`     |
+| `get_sequence_order("R U")`                                  | `105`   |
+| `get_sequence_order("R U'")`                                 | `63`    |
+| `get_sequence_order("R U R' U'")`                            | `6`     |
+| `get_sequence_order("R U F")`                                | `80`    |
+| `get_sequence_order("R D F U")`                              | `252`   |
+| `get_sequence_order("R3 D' F' U3 D F U")`                    | `72`    |
+| `get_sequence_order("R U R' U' R' F R2 U' R' U' R U R' F'")` | `2`     |
+| `get_sequence_order("R U' R U R U R U' R' U' R2")`           | `3`     |
+| `get_sequence_order("R U2 D' B D'")`                         | `1260`  |
 
 ## Themen
 

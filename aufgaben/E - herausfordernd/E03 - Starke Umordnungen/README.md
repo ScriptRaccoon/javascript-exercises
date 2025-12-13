@@ -2,11 +2,15 @@
 
 ## Aufgabe
 
-Eine _Umordnung von $n$ Elementen vom Grad_ $d$ sei eine Permutation $s$ der Menge $\{0,\dotsc,n-1\}$ mit der Eigenschaft, dass $|s(i) - i| \geq d$ für alle $i$ gilt. Für $d=1$ sind das gerade die fixpunktfreien Permutationen (_Derangements_).
+Eine _Umordnung von_ $n$ _Elementen vom Grad_ $d$ sei eine Permutation $s$ der Menge $\lbrace 0,\dotsc,n-1 \rbrace$ mit der Eigenschaft, dass
+
+$|s(i) - i| \geq d$
+
+für alle $i$ gilt. Für $d=1$ sind das gerade die fixpunktfreien Permutationen (_Derangements_).
 
 Implementiere eine Funktion, welche die Anzahl der Umordnungen von $n$ Elementen vom Grad $d$ berechnet. Sie sollte effizient vorgehen und nicht einfach alle Permutationen durchgehen. Genauer gesagt, die Zeitkomplexität sollte $O(2^n \cdot n^2)$ oder besser sein. Auch für zum Beispiel $n = 20$, $d = 5$ sollte schnell ein Ergebnis berechnet werden können. Es darf aber $n \leq 50$ angenommen werden.
 
-Wegen der großen beteiligten Zahlen (auch in Zwischenberechnungen) muss hier mit `bigint` gearbeitet werden; `number` kann zu Ungenauigkeiten führen.
+Wegen der großen beteiligten Zahlen (auch in Zwischenberechnungen) muss hier mit Zahlen vom Typ `bigint` gearbeitet werden; `number` kann zu Ungenauigkeiten führen.
 
 ## Beispiele
 
@@ -43,7 +47,7 @@ Für festes `d` erhält man eine Zahlenfolge `count_derangements(-, d)`. Für $0
 | 4   | [A075852](https://oeis.org/A075852) |            |
 | 5   | [A183242](https://oeis.org/A183242) | mit Offset |
 | 6   | [A183243](https://oeis.org/A183243) | mit Offset |
-| 7   | fehlt                               |            |
+| 7   |                                     | fehlt      |
 
 ## Themen
 

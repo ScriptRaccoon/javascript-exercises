@@ -2,7 +2,7 @@
 
 ## Kontext
 
-Die [Goldbach-Vermutung](https://de.wikipedia.org/wiki/Goldbachsche_Vermutung) aus der Mathematik besagt, dass jede gerade Zahl > 2 als Summe von zwei Primzahlen geschrieben werden kann (z.B. `12 = 5 + 7`). Auch wenn sie für sehr viele Zahlen bereits bestätigt ist, ist die allgemeine Aussage bis heute ein ungelöstes Problem.
+Die [Goldbach-Vermutung](https://de.wikipedia.org/wiki/Goldbachsche_Vermutung) aus der Zahlentheorie besagt, dass jede gerade Zahl > 2 als Summe von zwei Primzahlen geschrieben werden kann (z.B. `12 = 5 + 7`). Auch wenn sie für sehr viele Zahlen bereits bestätigt ist, ist die allgemeine Aussage bis heute ein ungelöstes Problem.
 
 ## Aufgabe
 

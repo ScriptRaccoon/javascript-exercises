@@ -18,4 +18,4 @@ Implementiere eine Funktion, die einen kürzesten Bearbeitungspfad zwischen zwei
 
 ## Themen
 
-Dynamische Programmierung, Backtracking, Strings, Algorithmen
+Dynamische Programmierung, Backtracking, Strings, Algorithmen, Levenshtein-Distanz

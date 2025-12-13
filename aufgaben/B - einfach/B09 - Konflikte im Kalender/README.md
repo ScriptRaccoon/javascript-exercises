@@ -2,7 +2,7 @@
 
 ## Aufgabe
 
-Implementiere eine Funktion, die für eine Liste von Kalendereinträgen die Liste der zeitlichen Konflikte bestimmt. Ein Kalendereintrag besteht hierbei aus Titel, Start- und Endzeit, und ein Konflikt besteht aus der Start- und Endzeit des Konflikts sowie einer Liste der sich in dieser Zeit überschneidenden Einträge.
+Implementiere eine Funktion, die für eine Liste von Kalendereinträgen die Liste der zeitlichen Konflikte bestimmt. Ein Kalendereintrag besteht hierbei aus Titel, Start- und Endzeit, und ein Konflikt besteht aus der Start- und Endzeit des Konflikts sowie einer Liste der Titel der sich in dieser Zeit überschneidenden Einträge.
 
 ## Beispiel
 

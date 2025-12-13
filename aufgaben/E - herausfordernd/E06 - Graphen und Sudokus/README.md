@@ -171,7 +171,7 @@ Verallgemeinere zunächst die Funktion zur Ermittlung der Garphenfärbungen so, 
 
 Dadurch können zum Beispiel auch Zahlen als "Farben" genommen werden. Damit lassen sich nun tatsächlich auch Sudokus lösen:
 
-Interpretiere dazu ein Sudoku als einen Graphen, dessen Knoten die 81 Felder sind, wobei zwei Felder benachbart sind, wenn sie in derselben Zeile, Spalte, oder in demselben 3x3-Block liegen. Wenn wir die Farben 0,1,...,9 wählen (0 = leeres Feld), ist eine (teilweise) Färbung dieses Graphens gerade ein (teilweise) gelöstes Sudoku.
+Interpretiere dazu ein Sudoku als einen Graphen, dessen Knoten die 81 Felder sind, wobei zwei Felder benachbart sind, wenn sie in derselben Zeile, Spalte, oder in demselben 3x3-Block liegen. Wenn wir die Farben 0,1,...,9 wählen (0 = leeres Feld), ist eine (teilweise) Färbung dieses Graphen gerade ein (teilweise) gelöstes Sudoku.
 
 | 0   | 0   | 0   | 0   | 0   | 0   | 6   | 0   | 0   |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -226,7 +226,9 @@ get_sudoku_solutions(sample)
 
 ## Aufgabe 3
 
-Ein _Lateinisches Quadrat_ ist eine nxn-Matrix aus Zahlen 0,1,...,n-1, sodass in jeder Zeile unterschiedliche Zahlen und in jeder Spalte unterschiedliche Zahlen stehen. Es heißt _normalisiert_, wenn die erste Zeile 0,1,...,n-1 ist und die erste Spalte 0,1,..,n-1 ist. (Das kann durch eine Umordnung der Zeilen und Spalten immer erreicht werden.) Hier ein Beispiel:
+Ein _Lateinisches Quadrat_ ist eine nxn-Matrix aus Zahlen 0, 1, ..., n-1, sodass in jeder Zeile unterschiedliche Zahlen und in jeder Spalte unterschiedliche Zahlen stehen. Es heißt _normalisiert_, wenn die erste Zeile 0, 1, ..., n-1 ist und die erste Spalte [0, 1, ..., n-1] ist. (Das kann durch eine Umordnung der Zeilen und Spalten immer erreicht werden.)
+
+Hier ein Beispiel für n = 4:
 
 | 0   | 1   | 2   | 3   |
 | --- | --- | --- | --- |
@@ -235,6 +237,8 @@ Ein _Lateinisches Quadrat_ ist eine nxn-Matrix aus Zahlen 0,1,...,n-1, sodass in
 | 3   | 2   | 1   | 0   |
 
 Interpretiere ein Lateinisches Quadrat als eine Graphenfärbung und implementiere damit eine Funktion, die sämtliche normalisierten Lateinische Quadrate einer festen Größe berechnet.
+
+Hinweis: Die Anzahlen finden sich in der OEIS-Folge [A000315](https://oeis.org/A000315).
 
 ## Beispiel
 

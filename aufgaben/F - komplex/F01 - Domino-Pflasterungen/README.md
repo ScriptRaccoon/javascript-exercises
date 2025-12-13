@@ -2,9 +2,9 @@
 
 ## Aufgabe
 
-Implementiere eine Funktion, die effizient die Anzahl der Pflasterungen eines `m`x`n`-Rechtecks durch Dominosteine berechnet.
+Implementiere eine Funktion, die effizient die Anzahl der Pflasterungen eines mxn-Rechtecks durch Dominosteine berechnet.
 
-Anleitung: Interpretiere solche Pflasterungen als Wege in einem gerichteten Graphen der Länge `n`, dessen Knoten die Konfigurationen von überstehenden Dominos sind. Kodiere diese Konfigurationen durch Bitmasken. Verwende `bigint` als Rückgabetyp für die Anzahlen.
+Anleitung: Interpretiere solche Pflasterungen als Wege in einem gerichteten Graphen der Länge n, dessen Knoten die Konfigurationen von überstehenden Dominos sind. Kodiere diese Konfigurationen durch Bitmasken. Verwende `bigint` als Rückgabetyp für die Anzahlen.
 
 ## Beispiele
 
@@ -22,7 +22,7 @@ Anleitung: Interpretiere solche Pflasterungen als Wege in einem gerichteten Grap
 
 ## OEIS-Folgen
 
-Zur Kontrolle der Zahlenwerte finden sich hier einige OEIS-Folgen der Anzahlen für festes `m`:
+Zur Kontrolle der Zahlenwerte finden sich hier einige OEIS-Folgen der Anzahlen für festes m:
 
 | `m`  | OEIS-Folge                          |
 | ---- | ----------------------------------- |

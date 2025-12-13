@@ -2,7 +2,7 @@
 
 ## Aufgabe
 
-Implementiere eine Funktion, die alle Zahlen aus einem Text herauszieht. Erfasst werden positive ganze Zahlen, negative ganze Zahlen, wie auch rationale Zahlen. Das Ergebnis soll ein Array der enthaltenden Zahlen sein.
+Implementiere eine Funktion, die alle Zahlen aus einem Text herauszieht. Erfasst werden positive ganze Zahlen, negative ganze Zahlen, wie auch rationale Zahlen. Das Ergebnis soll ein Array der enthaltenen Zahlen sein.
 
 ## Beispiel
 

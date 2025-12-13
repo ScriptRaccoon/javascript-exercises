@@ -2,7 +2,7 @@
 
 ## Kontext
 
-Normale Zahlen lassen sich in JavaScript nur bis zu einer bestimmten Grenze verarbeiten:
+Normale Zahlen lassen sich in JavaScript nur bis zu einer bestimmten Grenze zuverlässig verarbeiten:
 
 ```js
 1000000000000000000 + 42 == 1000000000000000000 // ???
@@ -19,11 +19,9 @@ Number.MAX_SAFE_INTEGER + 3 == 9007199254740994
 
 ## Aufgabe
 
-Entwickle eine Klasse `BigNumber` (ähnlich wie die bereits in JS eingebaute Klasse `BigInt`), die beliebig große natürliche Zahlen verarbeiten und mit ihnen rechnen kann. Unterstützt werden sollen Addition und Multiplikation in Form von zwei Klassenmethoden `.add` und `.multiply`.
+Entwickle eine Klasse `BigNumber` (ähnlich wie die bereits in JS eingebaute Klasse `BigInt`), die beliebig große natürliche Zahlen verarbeiten und mit ihnen rechnen kann. Der Konstruktor nimmt sowohl Zahlen, Strings, als auch Arrays von Ziffern entgegen.
 
-Außerdem soll es eine Methode `.print` geben, mit der die Zahl in die Konsole geschrieben wird.
-
-Der Konstruktor nimmt sowohl Zahlen, Strings, als auch Arrays von Ziffern entgegen.
+Unterstützt werden sollen Addition und Multiplikation in Form von zwei Klassenmethoden `.add` und `.multiply`. Außerdem soll es eine Methode `.print` geben, mit der die Zahl in die Konsole geschrieben wird.
 
 ## Beispiel 1
 
@@ -33,11 +31,11 @@ Der Konstruktor nimmt sowohl Zahlen, Strings, als auch Arrays von Ziffern entgeg
 const x = new BigNumber(8916)
 const y = new BigNumber(12087)
 
-const u = x.add(y)
-const v = x.multiply(y)
+const sum = x.add(y)
+const prod = x.multiply(y)
 
-u.print()
-v.print()
+sum.print()
+prod.print()
 ```
 
 **Ausgabe**
@@ -56,8 +54,8 @@ Auch große Zahlen funktionieren nun:
 ```js
 const a = new BigNumber(1000000000000000000)
 const b = new BigNumber(42)
-const s = a.add(b)
-s.print()
+const sum = a.add(b)
+sum.print()
 ```
 
 **Ausgabe**

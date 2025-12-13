@@ -6,7 +6,7 @@ Eine Verknüpfung $b : X \times X \to X$ auf einer Menge $X$ heißt _assoziativ_
 
 $b(b(x,y),z) = b(x,b(y,z))$
 
-Eine solche Verknüpfung kann man auch als eine Verknüpfungstabelle darstellen. Hier etwa das Beispiel der Addition modulo $5$ auf $X = \{0,1,2,3,4\}$.
+Die Abbildung $b$ kann man auch durch eine Verknüpfungstabelle darstellen. Hier etwa das Beispiel der Addition modulo $5$ auf $X = \lbrace 0,1,2,3,4 \rbrace$.
 
 | +     | **0** | **1** | **2** | **3** | **4** |
 | ----- | ----- | ----- | ----- | ----- | ----- |

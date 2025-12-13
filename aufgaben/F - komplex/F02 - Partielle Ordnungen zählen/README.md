@@ -2,7 +2,7 @@
 
 ## Kontext
 
-Sei $X$ eine Menge. Eine _partielle Ordnung_ $\leq$ auf $X$ ist eine binäre Relation auf $X$, die reflexiv, symmetrisch, und antisymmetrisch ist. Das heißt, es muss gelten:
+Sei $X$ eine Menge. Eine _partielle Ordnung_ $\leq$ auf $X$ ist eine binäre Relation auf $X$, die reflexiv, symmetrisch und antisymmetrisch ist. Das heißt, es muss gelten:
 
 - Für $x \in X$ gilt $x \leq x$.
 - Für $x,y,z \in X$ folgt aus $x \leq y$ und $y \leq z$ ebenfalls $x \leq z$.
@@ -10,7 +10,7 @@ Sei $X$ eine Menge. Eine _partielle Ordnung_ $\leq$ auf $X$ ist eine binäre Rel
 
 ## Aufgabe
 
-Implementiere eine Funktion, die für $n \in \mathbb{N}$ möglichst effizient die Anzahl der partiellen Ordnungen auf einer $n$-elementigen Menge bestimmt. Sie sollte zumindest für $n \leq 8$ innerhalb von Sekunden ein Ergebnis liefern.
+Implementiere eine Funktion, die für $n \geq 0$ möglichst effizient die Anzahl der partiellen Ordnungen auf einer $n$-elementigen Menge bestimmt. Sie sollte zumindest für $n \leq 8$ innerhalb von Sekunden ein Ergebnis liefern.
 
 Tipp: Finde ein Verfahren, mit dem man die partiellen Ordnungen mit $n+1$ Elementen aus den partiellen Ordnungen mit $n$ Elementen gewinnen kann. Arbeite außerdem mit Bitmasken, um die Laufzeit zu verbessern.
 

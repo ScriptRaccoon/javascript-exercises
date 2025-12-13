@@ -14,7 +14,7 @@ Auf einem Spielfeld der Größe $n \times 1$ werden von zwei Spielern abwechseln
 | 3   | `X - - X - X` | Spieler 1 zieht             |
 | 4   | `X - - X X X` | Spieler 2 zieht und gewinnt |
 
-Tatsächlich kann der zweite Spieler für $n = 5$ immer gewinnen, egal was der erste Spieler zieht. Für $n = 5$ hat aber der erste Spieler eine Gewinnstrategie: er setzt das Kreuz in die Mitte.
+Tatsächlich kann der zweite Spieler für $n = 6$ immer gewinnen, egal was der erste Spieler zieht. Für $n = 5$ hat aber der erste Spieler eine Gewinnstrategie: er setzt zuerst das Kreuz in die Mitte.
 
 Man kann zeigen: Für jedes $n \geq 0$ hat entweder der erste oder der zweite Spieler eine Gewinnstrategie.
 
