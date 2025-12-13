@@ -4,6 +4,8 @@
 
 Schreibe eine Funktion, die einen kürzesten Pfad durch ein Labyrinth berechnet. Ein Labyrinth wird hierbei durch eine 0,1-Matrix beschrieben, wobei 0 für einen leeren Raum bzw. 1 für eine Wand steht.
 
+<img width="300"  alt="maze" src="https://github.com/user-attachments/assets/c987451d-b9bf-4cc1-9ffa-e725aa42de2f" /><br />
+  
 Vorgegeben sind Start- und Endkoordinate des Pfades, und die Schritte gehen jeweils nach oben, rechts, unten, oder links, sofern dort ein leerer Raum ist.
 
 Ein Pfad wird durch die Liste der besuchten Koordinaten beschrieben. Wenn kein Pfad gefunden wird, wird `null` zurückgegeben.
