@@ -4,6 +4,8 @@
 
 Finde eine effiziente Lösung für das _Springerproblem_: Einen Weg des Springers über das n×m-Schachbrett, bei dem jedes Feld genau einmal besucht wird. Das Startfeld kann beliebig vorgegeben werden.
 
+https://github.com/user-attachments/assets/55e181e1-ed5b-48f6-aea3-cb55da9635b4
+
 Genauer gesagt, implementiere eine Funktion `find_knight_tour(n, m, start)`, welche eine n×m-Matrix von Zahlen ausgibt, sodass die $i$-te Koordinate des Springerweges mit $i$ beschriftet wird. Wenn also zum Beispiel der Springerweg mit den Koordinaten $(0,0) \to (2,1) \to (1,3)$ startet, hat die Matrix an diesen Koordinaten die Werte $1$, $2$, $3$.
 
 Wenn es keine Lösung gibt, soll `null` zurückgegeben werden.
