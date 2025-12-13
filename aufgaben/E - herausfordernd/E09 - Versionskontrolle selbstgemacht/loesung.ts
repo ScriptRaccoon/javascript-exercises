@@ -236,78 +236,81 @@ export class Branch {
 	}
 }
 
-const root = new Commit()
-const main = new Branch("main", root)
-main.commit({ a: 1, b: 2, c: 3 })
-main.commit({ a: 2, b: null, c: 5 })
-/*
-Commit history of main:
-• z8ijey: {"a":2,"b":null,"c":5}
-• nia8lk: {"a":1,"b":2,"c":3}
-• zjz4d3: {} (ROOT)
-*/
-main.log()
-console.info(main.to_json()) // { a: 2, c: 5 }
-main.drop_last_commit()
-console.info(main.to_json()) // { a: 1, b: 2, c: 3 }
-const base = main.tip
-console.info(base.data) // { a: 1, b: 2, c: 3 }
-main.commit({ x: 1 })
-main.commit({ y: 2 })
-console.info(main.to_json()) // { a: 1, b: 2, c: 3, x: 1, y: 2 }
-main.reset(base)
-console.info(main.to_json()) // { a: 1, b: 2, c: 3 }
-console.info(main.tip === base) // true
+// @ts-expect-error This function is only executed when needed.
+function test_functions() {
+	const root = new Commit()
+	const main = new Branch("main", root)
+	main.commit({ a: 1, b: 2, c: 3 })
+	main.commit({ a: 2, b: null, c: 5 })
+	/*
+	Commit history of main:
+	• z8ijey: {"a":2,"b":null,"c":5}
+	• nia8lk: {"a":1,"b":2,"c":3}
+	• zjz4d3: {} (ROOT)
+	*/
+	main.log()
+	console.info(main.to_json()) // { a: 2, c: 5 }
+	main.drop_last_commit()
+	console.info(main.to_json()) // { a: 1, b: 2, c: 3 }
+	const base = main.tip
+	console.info(base.data) // { a: 1, b: 2, c: 3 }
+	main.commit({ x: 1 })
+	main.commit({ y: 2 })
+	console.info(main.to_json()) // { a: 1, b: 2, c: 3, x: 1, y: 2 }
+	main.reset(base)
+	console.info(main.to_json()) // { a: 1, b: 2, c: 3 }
+	console.info(main.tip === base) // true
 
-/*
-Commit history of main:
-• nia8lk: {"a":1,"b":2,"c":3}
-• zjz4d3: {} (ROOT)
-*/
-main.log()
+	/*
+	Commit history of main:
+	• nia8lk: {"a":1,"b":2,"c":3}
+	• zjz4d3: {} (ROOT)
+	*/
+	main.log()
 
-const commit_1 = main.commit({ a: 2 })
-const commit_2 = main.commit({ b: null })
-console.info(main.to_json()) // { a: 2, c: 3 }
-main.revert(commit_1)
-console.info(main.to_json()) // { a: 1, c: 3 }
-main.revert(commit_2)
-console.info(main.to_json()) // { a: 1, b: 2, c: 3 }
-/*
-Commit history of main:
-• vnrqy5: {"b":2}
-• e8s2j4: {"a":1}
-• 2yv2ac: {"b":null}
-• m8u08w: {"a":2}
-• nia8lk: {"a":1,"b":2,"c":3}
-• zjz4d3: {} (ROOT)
-*/
-main.log()
-main.reset(root)
-console.info(main.to_json()) // {}
+	const commit_1 = main.commit({ a: 2 })
+	const commit_2 = main.commit({ b: null })
+	console.info(main.to_json()) // { a: 2, c: 3 }
+	main.revert(commit_1)
+	console.info(main.to_json()) // { a: 1, c: 3 }
+	main.revert(commit_2)
+	console.info(main.to_json()) // { a: 1, b: 2, c: 3 }
+	/*
+	Commit history of main:
+	• vnrqy5: {"b":2}
+	• e8s2j4: {"a":1}
+	• 2yv2ac: {"b":null}
+	• m8u08w: {"a":2}
+	• nia8lk: {"a":1,"b":2,"c":3}
+	• zjz4d3: {} (ROOT)
+	*/
+	main.log()
+	main.reset(root)
+	console.info(main.to_json()) // {}
 
-/*
-Commit history of main:
-• zjz4d3: {} (ROOT)
-*/
-main.log()
-main.commit({ x: 0 })
-const feat = new Branch("feat", main)
-main.commit({ a: 1 })
-main.commit({ b: 2 })
-main.commit({ c: 3 })
-feat.commit({ a: 1 })
-feat.commit({ d: 4 })
-console.info(main.to_json()) // { x: 0, a: 1, b: 2, c: 3 }
-console.info(feat.to_json()) // { x: 0, a: 1, d: 4 }
-main.merge(feat)
-console.info(main.to_json()) // { x: 0, a: 1, b: 2, c: 3, d: 4 }
-/*
-• ccgn97: {"a":1,"d":4} 
-• fi3a35: {"c":3}
-• b0rkmc: {"b":2}
-• oasm50: {"a":1}
-• ny2jd9: {"x":0}
-• zjz4d3: {} (ROOT)
-*/
-main.log()
+	/*
+	Commit history of main:
+	• zjz4d3: {} (ROOT)
+	*/
+	main.log()
+	main.commit({ x: 0 })
+	const feat = new Branch("feat", main)
+	main.commit({ a: 1 })
+	main.commit({ b: 2 })
+	main.commit({ c: 3 })
+	feat.commit({ a: 1 })
+	feat.commit({ d: 4 })
+	console.info(main.to_json()) // { x: 0, a: 1, b: 2, c: 3 }
+	console.info(feat.to_json()) // { x: 0, a: 1, d: 4 }
+	main.merge(feat)
+	console.info(main.to_json()) // { x: 0, a: 1, b: 2, c: 3, d: 4 }
+	/*
+	• ccgn97: {"a":1,"d":4} 
+	• fi3a35: {"c":3}
+	• b0rkmc: {"b":2}
+	• oasm50: {"a":1}
+	• ny2jd9: {"x":0}
+	• zjz4d3: {} (ROOT)
+	*/
+	main.log()
+}

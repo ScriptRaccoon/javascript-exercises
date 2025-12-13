@@ -308,7 +308,7 @@ describe("Branch class", () => {
 			feat.commit({ b: 2 })
 			feat.commit({ c: 3 })
 
-			const merge_commit = main.merge(feat)
+			const merge_commit = main.merge(feat, false)
 
 			expect(merge_commit.data).toEqual({ b: 2, c: 3 })
 
@@ -325,7 +325,7 @@ describe("Branch class", () => {
 			const old_tip = feat.commit({ c: 3 })
 			const old_json = feat.to_json()
 
-			main.merge(feat)
+			main.merge(feat, false)
 			expect(feat.tip).toBe(old_tip)
 			expect(feat.to_json()).toEqual(old_json)
 		})
@@ -346,7 +346,7 @@ describe("Branch class", () => {
 			feat.commit({ d: null })
 			feat.commit({ b: 0 })
 
-			const merge_commit = main.merge(feat)
+			const merge_commit = main.merge(feat, false)
 
 			expect(merge_commit.data).toEqual({ a: 3, b: 0, c: 5, d: null })
 
@@ -360,7 +360,7 @@ describe("Branch class", () => {
 			main.commit({ a: 2 })
 			feat.commit({ a: 5 })
 
-			expect(() => main.merge(feat)).toThrow()
+			expect(() => main.merge(feat, false)).toThrow()
 		})
 
 		it("throws when a merge conflict is detected (2)", () => {
@@ -372,7 +372,7 @@ describe("Branch class", () => {
 			feat.commit({ a: 2 })
 			feat.commit({ b: 2 })
 
-			expect(() => main.merge(feat)).toThrow()
+			expect(() => main.merge(feat, false)).toThrow()
 		})
 	})
 })
