@@ -151,7 +151,7 @@ function get_all_tilings(n: number): Tiling[] {
  * Druckt eine nx2-Pflasterung in die Konsole.
  */
 function print_tiling(n: number, tiling: Tiling): void {
-	const labels = ["+", "o", "-", "*", "=", "#", "."]
+	const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 
 	const labeled_tiling = tiling.map((tile, index) => ({
 		coords: tile,
