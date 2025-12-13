@@ -16,7 +16,7 @@ function unkey(str: string): [number, number] {
 }
 
 /**
- * Type for a graphs with two types of edges (0 and 1).
+ * Type for a graph with two types of edges (0 and 1).
  * graph[v] = [[a1,a2,...],[b1,b2,...]] means that there are edges
  * v -> a1, ... of type 0 and edges v -> b1, ... of type 1.
  */

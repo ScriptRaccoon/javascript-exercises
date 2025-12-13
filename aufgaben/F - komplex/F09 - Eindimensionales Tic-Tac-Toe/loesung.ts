@@ -59,6 +59,7 @@ export function get_losing_sizes(limit: number, print = true): number[] {
 	if (print) console.info("Determine P-positions in Treblecross")
 	const P_positions: number[] = [0, 2]
 
+	// https://oeis.org/A071426
 	const grundys = new Uint16Array(limit + 1)
 	grundys[1] = 1
 	grundys[2] = 1

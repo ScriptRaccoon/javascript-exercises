@@ -11,18 +11,17 @@ export function unique_slope_sequences(n: number, k: number): number {
 	const slopes = new Uint16Array(n).fill(0)
 
 	/**
-	 * Number of ways to increase a valid sequence of length m,
+	 * Number of ways to expand a valid sequence of length m,
 	 * where the last element is given.
 	 */
-	function helper(m: number, last: number): number {
-		if (m === 0) return 0
+	function extensions(m: number, last: number): number {
 		if (m === k) return 1
 		let count = 0
 		for (let x = last + 1; x < n; x++) {
 			const d = x - last
 			if (slopes[d]) continue
 			slopes[d] = 1
-			count += helper(m + 1, x)
+			count += extensions(m + 1, x)
 			slopes[d] = 0
 		}
 		return count
@@ -31,7 +30,7 @@ export function unique_slope_sequences(n: number, k: number): number {
 	let total = 0
 
 	for (let x = 0; x < n; x++) {
-		total += helper(1, x)
+		total += extensions(1, x)
 	}
 
 	return total
@@ -78,7 +77,7 @@ function slope_increasing_sequences(n: number, k: number): number {
 /**
  * Returns the factorial n! of n.
  */
-export function fac(n: number): number {
+function fac(n: number): number {
 	return n === 0 ? 1 : n * fac(n - 1)
 }
 

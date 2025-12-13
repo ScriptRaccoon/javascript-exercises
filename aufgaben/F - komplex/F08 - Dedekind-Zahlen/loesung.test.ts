@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest"
 import { dedekind_number } from "./loesung"
 
 describe("dedekind_number", () => {
+	// cf. https://oeis.org/A000372
 	const cases = [
 		[2, 0],
 		[3, 1],

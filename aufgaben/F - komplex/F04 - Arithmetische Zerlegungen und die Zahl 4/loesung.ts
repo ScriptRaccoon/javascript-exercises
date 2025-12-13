@@ -92,8 +92,8 @@ export function find_shortest_expression(target: number, constant: number): Expr
 	const found_values = new Set<number>([constant])
 
 	/**
-	 * The number of operators needed. This equals the target since
-	 * n = (d + ... + d)/d is an expression with n operators.
+	 * The maximal number of operators needed. This equals the target
+	 * since n = (d + ... + d)/d is an expression with n operators.
 	 */
 	const MAX_OPERATORS = target
 
