@@ -2,13 +2,22 @@
 
 ## Aufgabe
 
-Ein _Domino_ besteht aus zwei zusammenhängenden Steinen, ein _L-Tromino_ aus drei zusammenhängenden Steinen in L-Form. Implementiere eine Funktion, die sämtliche Pflasterungen eines nx2-Rechtecks durch Dominos und L-Trominos bestimmt und sie grafisch ansprechend in die Konsole schreibt.
+Ein _Domino_ besteht aus zwei zusammenhängenden Steinen, ein _L-Tromino_ aus drei zusammenhängenden Steinen in L-Form. 
+
+
+
+
+Implementiere eine Funktion, die sämtliche Pflasterungen eines nx2-Rechtecks durch Dominos und L-Trominos bestimmt und sie grafisch ansprechend in die Konsole schreibt.
 
 Das hier ist zum Beispiel eine Pflasterung eines 7x2-Rechtecks, bestehend aus 4 Dominos und 2 Trominos.
 
+<img width="400" alt="tiling example" src="https://github.com/user-attachments/assets/2c9472cd-9cf3-42e0-a676-eab453bbf987" />
+
+In der Konsole kann man sie so darstellen:
+
 ```text
-+ o o * = # #
-+ - - * = = #
++ o o = = . .
++ - - = # # .
 ```
 
 Hinweis: Die Anzahl der Pflasterungen ist die OEIS-Folge [A052980](https://oeis.org/A052980). Damit lässt sich das Ergebnis überprüfen.
