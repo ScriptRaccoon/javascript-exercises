@@ -154,7 +154,7 @@ const ast = {
 	right: { type: "variable", name: "y" },
 }
 
-AST_UTILS.evaluate(ast, { x: 10, y: 2 })
+evaluate_ast(ast, { x: 10, y: 2 })
 ```
 
 **Ausgabe**

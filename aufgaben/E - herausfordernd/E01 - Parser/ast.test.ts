@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest"
-import { AST, AST_UTILS } from "./ast"
+import { AST, evaluate_ast } from "./ast"
 
-describe("AST_UTILS.evaluate", () => {
+describe("evaluate_ast", () => {
 	it("evaluates numbers", () => {
 		const ast: AST = { type: "number", value: 42 }
-		const val = AST_UTILS.evaluate(ast)
+		const val = evaluate_ast(ast)
 		expect(val).toBe(42)
 	})
 
@@ -16,7 +16,7 @@ describe("AST_UTILS.evaluate", () => {
 			right: { type: "variable", name: "y" },
 		}
 
-		const val = AST_UTILS.evaluate(ast!, { x: 10, y: 2 })
+		const val = evaluate_ast(ast!, { x: 10, y: 2 })
 		expect(val).toBe(12)
 	})
 
@@ -38,7 +38,7 @@ describe("AST_UTILS.evaluate", () => {
 			},
 		}
 
-		const val = AST_UTILS.evaluate(ast, { y: 1 })
+		const val = evaluate_ast(ast, { y: 1 })
 		expect(val).toBe(0.5)
 	})
 })
